@@ -24,6 +24,18 @@ namespace InterviewTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
+                        .AllowCredentials();
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -34,6 +46,7 @@ namespace InterviewTest
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("default");
 
             app.UseMvc();
         }
