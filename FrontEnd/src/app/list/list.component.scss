@@ -1,0 +1,46 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin-left:auto; 
+    margin-right:auto;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+}
+
+.heading {
+    text-align: center;
+    color: blue;
+}
+
+.message {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.color1 {
+    font-weight: 100;
+    color: #FC766AFF;
+    background: #5B84B1FF;
+}
+
+.color2 {
+    font-weight: 1000;
+    color: #000000FF;
+    background: #FFFFFFFF;
+}
+
+.color3 {
+    font-weight: 500;
+    color: #00203FFF;
+    background: #ADEFD1FF;
+}
+
+.color4 {
+    font-weight: 300;
+    color: #606060FF;
+    background: #D6ED17FF; 
+}
