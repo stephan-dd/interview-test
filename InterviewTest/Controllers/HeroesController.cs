@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace InterviewTest.Controllers
 {
@@ -34,18 +30,26 @@ namespace InterviewTest.Controllers
             return this.heroes;
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        // GET: api/Heroes/hulk
+        [HttpGet("{name}", Name = "Get")]
+        public Hero Get(string name)
         {
-            return this.heroes.FirstOrDefault();
+            return this.heroes.FirstOrDefault(x => string.Equals(x.name, name, System.StringComparison.InvariantCultureIgnoreCase));
         }
 
         // POST: api/Heroes
-        [HttpPost]
-        public Hero Post([FromBody] string value) //hero name
+        [HttpPost("{name}")]
+        public Hero Post(string name, [FromBody] PostInput input = null) //hero name
         {
-            return this.heroes.FirstOrDefault();
+            var hero = this.heroes.FirstOrDefault(x => string.Equals(x.name, name, System.StringComparison.InvariantCultureIgnoreCase));
+
+            if (hero != null && string.Equals(input.action, "evolve", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                hero.evolve();
+                return hero;
+            }    
+
+            return null;
         }
 
         // PUT: api/Heroes/5

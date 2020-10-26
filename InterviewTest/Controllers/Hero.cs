@@ -17,7 +17,7 @@ namespace InterviewTest.Controllers
         {
             //increment all stats of the hero with a multiple of half the original stat value.
 
-            for (int i = 0; i <= stats.Count; i++)
+            for (int i = 0; i < stats.Count; i++)
             {
                 var stat = stats[i];
 
