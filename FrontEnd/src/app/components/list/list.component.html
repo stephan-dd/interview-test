@@ -1,0 +1,23 @@
+<div class="heroes-list-container">
+  <h2 class="heading">Tour of Heroes</h2>
+  <div *ngIf="updatedMsgVisible" class="update-message">{{updatedHero}} updated with Strength: {{updatedStats.strength}}, Intelligence: {{updatedStats.intelligence}}, Stamina: {{updatedStats.stamina}}</div>
+  <table class="themeBlue">
+    <tr>
+      <th class="hero-column-header">Name</th>
+      <th class="hero-column-header">Power</th>
+      <th class="hero-column-header">Stat (strength)</th>
+      <th class="hero-column-header">Stat (intelligence)</th>
+      <th class="hero-column-header">Stat (stamina)</th>
+    </tr>
+    <tr *ngFor="let hero of heroesDisplayModel" class="hero-row">
+      <td class="hero-column">{{hero.name}}</td>
+      <td class="hero-column">{{hero.power}}</td>
+      <td class="hero-column">{{hero.strength}}</td>
+      <td class="hero-column">{{hero.intelligence}}</td>
+      <td class="hero-column">{{hero.stamina}}</td>
+      <td class="hero-column">
+        <button (click)="doEvolve(hero.name)">Evolve</button>
+      </td>
+    </tr>
+  </table>
+</div>

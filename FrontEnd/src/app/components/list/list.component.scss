@@ -1,0 +1,68 @@
+app-list {
+  font-family: calibri;
+
+  $darkBlue: #1B2236;
+  $grey: #C5D9E2;
+  $maroon: #831F1F;
+  $pink: #E3C5C5;
+  $darkGreen: #334E29;
+  $lightGreen: #BBD8B6;
+  $darkBrown: #3D3820;
+  $lightBrown: #D5CEAF;
+
+  .heroes-list-container {
+    width: 726px;
+  }
+
+  .update-message {
+    padding: 10px;
+  }
+
+  .heading {
+    text-align: center;
+    color: blue;
+  }
+
+  .themeBlue {
+    font-weight: 200;
+    color: $darkBlue;
+    background: $grey;
+  }
+
+  .themeRed {
+    font-weight: 400;
+    color: $maroon;
+    background: $pink;
+  }
+
+  .themeGreen {
+    font-weight: 600;
+    color: $darkGreen;
+    background: $lightGreen;
+  }
+
+  .themeBrown {
+    font-weight: 800;
+    color: $darkBrown;
+    background: $lightBrown;
+  }
+
+  .hero-column-header {
+    text-align: left;
+  }
+
+  .hero-column, .hero-column-header {
+    padding: 0px 8px;
+  }
+
+  .hero-column {
+    button {
+      background: #425E8F;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+}

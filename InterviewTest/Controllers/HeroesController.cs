@@ -42,8 +42,23 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] PostParametersEvolve evolveParameters)
         {
+            if (evolveParameters.action == "evolve")
+            {
+                for (int i=0; i<heroes.Length; i++)
+                {
+                    if (heroes[i].name == evolveParameters.name)
+                    {
+                        heroes[i].evolve(2);
+                        return heroes[i];
+                    }
+                }
+                return null;
+            } else
+            {
+                return null;
+            }
         }
 
         // PUT: api/Heroes/5
@@ -57,5 +72,11 @@ namespace InterviewTest.Controllers
         public void Delete(int id)
         {
         }
+    }
+
+    public class PostParametersEvolve
+    {
+        public string name { get; set; }
+        public string action { get; set; } = "";
     }
 }
