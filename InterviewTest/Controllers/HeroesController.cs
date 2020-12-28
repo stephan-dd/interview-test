@@ -46,15 +46,9 @@ namespace InterviewTest.Controllers
         {
             if (evolveParameters.action == "evolve")
             {
-                for (int i=0; i<heroes.Length; i++)
-                {
-                    if (heroes[i].name == evolveParameters.name)
-                    {
-                        heroes[i].evolve(2);
-                        return heroes[i];
-                    }
-                }
-                return null;
+                Hero foundHero = heroes.SingleOrDefault(item => item.name == evolveParameters.name);
+                foundHero.evolve(2);
+                return foundHero;
             } else
             {
                 return null;

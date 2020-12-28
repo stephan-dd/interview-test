@@ -7,12 +7,6 @@ import { HeroResponseModel } from '../model/hero.model';
 })
 export class ApiService {
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
-
   constructor(private http: HttpClient) { }
 
   getHeroes(): Promise<HeroResponseModel[]> {
@@ -22,7 +16,7 @@ export class ApiService {
   }
 
   evolveHero(name: string, action: string): Promise<HeroResponseModel> {
-    return this.http.post<HeroResponseModel>('http://localhost:4201/api/heroes', { name: name, action: action }, this.httpOptions)
+    return this.http.post<HeroResponseModel>('http://localhost:4201/api/heroes', { name: name, action: action })
       .toPromise()
       .catch(e => console.error(e)) as Promise<HeroResponseModel>;
   }
