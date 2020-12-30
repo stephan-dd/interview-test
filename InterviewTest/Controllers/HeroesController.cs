@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InterviewTest.Controllers;
 
 namespace InterviewTest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/heroes")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
@@ -23,6 +24,7 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+
                }
             };
 
@@ -42,8 +44,14 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<Hero> Post([FromBody] string value)
         {
+            //Evolve each of the heroes
+            if (value.ToLower().Equals("evolve"))
+                foreach (var hero in heroes)
+                    hero.evolve();
+
+            return this.heroes;
         }
 
         // PUT: api/Heroes/5
