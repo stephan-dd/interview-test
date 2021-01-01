@@ -3,22 +3,45 @@ import { Component, OnInit } from '@angular/core';
 import { timer } from 'rxjs/observable/timer';
 import { AnonymousSubscription } from 'rxjs/Subscription';
 
-import { Heroes } from '../heroes';
-import { ApiService } from '../api.service'
-import { from } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import {DataSource} from '@angular/cdk/collections';
+
+import { Hero } from '../api';
+import { ApiService } from '../api.service';
+
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-   entries: Heroes[];
+
+  dataSource = new DataHeroes(this.apiService);
+  displayedColumns = ['name', 'power', 'stats', 'evolveAction'];
+
+  constructor(private apiService: ApiService) { }
+  
+  ngOnInit() {
+  }
+}
+
+export class DataHeroes extends DataSource<any> {
+  constructor(private apiService: ApiService) {
+    super();
+  }
+  connect(): Observable<Hero[]> {
+    return this.apiService.getHeroesFromServer();
+  }
+  disconnect() {}
+
+  /*entries: Hero[];
    loading: false;
 
-   private timerSubscription: AnonymousSubscription;
+  private timerSubscription: AnonymousSubscription;
 
-  constructor( private apiService: ApiService) { }
+    constructor( private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.SubscribeToData();
@@ -38,8 +61,6 @@ export class ListComponent implements OnInit {
   }
 
   finalize(data) {
-  }
-
-   
+  }*/
 }
 

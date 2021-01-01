@@ -9,7 +9,7 @@ export class Configuration {
 
     constructor() {
         if (isDevMode()) {
-            this.ApiServer = 'http://localhost:44358/';
+            this.ApiServer = 'http://localhost:4201/';
             this.ServerWithApiUrl = this.ApiServer + this.ApiUrl;
             console.log('ApiServer=' + this.ApiServer);
             console.log('ServerWithApiUrl=' + this.ServerWithApiUrl);
