@@ -1,10 +1,9 @@
-# Welcome to the Britehouse Automotive Interview Test
+Welcome to the Britehouse Automotive Interview Test
 
-* Fork this repo to your profile
+* Clone this repo to your desired location
 * Create a branch with the prefix 'test/' and your name
 * Start the API with Visual Studio, it should open on http://localhost:4201
 * Start the frontend with command line, it should open on http://localhost:4200
-* When you are done, please create a pull request for us to review
 
 ## API (C#)
 * Refactor the Hero class to implement an interface of IHero.

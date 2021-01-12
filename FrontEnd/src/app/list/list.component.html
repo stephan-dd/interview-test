@@ -1,0 +1,52 @@
+<div class="container custom-container-2">
+
+  <!-- Show it when there is no hero -->
+  <div class="no-data text-center" *ngIf="Hero.length == 0">
+    <p>There is no hero available!</p>
+  </div>
+
+  <!-- Heroes list table, it hides when there is no hero -->
+  <div *ngIf="Hero.length !== 0">
+    <h2 class="heading">Tour of Heroes</h2>
+    <div *ngIf="showUpdates" class="col-md-12">
+      <p class="red yellow-bg">Name: {{hero.name}}</p>
+      <p class="red yellow-bg">Power: {{hero.power}}</p>
+      <h6 class="red">Stats</h6>
+      <p class="red fancy">Strength: {{hero.stats[0].value}}</p>
+      <p class="red fancy">Intelligence: {{hero.stats[1].value}}</p>
+      <p class="red fancy">stamina: {{hero.stats[2].value}}</p>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">stat(strength)</th>
+            <th scope="col">stat(intelligence)</th>
+            <th scope="col">stat(stamina)</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of Hero" [ngStyle]="{'color': getRandomColor()}">
+            <td>{{hero.id}}</td>
+            <td>{{hero.name}}</td>
+            <td>{{hero.power}}</td>
+            <td>{{hero.stats[0].value}}</td>
+            <td>{{hero.stats[1].value}}</td>
+            <td>{{hero.stats[2].value}}</td>
+            <td>
+              <button class="btn btn-success btn-lg btn-block" (click)="evolveHero(hero.id)">Evolve</button>
+              <!-- <span class="evolve" (click)="evolveHero(hero.name)">Evolve</span> -->
+              <!-- <span class="evolve" routerLink="/hero-evolve/{{hero.id}}">Evolve</span> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

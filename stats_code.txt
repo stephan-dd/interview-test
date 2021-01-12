@@ -1,0 +1,8 @@
+evovle foreach m
+
+for (int i = 0; i < stats.Count; i++)
+            {
+                var newKvp = new KeyValuePair<string, int>(stats[i].Key, stats[i].Value);
+                stats.RemoveAt(i);
+                stats.Insert(i, newKvp);
+            }

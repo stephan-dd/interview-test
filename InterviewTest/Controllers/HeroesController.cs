@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
+                   id= "1",
                    name= "Hulk",
                    power="Strength from gamma radiation",
                    stats=
@@ -40,16 +42,38 @@ namespace InterviewTest.Controllers
             return this.heroes.FirstOrDefault();
         }
 
-        // POST: api/Heroes
+        // POST: api/Heroes/value
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] Hero hero = null)
         {
+            // The `post` method should read an `action` parameter which defaults to `none`
+            // if the action is evolve it should evolve the hero and return the hero with its new stats.
+            Hero heroObj = new Hero();
+
+            heroObj.stats = hero.stats;
+
+            heroObj.evolve();
+
+            hero.stats = heroObj.stats;
+
+            return hero;
         }
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Hero Put(int id, [FromBody] Hero hero)
         {
+            // The `post` method should read an `action` parameter which defaults to `none`
+            // if the action is evolve it should evolve the hero and return the hero with its new stats.
+            Hero heroObj = new Hero();
+
+            heroObj.stats = hero.stats;
+
+            heroObj.evolve();
+
+            hero.stats = heroObj.stats;
+
+            return hero;
         }
 
         // DELETE: api/ApiWithActions/5
