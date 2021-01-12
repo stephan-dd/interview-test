@@ -8,6 +8,6 @@ namespace InterviewTest.Controllers
         string power { get; set; }
         List<KeyValuePair<string, int>> stats { get; set; }
 
-        void evolve(int statIncrease = 2);
+        void evolve(int statIncrease = 5);
     }
 }
