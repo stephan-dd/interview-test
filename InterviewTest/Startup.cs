@@ -46,6 +46,11 @@ namespace InterviewTest
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
+            app.UseHttpsRedirection();
             app.UseCors("default");
 
             app.UseMvc();
