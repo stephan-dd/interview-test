@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace InterviewTest.BusinessLogic
 {
@@ -9,7 +10,15 @@ namespace InterviewTest.BusinessLogic
         public List<KeyValuePair<string, int>> Stats { get; set; }
         public void Evolve(int statIncrease = 5)
         {
+            var halfOfOriginalStat = Stats.FirstOrDefault().Value / 2;
+            var multiple = NumberProcessor.GetMultiple(halfOfOriginalStat);
+            var newStats = new List<KeyValuePair<string, int>>();
 
+            foreach(var (key, value) in Stats)
+            {
+                newStats.Add(new KeyValuePair<string, int>(key, value + multiple));
+            }
+            Stats = newStats;
         }
     }
 }
