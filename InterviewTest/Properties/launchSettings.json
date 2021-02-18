@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/heroes",
+      "launchUrl": "api/v1/hero/allheroes",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "InterviewTest": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/v1/hero/allheroes",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

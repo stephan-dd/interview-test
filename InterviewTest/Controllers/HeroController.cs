@@ -5,11 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class HeroesController : ControllerBase
+    public class HeroController : ControllerBase
     {
-        private readonly Hero[] heroes = {
+        private readonly IHero[] _heroes = {
                new Hero
                {
                    Name= "Hulk",
@@ -24,36 +23,30 @@ namespace InterviewTest.Controllers
                }
             };
 
-        // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        [Route("api/v1/[controller]/AllHeroes")]
+        public IEnumerable<IHero> Get()
         {
-            return this.heroes;
+            return _heroes;
         }
 
-        // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return _heroes.FirstOrDefault();
         }
 
-        // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("api/v1/[controller]/EvolveAllHeroes")]
+        public IEnumerable<IHero> Post(bool evolve)
         {
-        }
+            if (!evolve) return _heroes;
+            _heroes.ToList().ForEach(hero =>
+            {
+                hero.Evolve(); 
+            });
 
-        // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return _heroes;
         }
     }
 }
