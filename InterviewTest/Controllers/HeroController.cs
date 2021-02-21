@@ -36,9 +36,9 @@ namespace InterviewTest.Controllers
             return _heroes.FirstOrDefault();
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/v1/[controller]/EvolveAllHeroes")]
-        public IEnumerable<IHero> Post(bool evolve)
+        public IEnumerable<IHero> GetEvolve(bool evolve)
         {
             if (!evolve) return _heroes;
             _heroes.ToList().ForEach(hero =>

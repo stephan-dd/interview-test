@@ -1,0 +1,19 @@
+<h2>Tour of Heroes</h2>
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Power</th>
+    <th>Stat (strength)</th>
+    <th>Stat (intelligence)</th>
+    <th>Stat (stamina)</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let item of datasourceHeroes">
+    <td>{{item.name}}</td>
+    <td>{{item.power}}</td>
+    <td>{{item.stats[0].value}}</td>
+    <td>{{item.stats[1].value}}</td>
+    <td>{{item.stats[2].value}}</td>
+    <td><button class="btn btn-primary" (click)="evolveclick()">evolve</button></td>
+  </tr>
+</table>
