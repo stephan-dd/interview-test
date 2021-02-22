@@ -6,7 +6,37 @@ table, th, td {
     padding: 15px;
     text-align: left;
   }
-  #t01 {
-    width: 100%;    
-    background-color: #f1f1c1;
+  table {
+    width: 100%;   
+    
+  }
+
+  h2.heading{
+    text-align: center;
+    color:blue;
+  }
+
+ 
+  .first {
+    font-weight: 100;
+    color: rgb(179, 179, 230);
+    background-color: rgb(119, 119, 119);
+  }
+  
+  .second {
+    font-weight: 200;
+    color: red;
+    background-color: rgb(19, 147, 206);
+  }
+  
+  .third {
+    font-weight: 300;
+    color: black;
+    background-color: rgb(232, 217, 236);
+  }
+  
+  .fourth{
+    font-weight: 400;
+    color: pink;
+    background-color: rgb(170, 170, 170);
   }
