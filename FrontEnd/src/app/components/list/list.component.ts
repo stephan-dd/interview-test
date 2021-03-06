@@ -56,7 +56,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onEvolveHeroeClick(hero: Hero, action: string) {
-    this.loading = true
+
     const body: Action = {
       name: hero.name,
       action
@@ -70,7 +70,6 @@ export class ListComponent implements OnInit, OnDestroy {
 
         // update selected hero and set hero statistics
         this.heroes[index] = this.setStats(evolvedHeroe)
-        this.loading = false
 
         // Set selected hero to show evolved hero details
         this.selectedHero = evolvedHeroe
@@ -78,7 +77,7 @@ export class ListComponent implements OnInit, OnDestroy {
       }),
       catchError((err) => {
         this.error = err.error
-        this.loading = false
+
         return of(this.heroes);
       })
     )
