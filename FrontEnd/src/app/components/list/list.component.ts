@@ -14,14 +14,14 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ListComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>
+  heroe$: Observable<Hero>
 
   loading: boolean = true
-  heroes: Hero[]
+  heroes: Hero[] = []
   error: any;
 
   heroColors = ['red', 'gray', 'white', 'blue']
   heroColor: string;
-  heroe$: any;
   selectedHero: Hero;
 
 
@@ -43,9 +43,14 @@ export class ListComponent implements OnInit, OnDestroy {
         heroes.forEach(hero => {
           hero = this.setStats(hero)
         });
-        this.loading = false
         this.heroes = heroes
+        this.loading = false
         return heroes
+      }),
+      catchError((err) => {
+        this.error = err.error
+        this.loading = false
+        return of(this.heroes);
       })
     ).subscribe()
   }
@@ -73,10 +78,10 @@ export class ListComponent implements OnInit, OnDestroy {
       }),
       catchError((err) => {
         this.error = err.error
-        alert(err.error[''][0])
         this.loading = false
         return of(this.heroes);
-      }))
+      })
+    )
       .subscribe()
   }
 
