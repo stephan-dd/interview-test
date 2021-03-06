@@ -67,11 +67,8 @@ export class ListComponent implements OnInit {
         this.heroes[index] = this.setStats(evolvedHeroe)
         this.loading = false
 
-        // Set selected hero to show evolved hero details, remove details after a few seconds
+        // Set selected hero to show evolved hero details
         this.selectedHero = evolvedHeroe
-        setTimeout(() => {
-          this.selectedHero = undefined
-        }, 5000);
         return evolvedHeroe
       }),
       catchError((err) => {

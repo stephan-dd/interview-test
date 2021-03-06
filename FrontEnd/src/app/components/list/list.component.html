@@ -1,10 +1,12 @@
 <div class="container">
   <h2 class="heading">Tour of the Heroes</h2>
   <div *ngIf="selectedHero">
-    <p class="evolve-text">{{selectedHero.name}} updated with Stats </p>
-    <p class="evolve-text" *ngFor="let stat of selectedHero.stats">
-      {{stat.key}}: {{stat.value}}
+    <p class="evolve-text">{{selectedHero.name}} updated with Stats,
+      <span class="evolve-text" *ngFor="let stat of selectedHero.stats">
+        {{stat.key}}: {{stat.value}},
+      </span>
     </p>
+
   </div>
   <table *ngIf="!loading; else isLoading">
     <thead>
