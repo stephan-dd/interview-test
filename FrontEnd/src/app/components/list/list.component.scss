@@ -1,6 +1,6 @@
 table {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
+  margin: 0 auto;
   width: 80%;
 }
 
@@ -15,6 +15,20 @@ th {
 .heading {
   color: blue;
   text-align: center;
+}
+
+.evolve-button {
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.evolve-button:hover {
+  cursor: pointer;
+  background-color: gray;
 }
 
 .gray {
@@ -39,4 +53,9 @@ th {
   color: #c02f1d;
   font-weight: bold;
   background-color: rgb(202, 199, 199);
+}
+
+.evolve-text {
+  text-align: center;
+  font-weight: bold;
 }

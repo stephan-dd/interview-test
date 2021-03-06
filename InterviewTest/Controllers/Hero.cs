@@ -7,26 +7,26 @@ namespace InterviewTest.Controllers
 {
     public interface IHero 
     {
-        string Name { get; set; }
-        string Power { get; set; }
-        List<KeyValuePair<string, int>> Stats { get; set; }
-        void Evolve();
+        string name { get; set; }
+        string power { get; set; }
+        List<KeyValuePair<string, int>> stats { get; set; }
+        void evolve();
     }
     public class Hero : IHero
     {
-        public string Name { get; set; }
-        public string Power { get; set; }
-        public List<KeyValuePair<string, int>> Stats {get;set;}
-        public void Evolve()
+        public string name { get; set; }
+        public string power { get; set; }
+        public List<KeyValuePair<string, int>> stats {get;set;}
+        public void evolve()
         {
-            foreach (KeyValuePair<string, int> Stat in Stats.ToList())
+            foreach (KeyValuePair<string, int> Stat in stats.ToList())
             {
-                int OldStat = Stats.RemoveAll(x => x.Key == Stat.Key);
+                int OldStat = stats.RemoveAll(x => x.Key == Stat.Key);
 
                 if (OldStat == 1)
                 {
                     int NewValue = Stat.Value + (Stat.Value / 2);
-                    Stats.Add(new KeyValuePair<string, int>(Stat.Key, NewValue));
+                    stats.Add(new KeyValuePair<string, int>(Stat.Key, NewValue));
                 }
 
             }

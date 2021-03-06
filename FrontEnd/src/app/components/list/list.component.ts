@@ -3,6 +3,7 @@ import { container } from '@angular/core/src/render3';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Action } from 'src/app/interfaces/action';
 import { Hero } from 'src/app/interfaces/hero';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -20,6 +21,8 @@ export class ListComponent implements OnInit {
 
   heroColors = ['red', 'gray', 'white', 'blue']
   heroColor: string;
+  heroe$: any;
+  selectedHero: Hero;
 
 
   constructor(
@@ -29,31 +32,44 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.loading = true
     this.setHeroColor()
-    this.heroes$ = this.apiService.getHeroes().pipe(
-      tap((heroes) => {
-        this.heroes = heroes
+    this.heroes$ = this.apiService.getHeroes()
+
+    this.heroes$.pipe(
+      map((heroes) => {
         this.loading = false
+        this.heroes = heroes
+        console.log(this.heroes, 'j')
+        return heroes
       })
-    )
+    ).subscribe()
   }
 
   onEvolveHeroeClick(hero: Hero, action: string) {
     this.loading = true
-    this.heroes$ = this.apiService.evolveHeroe(action).pipe(
-      map((evolvedHeroe) => {
-        const index = this.heroes.findIndex((currentHero: Hero) => hero.name === currentHero.name)
+    const body: Action = {
+      name: hero.name,
+      action
+    }
+    this.heroe$ = this.apiService.evolveHeroe(body)
+
+    this.heroe$.pipe(
+      map((evolvedHeroe: Hero) => {
+        const index: number = this.heroes.findIndex((currentHero: Hero) => hero.name === currentHero.name)
         this.heroes[index] = evolvedHeroe
         this.loading = false
-        return this.heroes
+        this.selectedHero = evolvedHeroe
+        setTimeout(() => {
+          this.selectedHero = undefined
+        }, 5000);
+        return evolvedHeroe
       }),
       catchError((err) => {
         this.error = err.error
         alert(err.error[''][0])
-        console.log(err)
         this.loading = false
         return of(this.heroes);
-      })
-    )
+      }))
+      .subscribe()
   }
 
   setHeroColor() {

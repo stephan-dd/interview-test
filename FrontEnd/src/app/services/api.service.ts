@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Hero } from '../interfaces/hero';
 import { Observable } from 'rxjs';
+import { Action } from '../interfaces/action';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class ApiService {
     return this.http.get(this.url)
   }
 
-  evolveHeroe(action: string): Observable<any> {
-    let body = JSON.stringify(action)
+  evolveHeroe(action: Action): Observable<any> {
+
     return this.http.post(
       this.url,
-      body,
+      action,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }) }
     )
   }

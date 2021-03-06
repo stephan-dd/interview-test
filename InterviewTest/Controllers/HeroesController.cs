@@ -7,6 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
+
+    public class Action
+    {
+        public string name { get; set; }
+        public string action { get; set; }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
@@ -14,14 +21,38 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
-                   Name = "Hulk",
-                   Power ="Strength from gamma radiation",
-                   Stats =
+                   name = "Hulk",
+                   power ="Strength from gamma radiation",
+                   stats =
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   name = "Superman",
+                   power ="Faster than a speeding bullet",
+                   stats =
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 4000 ),
+                       new KeyValuePair<string, int>( "intelligence", 60),
+                       new KeyValuePair<string, int>( "stamina", 3500 )
+                   }
+               },
+               new Hero()
+               {
+                   name = "Batman",
+                   power ="Rich playboy",
+                   stats =
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 2000 ),
+                       new KeyValuePair<string, int>( "intelligence", 90),
+                       new KeyValuePair<string, int>( "stamina", 2000 )
                    }
                }
             };
@@ -42,18 +73,22 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public Hero Post([FromBody] string action = "none")
+        public Hero Post([FromBody] Action hero)
         {
-            if (action == "evolve")
-            {
-                this.heroes.FirstOrDefault().Evolve();
+            var query = this.heroes.Where(item => item.name == hero.name);          
 
-                return this.heroes.FirstOrDefault();
-            }
-            else {
+                if (hero.action == "evolve")
+                {
+                    Hero selectedHero = query.FirstOrDefault();
+                    selectedHero.evolve();
 
-                return this.heroes.FirstOrDefault();
-            }
+                    return selectedHero;
+                }
+                else
+                {
+                    return null;
+                }
+      
         }
 
         // PUT: api/Heroes/5
