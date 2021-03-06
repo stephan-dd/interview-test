@@ -30,12 +30,19 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // start default loader
     this.loading = true
-    this.setHeroColor()
-    this.heroes$ = this.apiService.getHeroes()
 
+    // Set random Table color
+    this.setHeroColor()
+
+    // Make api call, update hero statictics variables and set heroes array to returned values
+    this.heroes$ = this.apiService.getHeroes()
     this.heroes$.pipe(
       map((heroes) => {
+        heroes.forEach(hero => {
+          hero = this.setStats(hero)
+        });
         this.loading = false
         this.heroes = heroes
         console.log(this.heroes, 'j')
@@ -50,13 +57,18 @@ export class ListComponent implements OnInit {
       name: hero.name,
       action
     }
+    // Post name and action to api service
     this.heroe$ = this.apiService.evolveHeroe(body)
-
     this.heroe$.pipe(
       map((evolvedHeroe: Hero) => {
+        // Get user index by name
         const index: number = this.heroes.findIndex((currentHero: Hero) => hero.name === currentHero.name)
-        this.heroes[index] = evolvedHeroe
+
+        // update selected hero and set hero statistics
+        this.heroes[index] = this.setStats(evolvedHeroe)
         this.loading = false
+
+        // Set selected hero to show evolved hero details, remove details after a few seconds
         this.selectedHero = evolvedHeroe
         setTimeout(() => {
           this.selectedHero = undefined
@@ -72,9 +84,27 @@ export class ListComponent implements OnInit {
       .subscribe()
   }
 
-  setHeroColor() {
+  private setHeroColor() {
     const index = Math.floor(Math.random() * this.heroColors.length)
     this.heroColor = this.heroColors[index]
+  }
+
+  private setStats(hero: Hero): Hero {
+    const stats = hero.stats
+    stats.forEach((stat) => {
+      switch (stat.key) {
+        case 'strength':
+          hero.strength = stat.value
+          break
+        case 'intelligence':
+          hero.intelligence = stat.value
+          break
+        case 'stamina':
+          hero.stamina = stat.value
+          break
+      }
+    })
+    return hero
   }
 
 }

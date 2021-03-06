@@ -11,7 +11,9 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Power</th>
-        <th scope="col">Statistics</th>
+        <th scope="col">Stat (Strength)</th>
+        <th scope="col">Stat (Intelligence)</th>
+        <th scope="col">Stat (Stamina)</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -19,11 +21,9 @@
       <tr [class]="heroColor" *ngFor="let hero of heroes">
         <td>{{hero.name}}</td>
         <td>{{hero.power}}</td>
-        <td>
-          <p *ngFor="let stat of hero.stats">
-            {{stat.key}}: {{stat.value}}
-          </p>
-        </td>
+        <td>{{hero.strength}}</td>
+        <td>{{hero.intelligence}}</td>
+        <td>{{hero.stamina}}</td>
         <td>
           <button class="evolve-button" (click)="onEvolveHeroeClick(hero, 'evolve')">Evolve</button>
         </td>
