@@ -1,0 +1,29 @@
+<div class="container">
+  <h2 class="heading">Tour of the Heroes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Power</th>
+        <th scope="col">Statistics</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [class]="heroColor" *ngFor="let hero of heroes$ | async">
+        <td>{{hero.name}}</td>
+        <td>{{hero.power}}</td>
+        <td>
+          <p *ngFor="let stat of hero.stats">
+            {{stat.key}}: {{stat.value}}
+          </p>
+        </td>
+        <td>
+          <button (click)="onEvolveHeroeClick(hero, 'evolve')">Evolve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

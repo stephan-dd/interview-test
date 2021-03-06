@@ -1,0 +1,42 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+  padding-right: 100px;
+}
+
+.heading {
+  color: blue;
+  text-align: center;
+}
+
+.gray {
+  color: gray;
+  font-weight: bold;
+  background-color: #093145;
+}
+
+.blue {
+  color: #1e90ff;
+  font-weight: bold;
+  background-color: lightgray;
+}
+
+.white {
+  color: white;
+  font-weight: bold;
+  background-color: #ad2a1a;
+}
+
+.red {
+  color: #c02f1d;
+  font-weight: bold;
+  background-color: rgb(202, 199, 199);
+}
