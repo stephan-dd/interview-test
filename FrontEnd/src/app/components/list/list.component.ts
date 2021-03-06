@@ -45,7 +45,6 @@ export class ListComponent implements OnInit {
         });
         this.loading = false
         this.heroes = heroes
-        console.log(this.heroes, 'j')
         return heroes
       })
     ).subscribe()
