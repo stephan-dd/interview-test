@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { container } from '@angular/core/src/render3';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>
 
   loading: boolean = true
@@ -102,5 +102,11 @@ export class ListComponent implements OnInit {
     })
     return hero
   }
+
+  ngOnDestroy() {
+
+  }
+
+
 
 }
