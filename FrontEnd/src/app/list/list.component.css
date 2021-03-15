@@ -1,0 +1,44 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+.content{
+    border: solid black 2px;
+    min-width: 50%;
+    
+}
+.heading{
+    text-align: center;
+     color: blue;
+ 
+ }
+ .updatedhero{
+     text-align: center;
+     color: rgb(221, 90, 29);
+ }
+
+ .allheroes{
+    text-align: center;
+ }
+ 
+ .randomeclass1{
+     font-weight: 100;
+     background-color:rgb(58, 56, 56);
+     color: gainsboro;
+ }
+ 
+ .randomeclass2{
+     font-weight: 300;
+     background-color: rgb(68, 92, 116);
+     color: lightyellow;
+ }
+ .randomeclass3{
+     font-weight: 500;
+     background-color: rgb(200, 216, 211);
+     color: rgb(20, 20, 53);
+ }
+ .randomeclass4{
+     font-weight: 800;
+     background-color: rgb(10, 92, 158);
+     color: peachpuff;
+ }

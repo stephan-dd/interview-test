@@ -1,0 +1,44 @@
+
+<div class="main" >     
+    <div class="content">
+                <h2 class="heading">Tour of Heroes</h2>
+
+                <div *ngIf="updated" class="updatedhero">
+                    <h3>Hero updated</h3>
+                    <h4>{{updatedheroes[0].name}}</h4>        
+                    <h4>{{updatedheroes[0].power}}</h4>
+                    <h4>{{updatedheroes[0].stats[0].value.toString()}}</h4>
+                    <h4>{{updatedheroes[0].stats[1].value.toString()}}</h4>
+                    <h4>{{updatedheroes[0].stats[2].value.toString()}}</h4>
+                </div>
+                <div class="allheroes">
+                
+                        <table>
+                            <thead>
+                                <tr [class] = "selectedclass">
+                                    <th>Name</th>
+                                    <th>Power</th>
+                                    <th>stat(Strength)</th>
+                                    <th>stat(Inteligence)</th>
+                                    <th>stat(Stamina)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let hero of heroes" [class] = "selectedclass">
+                                    <td>{{hero.name}}</td>
+                                    <td>{{hero.power}}</td>
+                                    <td>{{hero.stats[0].value.toString()}}</td>
+                                    <td>{{hero.stats[1].value.toString()}}</td>
+                                    <td>{{hero.stats[2].value.toString()}}</td>
+                                    <button type="button" (click) = "evolvehero(hero)">Evolve</button>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                </div>
+
+    </div>
+
+</div>
+
