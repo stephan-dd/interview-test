@@ -11,6 +11,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -42,8 +43,24 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] HeroEvolveRequest heroEvolveRequest)
         {
+            if (heroEvolveRequest.ActionName == "evolve")
+            {
+                var hero = heroes.Where(h => h.name == heroEvolveRequest.HeroName).FirstOrDefault();
+                if (hero != null)
+                {
+                    hero.evolve();
+                    Hero evolvedHero = new Hero
+                    {
+                        name = hero.name,
+                        power = hero.power,
+                        stats = hero.stats.GroupBy(x => x.Key).Select(g => g.Last()).ToList()
+                    };
+                    return Ok(evolvedHero);
+                }
+            }
+            return BadRequest();
         }
 
         // PUT: api/Heroes/5
