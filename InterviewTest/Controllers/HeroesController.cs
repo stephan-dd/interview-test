@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Models;
+using InterviewTest.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,51 +13,38 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        private readonly IHero _hero;
+
+        public HeroesController(IHero hero)
+        {
+            _hero = hero;
+        }
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<HeroModel> Get()
         {
-            return this.heroes;
+            var heroes = _hero.GetHeroes();
+
+            return heroes;
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        // GET: api/Heroes/getby/hero/5
+        [HttpGet("getby/hero/{id}", Name = "Get")]
+        public HeroModel Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            var hero = _hero.GetById(id);
+
+            return hero;
         }
 
-        // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST: api/Heroes/evolveby/hero/name
+        [HttpPost("evolveby/hero/{name}")]
+        public HeroModel Post(string name, [FromBody] string action = "none")
         {
-        }
+            var hero = _hero.Evolve(name, action, 5);
 
-        // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return hero;
         }
     }
 }
