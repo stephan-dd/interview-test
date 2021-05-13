@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Data;
+using InterviewTest.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +39,8 @@ namespace InterviewTest
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<IHero, Hero>();
+            services.AddScoped<IHeroRepository, HeroRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
