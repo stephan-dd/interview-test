@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 class="heading">Tour of heroes</h2>
+  <div class="row">
+    <p>
+      {{ hero.name }} updated with strength: {{ hero.stats[0].value }},
+      intelligence: {{ hero.stats[1].value }} and stamina:
+      {{ hero.stats[2].value }}
+    </p>
+    <div class="col md-8">
+      <table class="table table-striped table-hover">
+        <thead class="bg-info">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">Stat(Strength)</th>
+            <th scope="col">Stat(Intelligence)</th>
+            <th scope="col">Stat(Stamina)</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table-info">
+          <tr *ngFor="let hero of service.heroes">
+            <td>{{ hero.name }}</td>
+            <td>{{ hero.power }}</td>
+            <td>{{ hero.stats[0].value }}</td>
+            <td>{{ hero.stats[1].value }}</td>
+            <td>{{ hero.stats[2].value }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="evolve(hero.name)"
+              >
+                Evolve
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
