@@ -23,7 +23,20 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
-               }
+               },
+                new Hero()
+               {
+                   name= "Thabo",
+                   power="Strength from gamma radiation",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 2000 ),
+                       new KeyValuePair<string, int>( "intelligence", 500),
+                       new KeyValuePair<string, int>( "stamina", 3500 )
+                   }
+               },
+
             };
 
         // GET: api/Heroes

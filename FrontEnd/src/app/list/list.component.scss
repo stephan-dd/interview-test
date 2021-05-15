@@ -1,0 +1,25 @@
+.heading{
+    text-align: center;
+    color: blue;
+}
+
+.blue{
+    font-weight: bold;
+    color: blue;
+    background-color:blue($color: #463c3c);
+}
+.black{
+    font-weight: bold;
+    color: black;
+    background-color: rgb(68, 64, 64);
+}
+.orange{
+ font-weight:bold ;
+ color: orange;
+ background-color:rgb(107, 104, 102) ;
+}
+.yellow{
+font-weight: bold;
+color:yellow;
+background-color: rgb(105, 100, 100);
+}
