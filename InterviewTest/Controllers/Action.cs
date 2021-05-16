@@ -8,5 +8,6 @@ namespace InterviewTest.Controllers
     public class Action
     {
         public string actionName { get; set; }
+        public string heroName { get; set; }
     }
 }

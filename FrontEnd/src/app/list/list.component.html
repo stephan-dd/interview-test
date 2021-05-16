@@ -1,7 +1,15 @@
-<div > 
 <h2 class="heading">Tour of the Heroes</h2>
 
-  <table class="table table-striped">
+<div *ngIf="UpdatedHero">
+  <h4>Name : {{UpdatedHero.name}}</h4>
+  <h4>Power : {{UpdatedHero.power}}</h4>
+ <h1 class="orange">Stats</h1>
+  <h4 class="blue">Strength: {{UpdatedHero.strength}}</h4>
+  <h4 class="blue">Intelligence: {{UpdatedHero.intelligence}}</h4>
+  <h4 class="blue">stamina: {{UpdatedHero.stamina}}</h4> 
+</div>
+<div class="col-md-12"> 
+  <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -13,13 +21,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr [class]="colorForHeroes" *ngFor="let hero of heroes">
+      <tr [ngStyle]="{'color':colorForHeroes}" *ngFor="let hero of heroes">
         <td>{{hero.name}}</td>
         <td>{{hero.power}}</td>
         <td>{{hero.strength}}</td>
         <td>{{hero.intelligence}}</td>
         <td>{{hero.stamina}}</td>
-        <td><button>evolve</button></td>
+        <td><button (click)="OnEvolveClick(hero,'evolve')">Evolve</button></td>
       </tr>
     </tbody>
   </table>

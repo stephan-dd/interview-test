@@ -19,7 +19,7 @@ export class Api{
         return this.httpClient.get(this.apiUrl);
     }
 
-    heroesEvoled(action:Action):Observable<any>
+    heroesEvolved(action:Action):Observable<any>
     {
         return this.httpClient.post(this.apiUrl,action,{headers:new HttpHeaders({'Content-Type':'application/json; charset=utf-8'})})
     }

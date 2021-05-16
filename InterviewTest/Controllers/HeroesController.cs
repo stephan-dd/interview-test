@@ -36,6 +36,30 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "stamina", 3500 )
                    }
                },
+                new Hero()
+               {
+                   name= "Silver",
+                   power="Strength from gamma radiation",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 17000 ),
+                       new KeyValuePair<string, int>( "intelligence", 1500),
+                       new KeyValuePair<string, int>( "stamina", 35000 )
+                   }
+               },
+                new Hero()
+               {
+                   name= "Herold",
+                   power="Strength from gamma radiation",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 1000 ),
+                       new KeyValuePair<string, int>( "intelligence", 9000),
+                       new KeyValuePair<string, int>( "stamina", 300 )
+                   }
+               },
 
             };
 
@@ -59,7 +83,7 @@ namespace InterviewTest.Controllers
         {
             if(action.actionName == "evolve")
             {
-                Hero hero = heroes.Where(m => m.name == action.actionName).FirstOrDefault();
+                Hero hero = heroes.Where(m => m.name == action.heroName).FirstOrDefault();
                 hero.evolve();
                 return hero;
             }

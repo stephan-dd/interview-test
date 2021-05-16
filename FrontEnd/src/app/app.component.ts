@@ -9,10 +9,6 @@ import {Api} from 'src/service/api'
 export class AppComponent {
   title = 'frontend';
 
-  constructor(private api:Api ) {
-   
-  }
-
-  ngOnInit() {
-  }
+  constructor(private api:Api ) {}
+  ngOnInit() {}
 }
