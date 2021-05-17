@@ -1,0 +1,30 @@
+<h2 class="heading">Tour of Heroes</h2>
+
+<p *ngIf="updatedHero">{{updatedHero?.name}} updated with <span *ngFor="let item of updatedHero?.stats">({{item?.key}}:{{item?.value}}) </span></p>
+
+<table style="width:100%" *ngIf="heroes">
+  <tr>
+    <th>name</th>
+    <th>power</th>
+    <th *ngFor="let st of heroes[0]?.stats">
+     stat({{st.key}})
+    </th>
+    <th>
+
+    </th>
+
+  </tr>
+  <tr *ngFor="let hero of heroes" [ngClass]="randomClass">
+    <td>{{hero.name}}</td>
+    <td>{{hero.power}}</td>
+    <td *ngFor="let st of hero.stats">
+      {{st.value}}
+    </td>
+    <td>
+      <button (click)="evolveHero(hero)">Evolve</button>
+    </td>
+  </tr>
+</table>
+
+
+

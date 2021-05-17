@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+.heading{
+    text-align: center;  
+    color: blue;
+}
+
+.green{
+    color: white;
+    background: green;
+    font-weight: 600;
+}
+
+.black{
+    color: yellowgreen;
+    background: black;
+    font-weight: 200;
+}
+.skyblue{
+    color:black;
+    background: skyblue;
+    font-weight: 700;
+}
+
+
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+
+
