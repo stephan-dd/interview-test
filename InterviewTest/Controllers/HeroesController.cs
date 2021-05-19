@@ -11,7 +11,8 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+
+        private static Hero[] heroes = new Hero[] {
                new Hero()
                {
                    name= "Hulk",
@@ -23,6 +24,18 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+               },
+               new Hero()
+               {
+                   name= "Iron Man",
+                   power="Tech Suite and Armor",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 200 ),
+                       new KeyValuePair<string, int>( "intelligence", 4000),
+                       new KeyValuePair<string, int>( "stamina", 1000 )
+                   }
                }
             };
 
@@ -30,20 +43,40 @@ namespace InterviewTest.Controllers
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
-            return this.heroes;
+            foreach (var hero in heroes)
+            {
+                hero.stats = hero.stats.GroupBy(x => x.Key).Select(g => g.Last()).ToList();
+            }
+            return heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] HeroEvolveRequest heroEvolveRequest)
         {
+            if (heroEvolveRequest.ActionName == "evolve")
+            {
+                var hero = heroes.Where(h => h.name == heroEvolveRequest.HeroName).FirstOrDefault();
+                if (hero != null)
+                {
+                    hero.evolve();
+                    Hero evolvedHero = new Hero
+                    {
+                        name = hero.name,
+                        power = hero.power,
+                        stats = hero.stats.GroupBy(x => x.Key).Select(g => g.Last()).ToList()
+                    };
+                    return Ok(evolvedHero);
+                }
+            }
+            return BadRequest();
         }
 
         // PUT: api/Heroes/5
