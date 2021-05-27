@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace InterviewTest.Controllers
 {
@@ -42,8 +43,14 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] string action)
         {
+            if (action == "evolve")
+            {
+                this.heroes.FirstOrDefault().evolve();
+            }
+
+            return this.heroes.FirstOrDefault();
         }
 
         // PUT: api/Heroes/5
