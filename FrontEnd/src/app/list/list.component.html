@@ -1,0 +1,22 @@
+<div *ngIf="(heroes$ | async) as heroes">
+  <h2 class="heading">Tour of Heroes</h2>
+  <span *ngIf="isEvolved">{{heroes.name + ' updated with ' + 'strength: ' + heroes.strength + ' intelligence: ' + heroes.intelligence + ' stamina: ' + heroes.stamina}}</span>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Power</th>
+      <th>Stats(Strength)</th>
+      <th>Stats(intelligence)</th>
+      <th>Stats(Stamina)</th>
+      <th>Evolve</th>
+    </tr>
+    <tr [ngClass]="randomColor()">
+      <td>{{heroes.name}}</td>
+      <td>{{heroes.power}}</td>
+      <td>{{heroes.strength}}</td>
+      <td>{{heroes.intelligence}}</td>
+      <td>{{heroes.stamina}}</td>
+      <td><button (click)="loadHero('evolve')">Evolve</button></td>
+    </tr>
+  </table>
+</div>
