@@ -1,0 +1,27 @@
+<h2 class="heading">{{title}}</h2>
+
+<table id="heroTable">
+  <thead>
+    <tr>
+      <th *ngFor = "let column of columns">
+        {{column}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let hero of heroes" [className]="randomClass">
+      <td>
+        {{hero.name}}
+      </td>
+      <td>
+        {{hero.power}}
+      </td>
+      <td *ngFor = "let stat of hero.stats">
+        {{stat.value}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-default" (click)="evolveHero(hero.name)">Evolve</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+.heading {
+    text-align: center;
+    color: blue;
+}
+
+#heroTable {
+    width: 100%;
+}
+
+#heroTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: blueviolet;
+    color: white;
+}
+
+.randomClass1 {
+    font-weight: 200;
+    color: red;
+}
+
+.randomClass2 {
+    font-weight: 300;
+    color: yellow;
+}
+
+.randomClass3 {
+    font-weight: 400;
+    color: magenta;
+}
+
+.randomClass4 {
+    font-weight: 500;
+    color: violet;
+}
