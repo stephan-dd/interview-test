@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InterviewTest.Controllers
 {
-    public class Hero
+    public class Hero: IHero
     {
         public string name { get; set; }
         public string power { get; set; }
