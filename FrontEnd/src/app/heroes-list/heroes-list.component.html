@@ -1,0 +1,26 @@
+<h2 class="heading">
+  Tour of Heroes
+</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Power</th>
+      <th>Stat(Strength)</th>
+      <th>Stat(intelligence)</th>
+      <th>Stat(stamina)</th>
+      <th>Action</th>
+    </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let hero of heroes; let i = index;">
+       <td>{{hero.name}}</td>
+       <td>{{hero.power}}</td>
+       <td>{{this.getStatValue(i, 'strength')}}</td>
+       <td>{{this.getStatValue(i, 'intelligence')}}</td>
+       <td>{{this.getStatValue(i, 'stamina')}}</td>
+       <td><button (click)="evolve(hero.name)">Evolve</button></td>
+     </tr>
+  </tbody>
+</table>

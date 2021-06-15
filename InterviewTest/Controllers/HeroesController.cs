@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Infra;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -22,6 +24,30 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "The Flash",
+                   power="Super Speed",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 1000 ),
+                       new KeyValuePair<string, int>( "intelligence", 3000),
+                       new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Iron Man",
+                   power="Genius-level intellect",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 3500 ),
+                       new KeyValuePair<string, int>( "intelligence", 5000),
+                       new KeyValuePair<string, int>( "stamina", 2000 )
                    }
                }
             };
@@ -42,8 +68,17 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero[] Post([FromBody] string action = "none")
         {
+            if(action == "evolve")
+            {
+                foreach(var hero in heroes)
+                {
+                    hero.evolve();
+                }
+            }
+
+            return heroes;
         }
 
         // PUT: api/Heroes/5
