@@ -68,17 +68,27 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public Hero[] Post([FromBody] string action = "none")
+        public void Post()
         {
-            if(action == "evolve")
+        }
+
+        //Adding a different action  for evolve since the post 
+        //More like it would work fo the purpose of creating a hero in this controller
+        [HttpPost("evolve/{name}")]
+        public Hero Evolve([FromRoute] string name, [FromBody] string action = "none")
+        {
+            var hero = heroes.FirstOrDefault(x => x.name == name);
+            if(hero is null)
             {
-                foreach(var hero in heroes)
-                {
-                    hero.evolve();
-                }
+                throw new Exception($"Hero {name} not found");
             }
 
-            return heroes;
+            if (action == "evolve")
+            {
+               hero.evolve();
+            }
+
+            return hero;
         }
 
         // PUT: api/Heroes/5

@@ -5,9 +5,9 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
-  })
+})
 export class ApiService {
-    
+
     constructor(private _http: HttpClient) { }
 
     getHeroes(): Observable<any> {
@@ -16,6 +16,6 @@ export class ApiService {
 
     evolve(name: string): Observable<any> {
         const headers = new HttpHeaders().set('content-type', 'application/json');
-        return this._http.post(`${environment.url}/heroes`, name , { headers });
+        return this._http.post(`${environment.url}/heroes/evolve/${name}`, "'evolve'", { headers });
     }
 }
