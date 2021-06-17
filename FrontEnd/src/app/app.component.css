@@ -2,27 +2,3 @@
     text-align: center;
     color: blue;
 }
-
-.green100 {
-    color: #5df542;
-    background-color:black;
-    font-weight: 100;
-}
-
-.green200 {
-    color: #3d912f;
-    background-color: #4d4f4d;
-    font-weight: 200;
-}
-
-.green300 {
-    color: #205c15;
-    background-color: #919191;
-    font-weight: 300;
-}
-
-.green400 {
-    color: #1c4515;
-    background-color: #cccccc;
-    font-weight: 400;
-}

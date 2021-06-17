@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api.service';
 export class ListComponent implements OnInit {
 
   heroes: Hero[] = [];
-  hero: Hero = null;
+  hero: Hero;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
