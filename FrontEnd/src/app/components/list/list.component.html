@@ -1,5 +1,5 @@
 <div>
-  <p>{{hero.name}} update with strength({{hero.stats[0].value}}), intelligence({{hero.stats[0].value}}) and stamina({{hero.stats[0].value}})</p>
+  <p>{{hero.name}} update with strength({{hero.stats[0].value}}), intelligence({{hero.stats[1].value}}) and stamina({{hero.stats[2].value}})</p>
 </div>
 <table>
   <tr>
@@ -8,6 +8,7 @@
     <th>Stat(strength)</th>
     <th>Stat(intelligence)</th>
     <th>Stat(stamina)</th>
+    <th></th>
   </tr>
   <tr *ngFor='let hero of heroes'>
     <td>
