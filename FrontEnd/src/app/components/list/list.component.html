@@ -1,0 +1,27 @@
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Power</th>
+    <th>Stat(strength)</th>
+    <th>Stat(intelligence)</th>
+    <th>Stat(stamina)</th>
+  </tr>
+  <tr *ngFor='let hero of heroes'>
+    <td>
+    	{{hero.name}} 
+    </td>
+    <td>
+    	{{hero.power}} 
+    </td>
+    <td>
+    	{{hero.stats[0].value}} 
+    </td>
+    <td>
+    	{{hero.stats[1].value}} 
+    </td>
+    <td>
+    	{{hero.stats[2].value}} 
+    </td>
+  </tr>
+</table>
