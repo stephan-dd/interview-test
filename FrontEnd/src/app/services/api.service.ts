@@ -6,9 +6,15 @@ import { Hero } from '../models/hero';
 })
 export class ApiService {
 
+  baseUrl = 'http://localhost:4201/api';
+
   constructor(private http: HttpClient) { }
 
   getHeroes() {
-    return this.http.get<Hero[]>('http://localhost:4201/api/heroes'); 
+    return this.http.get<Hero[]>(this.baseUrl + '/heroes'); 
+  }
+
+  evolve(name) {
+    return this.http.post<Hero>(this.baseUrl + '/heroes', { name:name, action:'evolve' });
   }
 }

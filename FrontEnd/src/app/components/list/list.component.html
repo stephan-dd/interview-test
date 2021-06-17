@@ -1,4 +1,6 @@
-
+<div>
+  <p>{{hero.name}} update with strength({{hero.stats[0].value}}), intelligence({{hero.stats[0].value}}) and stamina({{hero.stats[0].value}})</p>
+</div>
 <table>
   <tr>
     <th>Name</th>
@@ -22,6 +24,9 @@
     </td>
     <td>
     	{{hero.stats[2].value}} 
+    </td>
+    <td>
+      <button (click)="evolve(hero.name)">evolve</button>
     </td>
   </tr>
 </table>

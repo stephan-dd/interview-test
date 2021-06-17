@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api.service';
 export class ListComponent implements OnInit {
 
   heroes: Hero[] = [];
-  
+  hero: Hero = null;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
@@ -19,6 +19,10 @@ export class ListComponent implements OnInit {
 
   getHeroes(): void {
     this.apiService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  }
+
+  evolve(name: string) {
+    this.apiService.evolve(name).subscribe(hero => this.hero = hero)
   }
 
 }
