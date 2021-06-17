@@ -1,0 +1,45 @@
+.heading {
+  text-align: center;
+  color: blue;
+}
+
+.grid-container div {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.grid-container td {
+  vertical-align: middle;
+}
+
+.blue-theme {
+  color: red;
+  background-color: dodgerblue !important;
+  font-weight: bold;
+}
+
+.green-theme {
+  color: yellow;
+  background-color: darkgreen !important;
+  font-weight: bold;
+  font-size: large;
+}
+
+.dark-blue-theme {
+  color: maroon;
+  background-color: darkblue !important;
+  font-weight: bold;
+}
+
+.maroon-theme {
+  color: navy;
+  background-color: maroon !important;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.hero-table{
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
