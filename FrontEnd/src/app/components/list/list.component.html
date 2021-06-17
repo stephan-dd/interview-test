@@ -1,0 +1,31 @@
+<div>
+  <p *ngIf="hero">{{hero?.name}} update with strength:{{hero?.stats[0].value}}, intelligence:{{hero?.stats[1].value}} and stamina:{{hero?.stats[2].value}}</p>
+</div>
+<div class="grid-container green400">
+  <div>Name</div>
+  <div>Power</div>
+  <div>Strength</div>
+  <div>Intelligence</div>
+  <div>Stamina</div>
+  <div></div>
+  <ng-container *ngFor='let hero of heroes'>
+    <div>
+    	{{hero.name}} 
+    </div>
+    <div>
+    	{{hero.power}} 
+    </div>
+    <div>
+    	{{hero.stats[0].value}} 
+    </div>
+    <div>
+    	{{hero.stats[1].value}} 
+    </div>
+    <div>
+    	{{hero.stats[2].value}} 
+    </div>
+    <div>
+      <button (click)="evolve(hero.name)">evolve</button>
+    </div>
+  </ng-container>
+</div>
