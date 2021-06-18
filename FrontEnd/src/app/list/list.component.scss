@@ -3,14 +3,14 @@
   color: blue;
 }
 
-.grid-container div {
-  margin-left: 50px;
-  margin-top: 20px;
-}
+// .grid-container div {
+//   margin-left: 50px;
+//   margin-top: 20px;
+// }
 
-.grid-container td {
-  vertical-align: middle;
-}
+// .grid-container td {
+//   vertical-align: middle;
+// }
 
 .blue-theme {
   color: red;
@@ -18,9 +18,9 @@
   font-weight: bold;
 }
 
-.green-theme {
-  color: yellow;
-  background-color: darkgreen !important;
+.darkgrey-theme {
+  color: navy;
+  background-color: darkgrey !important;
   font-weight: bold;
   font-size: large;
 }
@@ -32,14 +32,112 @@
 }
 
 .maroon-theme {
-  color: navy;
+  color: white;
   background-color: maroon !important;
   font-weight: lighter;
   font-style: italic;
 }
 
-.hero-table{
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
+// .hero-table{
+//   width: 100%;
+//   max-width: 100%;
+//   margin-bottom: 20px;
+// }
+body {
+  font-family: 'lato', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 40%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+ 
+    li {
+      display: block;
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.mybutton {
+    background-color: navy;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 50px;
+    border-style: inset;
+    margin-bottom: 10px;
+    justify-items: center;
+}
+
+.info-header {
+  justify-content: center;
+  background-color: darkblue;
+  opacity: 0.7;
+  overflow: hidden;
+  padding: 10px;
+  border: solid 1px navy;
+  border-radius: 10px;
+  color: white;
 }

@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   isEvolve:boolean;
   CssStyle:string;
 
-  styleArr = ['blue-theme', 'green-theme', 'dark-blue-theme', 'maroon-theme'];
+  styleArr = ['blue-theme', 'darkgrey-theme', 'dark-blue-theme', 'maroon-theme'];
 
   constructor(private apiService:ApiService) { }
 
@@ -53,4 +53,8 @@ export class ListComponent implements OnInit {
         console.log("updated model");
         console.log(this.updatedHero);
      }
+
+     reloadPage() {
+      window.location.reload();
+   }
 }

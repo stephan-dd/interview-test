@@ -1,53 +1,40 @@
+
 <div class="container">
-       <h2 class="heading">Tour of Heroes</h2>
-<div class="row">
+    <h2 class="heading" style="margin-bottom: 40px;">Tour of Heroes</h2>
+    <button (click)="reloadPage()" class="btn-primary" style="margin-bottom: 40px;">Change backgrounf color <span class="glyphicon glyphicon-refresh"> </span></button>
+    <h4 class="info-header" *ngIf="isEvolve" style="text-align: center;">{{updatedHero.name}} updated with Stat(strength)
+        of {{ updatedHero?.stats[0]?.value}}, Stat(intelligence) of {{updatedHero?.stats[1]?.value}}
+       and Stat(stamina) of {{updatedHero?.stats[2]?.value}}</h4>
+    <ul class="responsive-table">
+      <li class="table-header table-striped" style="text-align:center;" [ngClass]="[CssStyle]">
+        <div class="col col-1">Name</div>
+        <div class="col col-2">Power</div>
+        <div class="col col-3">Stat(strength)</div>
+        <div class="col col-4">Stat(intelligence)</div>
+        <div class="col col-5">Stat(stamina)</div>
+        <div class="col col-6" style="margin-left: 5px;">Action</div>
+      </li>
+      <li [ngClass]="[CssStyle]" class="table-row" *ngFor="let hero of heroes">
+        <div class="col col-1" data-label="Name">{{ hero?.name}}</div>
+        <div class="col col-2" data-label="Power">{{ hero?.power}}</div>
+        <div class="col col-3" data-label="Strength">{{hero?.stats[0]?.value}}</div>
+        <div class="col col-4" data-label="Intelligence">{{hero?.stats[1]?.value}}</div>
+        <div class="col col-5" data-label="Stamina">{{hero?.stats[2]?.value}}</div>
+        <div class="col col-6" data-label="Stamina">
             
-    <div class="alert alert-info" *ngIf="isEvolve">
-        <div style="text-align: center;"><strong>{{updatedHero.name}} updated with Stat(strength)
-             of {{ updatedHero?.stats[0]?.value}}, Stat(intelligence) of {{updatedHero?.stats[1]?.value}}
-            and Stat(stamina) of {{updatedHero?.stats[2]?.value}}</strong></div> 
-    </div>
-
-  <div class="row grid-container">
-      <div class="col-md-10">
-
-          <div class="hero-table" [ngClass]="[CssStyle]">
-              <table class="table table-striped table-hover">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Power</th>
-                          <th>Stat(strength)</th>
-                          <th>Stat(intelligence)</th>
-                          <th>Stat(stamina)</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let hero of heroes">
-
-                          <td>{{ hero?.name}}</td>
-                          <td>{{ hero?.power}}</td>
-                          <td>{{ hero?.stats[0]?.value}}</td>
-                          <td>{{ hero?.stats[1]?.value}}</td>
-                          <td>{{ hero?.stats[2]?.value}}</td>
-                           <td>
-                             <button 
-                             class="btn-primary" 
-                            (click)="evolve(hero?.name,hero?.power,hero?.stats[0]?.value, hero?.stats[1]?.value,hero?.stats[2]?.value)">
-                                Evolve</button>
-                          </td>
-                      </tr>
-                      <tr *ngIf="!heroes.length">
-                          <td>&nbsp;</td>
-                          <td colspan="6">No Records Found</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
+            <button 
+            class="mybutton"  style="margin-left: 10px;"
+           (click)="evolve(hero?.name,hero?.power,hero?.stats[0]?.value, hero?.stats[1]?.value,hero?.stats[2]?.value)">
+               Evolve</button>
+            </div>
+      </li>
+      <li class="table-row" *ngIf="!heroes.length">
+        <td>&nbsp;</td>
+        <div class="col col-6">No Records Found</div>
+    </li>
+      
+    </ul>
   </div>
-</div>
-<div class="text-align-center">
+  <div class="text-align-center">
     <a routerLink='/' class="btn btn-info"><span class="glyphicon glyphicon-arrow-left"> </span>Back to Main</a>
-</div>
+</div> 
