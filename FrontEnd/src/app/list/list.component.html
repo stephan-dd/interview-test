@@ -6,7 +6,7 @@
         of {{ updatedHero?.stats[0]?.value}}, Stat(intelligence) of {{updatedHero?.stats[1]?.value}}
        and Stat(stamina) of {{updatedHero?.stats[2]?.value}}</h4>
     <ul class="responsive-table">
-      <li class="table-header table-striped" style="text-align:center;" [ngClass]="[CssStyle]">
+      <li class="table-header" [ngClass]="[CssStyle]">
         <div class="col col-1">Name</div>
         <div class="col col-2">Power</div>
         <div class="col col-3">Stat(strength)</div>
@@ -20,10 +20,10 @@
         <div class="col col-3" data-label="Strength">{{hero?.stats[0]?.value}}</div>
         <div class="col col-4" data-label="Intelligence">{{hero?.stats[1]?.value}}</div>
         <div class="col col-5" data-label="Stamina">{{hero?.stats[2]?.value}}</div>
-        <div class="col col-6" data-label="Stamina">
+        <div class="col col-6" data-label="Action">
             
             <button 
-            class="mybutton"  style="margin-left: 10px;"
+            class="mybutton"
            (click)="evolve(hero?.name,hero?.power,hero?.stats[0]?.value, hero?.stats[1]?.value,hero?.stats[2]?.value)">
                Evolve</button>
             </div>
