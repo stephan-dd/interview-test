@@ -1,0 +1,43 @@
+<h2 class="heading">Tour of Heroes</h2>
+<ng-container *ngIf="updatedStatResults">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="text-uppercase">Name</div>
+    <div>{{updatedStatResults.name}}</div>
+</div>
+<div class="col-sm-2">
+    <div class="text-uppercase">Stat(strength)</div>
+    <div>{{updatedStatResults.stats[0].value}}</div>
+</div>
+<div class="col-sm-2">
+  <div class="text-uppercase">Stat(intelligence)</div>
+  <div>{{updatedStatResults.stats[1].value}}</div>
+</div>
+<div class="col-sm-2">
+<div class="text-uppercase">Stat(stamina)</div>
+<div>{{updatedStatResults.stats[2].value}}</div>
+</div>
+</div><hr/><br/><br/>
+</ng-container>
+<ng-container *ngIf="(heroesResults) as heroes">
+  <table class="table table-bordered">
+    <tr>
+      <th>Action</th>
+      <th>Name</th>
+      <th>Power</th>
+      <th>Stat(strength)</th>
+      <th>Stat(intelligence)</th>
+      <th>Stat(stamina)</th>
+    </tr>
+    <tr *ngFor="let results of heroes" >
+      <td><button type="button" class="btn btn-primary" (click)="onUpdatesHeroName(results.name, 'evolve')">Evolve </button></td>
+      <td>{{results.name}}</td>
+      <td>{{results.power}}</td>
+      <td>{{results.stats[0].value}}</td>
+      <td>{{results.stats[1].value}}</td>
+      <td>{{results.stats[2].value}}</td>
+    </tr>
+  </table>
+
+</ng-container>
+

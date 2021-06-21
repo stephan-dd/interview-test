@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  interviewTestAPiBase: 'http://localhost:4201/api/heroes',
 };
