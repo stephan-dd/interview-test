@@ -31,3 +31,8 @@ if the action is evolve it should evolve the hero and return the hero with its n
 * set the color to `blue`
 * create 4 color related classes with different font weights and colors and backgrounds.
 * Add a random color class to the list of heroes
+
+### Unit Test
+* Unit test was written for the API service 
+* Testing framework x-unit
+* Test project UnitTest

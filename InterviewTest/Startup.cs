@@ -36,6 +36,8 @@ namespace InterviewTest
                 });
             });
 
+            services.AddSingleton<Repository.IHeroRepository, Repository.HeroRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

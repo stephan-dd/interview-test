@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using InterviewTest.Entity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace InterviewTest.Controllers
 {
@@ -11,51 +10,91 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        private readonly Repository.IHeroRepository heroRepository;
+
+        public HeroesController(Repository.IHeroRepository heroRepository)
+        {
+            this.heroRepository = heroRepository ?? throw new ArgumentNullException(nameof(heroRepository));
+        }
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public ActionResult<IEnumerable<IHero>> Get()
         {
-            return this.heroes;
+            return Ok(heroRepository.GetHeroes());
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        // GET: api/Heroes/{name}
+        [HttpGet("{name}", Name = "Get")]
+        public ActionResult<IHero> Get(string name)
         {
-            return this.heroes.FirstOrDefault();
+            IHero hero = heroRepository.GetHero(name);
+
+            if (hero == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(hero);
         }
 
-        // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST: api/Heroes/{name}
+        [HttpPost("{name}")]
+        public ActionResult<IHero> Post(
+            string name,
+            [FromQuery][Required(ErrorMessage = "Value cannot be empty or null")] string value="none")
         {
+            const string evolveParam = "evolve";
+
+            IHero hero = heroRepository.GetHero(name);
+
+            if (hero == null)
+            {
+                return NotFound();
+            }
+
+            if (!string.IsNullOrWhiteSpace(value) && evolveParam.Equals(value, StringComparison.OrdinalIgnoreCase))
+            {
+                hero.Evolve();
+            }
+
+            return Ok(hero);
         }
 
-        // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT: api/Heroes
+        [HttpPut]
+        public ActionResult Put([FromBody] Hero hero)
         {
+            if (heroRepository.CheckHeroExists(hero.Name))
+            {
+                if (!heroRepository.UpdateHero(hero))
+                {
+                    return StatusCode((int)System.Net.HttpStatusCode.InternalServerError);
+                }
+            }
+            else
+            {
+                heroRepository.AddHero(hero);
+            }
+
+            return Ok();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE: api/Heroes/{name}
+        [HttpDelete("{name}")]
+        public ActionResult Delete(string name)
         {
+            if (!heroRepository.CheckHeroExists(name))
+            {
+                return NotFound();
+            }
+
+            if (!heroRepository.DeleteHero(name))
+            {
+                return StatusCode((int)System.Net.HttpStatusCode.InternalServerError);
+            }
+
+            return Ok();
         }
     }
 }
