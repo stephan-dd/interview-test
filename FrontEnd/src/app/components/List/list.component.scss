@@ -1,0 +1,53 @@
+.text-center {
+  text-align: center;
+}
+
+.text-red {
+  color: red;
+}
+
+table {
+  min-width: 50vw;
+  border-collapse: collapse;
+  margin:0 auto;
+
+  thead {
+    th {
+      font-size: 1.2em;
+      padding: 4px 8px 4px 8px;
+      background-color: rgb(0, 25, 48);
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 4px 8px 4px 8px;
+      border-bottom: 1px solid rgb(0, 25, 48);
+    }
+    .name { text-align: left;}
+    .power { text-align: left;}
+  }
+}
+
+.color-1 { 
+  color: rgba(255, 105, 180, 1);; 
+  background-color: rgba(255, 105, 180, 0.1);
+  font-weight: 300;
+}
+.color-2 { 
+  color: rgba(30, 143, 255, 1);; 
+  background-color: rgba(30, 143, 255, 0.1);
+  font-weight: 400;
+}
+.color-3 { 
+  color: rgba(1, 105, 1, 1); 
+  background-color: rgba(1, 105, 1, 0.1); 
+  font-weight: 500;
+}
+.color-4 { 
+  color: rgba(137, 43, 226, 1); 
+  background-color: rgba(137, 43, 226, 0.1); 
+  font-weight: 600;
+}
