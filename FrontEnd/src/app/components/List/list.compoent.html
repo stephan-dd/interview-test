@@ -1,0 +1,35 @@
+
+<p class="text-center" *ngIf='evolvedHero != null'>{{ evolvedHero.name }} updated with Stats: {{ evolvedHero.stats }}</p>
+<p *ngIf="error" class="text-center text-red">{{ error }}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Power</th>
+      <th>Stat(strength)</th>
+      <th>Stat(intelligence)</th>
+      <th>Stat(stamina)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <!-- Display heroes -->
+  <tbody *ngIf="heroes.length > 0">
+    <tr *ngFor="let h of heroes" [ngClass]="randomColor()" >
+      <td class="name">{{ h.name }}</td>
+      <td class="power">{{ h.power }}</td>
+      <td class="text-center">{{ getHeroStat('strength', h.stats) }}</td>
+      <td class="text-center">{{ getHeroStat('intelligence', h.stats) }}</td>
+      <td class="text-center">{{ getHeroStat('stamina', h.stats) }}</td>
+      <td>
+        <button (click)='evolveHero(h)'>Evolve</button>
+      </td>
+    </tr>
+  </tbody>
+  <!-- Display when no heroes -->
+  <tbody *ngIf="heroes.length == 0">
+    <tr *ngFor="let h of heroes">
+      <td class="text-center" colspan="6">No heroes found :(</td>
+    </tr>
+  </tbody>
+</table>
