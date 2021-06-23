@@ -46,6 +46,7 @@ namespace InterviewTest
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
             app.UseCors("default");
 
             app.UseMvc();
