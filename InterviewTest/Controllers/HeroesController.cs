@@ -39,7 +39,6 @@ namespace InterviewTest.Controllers
         [HttpPost]
         public Hero Post([FromForm]string action)
         {
-
             if (action == "evolve")
             {
                 return _hero.evolve(_heroUtilities.StatIncrease);
