@@ -1,0 +1,14 @@
+<div>
+  <h2 class="heading">{{title}}</h2>
+</div>
+<ul *ngFor ="let hero of _heroes;">
+  <li>Name: {{hero.name}}</li>
+  <li>Power: {{hero.power}}</li>
+  <li>Stats</li>
+  <ul *ngFor ="let stat of hero.stats;">
+    <li>{{stat.key}}: {{stat.value}} </li>
+  </ul>
+      
+</ul>
+<button (click)="onEvolve()">Evolve</button>
+
