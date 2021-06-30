@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 class="heading">Tour of Heroes</h2>
+  <div class="hero-evolved" *ngIf="heroEvolved">
+    <div>{{heroEvolved.name}} has evolved to
+      <span class="stats"> {{heroEvolved.strength}}</span> Strength,
+      <span class="stats"> {{heroEvolved.intelligence}}</span> Intelligence and
+      <span class="stats"> {{heroEvolved.stamina}}</span> Stamina
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Power</th>
+        <th>Strength</th>
+        <th>Intelligence</th>
+        <th>Stamina</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hero of heroes" [ngStyle]="{'color': heroColour}" >
+        <td>{{ hero.name }}</td>
+        <td>{{ hero.power }}</td>
+        <td>{{ hero.strength }}</td>
+        <td>{{ hero.intelligence }}</td>
+        <td>{{ hero.stamina }}</td>
+        <td>
+          <button class="btn btn-dark" type="button" (click)="OnEvolveClick(hero, 'evolve')">Evolve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

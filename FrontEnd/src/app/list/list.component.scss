@@ -1,0 +1,41 @@
+.container {
+    .heading {
+        font-size: 30px;
+        text-align: center;
+        color: blue;
+        margin: 20px 0 20px;
+    }
+
+    .hero-evolved {
+        font-size: 20px;
+        text-align: center;
+        margin: 20px 0 20px;
+        .stats {
+            font-weight: bold;
+        }
+    }
+}
+
+.green {
+    font-weight: 100;
+    color: green;
+    background-color: rgb(52, 54, 54);
+}
+
+.orange {
+    font-weight: 300;
+    color: orange;
+    background-color: rgb(112, 116, 108);
+}
+
+.blue {
+    font-weight: 500;
+    color: blue;
+    background-color: rgb(135, 158, 158);
+}
+
+.purple {
+    font-weight: 700;
+    color: purple;
+    background-color: rgb(94, 83, 99);
+}

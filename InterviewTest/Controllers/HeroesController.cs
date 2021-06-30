@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
+
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,7 +24,43 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
-               }
+               },
+               new Hero()
+               {
+                   name= "Superman",
+                   power="X-ray Vision",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "intelligence", 20),
+                       new KeyValuePair<string, int>( "stamina", 1000 ),
+                       new KeyValuePair<string, int>( "strength", 4000 )
+                   },
+               },
+               new Hero()
+               {
+                   name= "Captain America",
+                   power="Healing ability and expert tactician",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "intelligence", 50),
+                       new KeyValuePair<string, int>( "stamina", 2000 ),
+                       new KeyValuePair<string, int>( "strength", 3500 )
+                   },
+               },
+               new Hero()
+               {
+                   name= "Iron Man",
+                   power="Genius-level intellect",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "intelligence", 200),
+                       new KeyValuePair<string, int>( "stamina", 4000 ),
+                       new KeyValuePair<string, int>( "strength", 2500 )
+                   },
+               },
             };
 
         // GET: api/Heroes
@@ -42,8 +79,18 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] Action action)
         {
+            if (action.action == "evolve")
+            {
+                Hero selectedHero = heroes.FirstOrDefault(e => e.name == action.heroName);
+                selectedHero.evolve(50);
+                return selectedHero;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // PUT: api/Heroes/5
