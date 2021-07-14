@@ -11,5 +11,5 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getHeroes = () => this.http.get<any[]>(this.baseUrl + 'heroes');
-
+  
 }

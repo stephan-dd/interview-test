@@ -5,9 +5,6 @@ namespace InterviewTest.Interface
 {
     public interface IHero
     {
-        int Id { get; set; }
-        string name { get; set; }
-        string power { get; set; }
-        List<KeyValuePair<string, int>> stats { get; set; }
+        List<Hero> heroes();
     }
 }

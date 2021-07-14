@@ -9,21 +9,24 @@ import { ApiService } from '../service/api.service'
 })
 export class ListComponent implements OnInit {
   title = '  Tour of Heroes'
-  isEvolved: boolean = false;
+  heroes: any[];
+
 
 
   constructor(private apiService: ApiService) { };
 
 
   ngOnInit() {
-
+    this.getHeroes()
   }
 
   getHeroes() {
     this.apiService.getHeroes().subscribe(
-      heroes => {
-        this.heroes = heroes;
+      response => {
+        this.heroes = response;
+        console.log(response);
       }
+
     );
   }
 

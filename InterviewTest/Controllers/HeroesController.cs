@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using InterviewTest.Data;
+using System;
 
 using Microsoft.AspNetCore.Mvc;
+using InterviewTest.Interface;
 
 namespace InterviewTest.Controllers
 {
@@ -10,34 +12,34 @@ namespace InterviewTest.Controllers
     [Route("api/[controller]")]
     public class HeroesController : ControllerBase
     {
-        private readonly HeroList _context;
-        public HeroesController(HeroList context)
+        private readonly IHero _hero;
+        public HeroesController(IHero context)
         {
-            _context = context;
+            _hero = context;
         }
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public List<Hero> Get()
         {
-            return _context.heroes;
+           return _hero.heroes();
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public ActionResult<Hero> Get(int id)
         {
-            return _context.heroes.FirstOrDefault(h => h.Id == id);
+            return _hero.heroes().FirstOrDefault(h => h.Id == id);
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public ActionResult<IEnumerable<Hero>> Post(int id, [FromBody] Hero hero, string action)
+        public ActionResult<IEnumerable<Hero>> Post([FromBody] Hero hero, [FromQuery] string action = "none")
         {
             if (action == "evolve")
             {
-                _context.heroes.FirstOrDefault(h => h.Id == id).evolve();
+                hero.evolve();
             }
-            return _context.heroes;
+            return _hero.heroes();
         }
 
         // PUT: api/Heroes/5

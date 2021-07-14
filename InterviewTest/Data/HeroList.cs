@@ -1,10 +1,15 @@
 using System.Collections.Generic;
+using InterviewTest.Interface;
 
 namespace InterviewTest.Data
 {
-    public class HeroList
+    public class HeroList : IHero
     {
-        public Hero[] heroes = new Hero[] {
+        public bool working()
+        {
+            return true;
+        }
+        public List<Hero> heroes() => new List<Hero> {
                new Hero()
                {
                     Id = 0,

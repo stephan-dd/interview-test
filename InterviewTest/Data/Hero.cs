@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using InterviewTest.Interface;
+
 
 namespace InterviewTest.Data
 {
-    public class Hero : IHero
+    public class Hero
     {
         public int Id { get; set; }
         public string name { get; set; }

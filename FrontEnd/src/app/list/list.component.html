@@ -29,10 +29,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr **ngFor="">
-          <td>Dom</td>
-          <td>6000</td>
-          <td>1000</td>
+        <tr *ngFor="let h of heroes">
+          <td>{{h.name}}</td>
+          <td>{{h.power}}</td>
+          <td>{{h.power}}</td>
           <td>1000</td>
           <td>1000</td>
           <button>Evolve</button>
