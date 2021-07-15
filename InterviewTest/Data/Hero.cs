@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using InterviewTest.Entity;
 
 namespace InterviewTest.Data
 {
-    public class Hero
+    public class Hero : AppHero
     {
-        public int Id { get; set; }
-        public string name { get; set; }
-        public string power { get; set; }
-        public List<KeyValuePair<string, int>> stats { get; set; }
         public void evolve(int statIncrease = 5)
         {
             List<KeyValuePair<string, int>> newStats = new List<KeyValuePair<string, int>>();

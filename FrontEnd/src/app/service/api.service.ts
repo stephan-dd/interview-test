@@ -11,5 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getHeroes = () => this.http.get<any[]>(this.baseUrl + 'heroes');
-  
+
+  //call the api to post the evolve of a hero
+  // postEvolve = (heroId: number) => this.http.post(this.baseUrl + 'heroes/' + heroId + '/evolve');
 }

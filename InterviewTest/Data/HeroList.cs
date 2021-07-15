@@ -9,7 +9,7 @@ namespace InterviewTest.Data
         {
             return true;
         }
-        public List<Hero> heroes() => new List<Hero> {
+        public List<Hero> Heroes() => new List<Hero> {
                new Hero()
                {
                     Id = 0,
@@ -53,7 +53,7 @@ namespace InterviewTest.Data
                {
                     Id = 3,
                     name= "Groot",
-                    power="Flora Colossus Physiology: ",
+                    power="Flora Colossus Physiology",
                     stats=
                    new List<KeyValuePair<string, int>>()
                    {

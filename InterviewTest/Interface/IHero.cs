@@ -5,6 +5,6 @@ namespace InterviewTest.Interface
 {
     public interface IHero
     {
-        List<Hero> heroes();
+        List<Hero> Heroes();
     }
 }

@@ -24,11 +24,7 @@ export class ListComponent implements OnInit {
     this.apiService.getHeroes().subscribe(
       response => {
         this.heroes = response;
-        console.log(response);
-      }
-
-    );
+      });
   }
-
 }
 

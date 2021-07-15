@@ -29,22 +29,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let h of heroes">
+        <tr class="active-row" *ngFor="let h of heroes">
           <td>{{h.name}}</td>
           <td>{{h.power}}</td>
-          <td>{{h.power}}</td>
-          <td>1000</td>
-          <td>1000</td>
+          <td>{{h.stats[0].value}}</td>
+          <td>{{h.stats[1].value}}</td>
+          <td>{{h.stats[2].value}}</td>
           <button>Evolve</button>
         </tr>
-        <tr class="active-row">
-          <td>Melissa</td>
-          <td>5150</td>
-          <td>1000</td>
-          <td>1000</td>
-          <td>1000</td>
-          <button>Evolve</button>
-        </tr>
+
       </tbody>
     </table>
 

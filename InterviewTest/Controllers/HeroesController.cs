@@ -21,14 +21,14 @@ namespace InterviewTest.Controllers
         [HttpGet]
         public List<Hero> Get()
         {
-           return _hero.heroes();
+            return _hero.Heroes();
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public ActionResult<Hero> Get(int id)
         {
-            return _hero.heroes().FirstOrDefault(h => h.Id == id);
+            return _hero.Heroes().FirstOrDefault(h => h.Id == id);
         }
 
         // POST: api/Heroes
@@ -39,7 +39,7 @@ namespace InterviewTest.Controllers
             {
                 hero.evolve();
             }
-            return _hero.heroes();
+            return _hero.Heroes();
         }
 
         // PUT: api/Heroes/5
