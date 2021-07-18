@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using InterviewTest.Data;
-
 namespace InterviewTest.Entity
 {
     public class AppHero
@@ -9,5 +7,6 @@ namespace InterviewTest.Entity
         public string name { get; set; }
         public string power { get; set; }
         public List<KeyValuePair<string, int>> stats { get; set; }
+
     }
 }

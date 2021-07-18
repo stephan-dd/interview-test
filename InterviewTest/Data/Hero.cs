@@ -6,7 +6,7 @@ namespace InterviewTest.Data
 {
     public class Hero : AppHero
     {
-        public void evolve(int statIncrease = 5)
+        public void Evolve(int statIncrease = 5)
         {
             List<KeyValuePair<string, int>> newStats = new List<KeyValuePair<string, int>>();
             foreach (KeyValuePair<string, int> stat in stats)

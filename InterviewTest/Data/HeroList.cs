@@ -3,14 +3,16 @@ using InterviewTest.Interface;
 
 namespace InterviewTest.Data
 {
+
     public class HeroList : IHero
     {
-        public bool working()
+        private List<Hero> heroes;
+        public List<Hero> Heroes => heroes;
+
+        public HeroList()
         {
-            return true;
-        }
-        public List<Hero> Heroes() => new List<Hero> {
-               new Hero()
+            heroes = new List<Hero>(){
+          new Hero()
                {
                     Id = 0,
                     name= "Hulk",
@@ -62,6 +64,7 @@ namespace InterviewTest.Data
                        new KeyValuePair<string, int>( "stamina", 1900 )
                    }
                }
-            };
+        };
+        }
     }
 }

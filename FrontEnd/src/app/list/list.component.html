@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="content-area header">
+  <!-- <div>
     frontend:
     <ol>
       <li>create new service called 'api'</li>
@@ -9,14 +9,15 @@
       <li>display the list on the frontend.</li>
       <li>There should be a heading (h2) with the title 'Tour of Heroes'.</li>
     </ol>
-  </div>
-
-  //still work in progress (just need to get the api working)
-
-  <div class="content-area main-content">
+  </div> -->
+  <div>
     <h2 class="heading">
       {{title}}
     </h2>
+    <div>
+      <p *ngIf='evolvedHero != null'><span [ngClass]="randomColor()"></span> {{evolvedHero.name}} has been updated to:
+        {{evolvedHero.stats}}</p>
+    </div>
     <table class="styled-table">
       <thead>
         <tr>
@@ -28,19 +29,22 @@
           <th>Evolve Hero</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="active-row" *ngFor="let h of heroes">
+      <tbody *ngIf="heroes.length > 0">
+        <tr *ngFor="let h of heroes" [ngClass]="randomColor()">
           <td>{{h.name}}</td>
           <td>{{h.power}}</td>
-          <td>{{h.stats[0].value}}</td>
-          <td>{{h.stats[1].value}}</td>
-          <td>{{h.stats[2].value}}</td>
-          <button>Evolve</button>
+          <td> {{ getStats('strength', h.stats) }}</td>
+          <td> {{ getStats('intelligence', h.stats) }}</td>
+          <td> {{ getStats('stamina', h.stats) }}</td>
+          <button (click)='evolveHero(h)'>Evolve</button>
         </tr>
 
       </tbody>
     </table>
-
+    <div *ngIf="heroes.length == 0">
+      <h2 class="heroes-not-found">Looks like all the heroes are not avaliable right now, please try again later
+        404 (Not Found)
+      </h2>
+    </div>
   </div>
-
 </div>
