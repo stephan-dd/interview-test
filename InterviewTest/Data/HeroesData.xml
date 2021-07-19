@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<heroes>
+  <hero>
+    <Id>0</Id>
+    <Name>Hulk</Name>
+    <Power>Strength from gamma radiation</Power>
+    <Stats>
+      <strength>5000</strength>
+      <intelligence>50</intelligence>
+      <stamina>2500</stamina>
+    </Stats>
+    <LastUpdated>False</LastUpdated>
+  </hero>
+  <hero>
+    <Id>1</Id>
+    <Name>The Flash</Name>
+    <Power>Lab Accident</Power>
+    <Stats>
+      <strength>200</strength>
+      <intelligence>500</intelligence>
+      <stamina>500000</stamina>
+    </Stats>
+    <LastUpdated>False</LastUpdated>
+  </hero>
+  <hero>
+    <Id>2</Id>
+    <Name>Deadpool</Name>
+    <Power>accelerated healing factor</Power>
+    <Stats>
+      <strength>800</strength>
+      <intelligence>60</intelligence>
+      <stamina>1500</stamina>
+    </Stats>
+    <LastUpdated>True</LastUpdated>
+  </hero>
+</heroes>

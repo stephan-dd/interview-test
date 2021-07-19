@@ -1,0 +1,50 @@
+.mid-align-rows > td{
+    vertical-align: middle;
+}
+.heading{
+    text-align: center;
+    color:blue;
+}
+
+.theme-1{
+    font-weight: 800;
+    color: white;
+    background: red;
+}
+
+.theme-2{
+    font-weight:450;
+    color: blue;
+    background:green;
+}
+
+.theme-3{
+    font-weight:bold;
+    color: red;
+    background:blanchedalmond;
+}
+
+.theme-4{
+    font-weight: 100;
+    color:white;
+    background:black;
+}
+
+.loader {
+    margin: 50px auto 0;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

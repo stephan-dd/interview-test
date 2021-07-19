@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
+    //delegate void Action(PostActionEnum enumVal);
+
     [Route("api/[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        private Hero[] heroes = new Hero[] { };
+
+        public HeroesController()
+        {
+            heroes = Helper.GetHeroesFromXml();
+        }
+       
 
         // GET: api/Heroes
         [HttpGet]
@@ -42,8 +38,25 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        //
+        //public void Post(int? id, Action<string> action = null)
+        public void Post(PostData data)
         {
+
+            if (data.Action != null && data.Id.HasValue)
+                if (data.Action.ToString().ToLower().Equals("evolve"))
+                    if (heroes.Length - 1 >= data.Id)
+                    {
+                        Hero hero = new Hero();
+                        hero = this.heroes[data.Id.Value];
+                        hero.Stats = hero.Evolve(hero.Stats);
+                        foreach (var heroItem in this.heroes)
+                            heroItem.LastUpdated = false;
+                        hero.LastUpdated = true;
+                        Helper.UpdateHeroStats(hero);
+                        heroes[data.Id.Value] = hero;
+                    }
+            
         }
 
         // PUT: api/Heroes/5
@@ -57,5 +70,10 @@ namespace InterviewTest.Controllers
         public void Delete(int id)
         {
         }
+    }
+    public class PostData
+    {
+        public int? Id { get; set; }
+        public string Action { get; set; }
     }
 }
