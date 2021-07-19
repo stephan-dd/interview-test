@@ -1,0 +1,20 @@
+<h2 class="heading"> Tour of Heroes</h2>
+<table  border="1"style=" width:1000px" >
+  <tr>
+   <! could add styling in CSS BUT CHOSE TO TO IT HERE, Not a lot of classes-->
+    <th style="color:black; font-size:10pt; background:center;" >Name</th>
+    <th style="color:orangered; font-size:12pt; background:right;">Power</th>
+    <th style="color:red; font-size:9pt; background:left;">Stat(strength)</th>
+    <th style="color:blueviolet; font-size:9pt; background:initial;">Stat(intelligence)</th>
+    <th> Stat(stamina)</th>
+  </tr>
+
+
+  <tr  class="com" [ngStyle]="{'color': RandomColor()}"*ngFor=" let com of hero">
+    <td>{{com.name}}</td>
+    <td>{{com.power}}</td>
+    <td *ngFor=" let data of com.stats">{{data.value}}</td>
+  </tr>
+
+</table>
+<button (click) ="evolve()" > evolve</button>
