@@ -1,0 +1,38 @@
+<H2 class="heading">Tour of Heroes</H2>
+<div *ngIf="hasLastUpdated">
+    The last updated Hero was {{lastUpdatedHero.name}} with the following stats:
+    <ul>
+        <li>{{lastUpdatedHero.stats[0].key}} = {{lastUpdatedHero.stats[0].value}}</li>
+        <li>{{lastUpdatedHero.stats[1].key}} = {{lastUpdatedHero.stats[1].value}}</li>
+        <li>{{lastUpdatedHero.stats[2].key}} = {{lastUpdatedHero.stats[2].value}}</li>      
+    </ul>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Power</th>
+            <th scope="col">Stat(Strength)</th>
+            <th scope="col">Stat(Intelligence)</th>
+            <th scope="col">Stat(Stamina)</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hero of heroes;let i = index" class="mid-align-rows theme-{{themeId}}">
+            <td>{{hero.name}}</td>
+            <td>{{hero.power}}</td>            
+            <td>{{hero.stats[0].value}}</td>
+            <td>{{hero.stats[1].value}}</td>
+            <td>{{hero.stats[2].value}}</td>
+            <td>
+                <button  class="btn btn-primary" (click)="evolveChosenHero(i,'evolve')">Evolve</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+  
+<ng-container *ngIf="showLoader">
+    <div class="loader"></div>
+</ng-container>
