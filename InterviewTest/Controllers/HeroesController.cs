@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,39 +12,45 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        readonly IHero _repo;
+
+        public HeroesController(IHero repo)
+        {
+            _repo = repo;
+        }
+
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public ActionResult<List<Hero>> GetHeroes()
         {
-            return this.heroes;
+            return _repo.GetHero();
+
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public ActionResult<List<Hero>> GetHeroess(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return Ok(_repo.GetHeroById(id));
         }
-
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<IEnumerable<Hero>> Post([FromQuery] string action = "none")
         {
+            // did not catch errors
+            List<Hero> heros = _repo.GetHero();
+            if (action == "evolve")
+            {
+                
+                for (int i = 0; i < heros.Count; i++)
+                {
+                    heros[i].evolve();
+                }
+            }
+
+            return heros; 
+           
         }
 
         // PUT: api/Heroes/5
