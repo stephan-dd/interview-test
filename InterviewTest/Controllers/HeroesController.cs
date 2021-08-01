@@ -43,7 +43,11 @@ namespace InterviewTest.Controllers
         // POST: api/Heroes
         [HttpPost]
         public void Post([FromBody] string value)
-        {
+        {   
+            if(value == "evolve")
+            {
+                this.heroes.FirstOrDefault().evolve();
+            }   
         }
 
         // PUT: api/Heroes/5
