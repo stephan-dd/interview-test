@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family:Arial;
+    font-size: 16px;
+}
+
+.heading {
+  text-align: center;
+  color: deepskyblue;
+}
+
+.heroes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.heroes th {
+  background-color: deepskyblue;
+  color:white;
+  font-weight:bold;
+
+}
+
+.heroes td, .heroes th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align:left;
+}
+
+button {
+    background-color: deepskyblue;
+    border:none;
+    font-size:16px;
+    padding:5px;
+    min-width:100px;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover {
+    opacity:0.6;
+}
