@@ -1,4 +1,10 @@
 <h2 class="heading">{{title}}</h2>
+<div *ngIf="showMessage" class="alert-success">
+  <strong>{{currentHero.name}}</strong> updated with:
+  <ul>
+    <li *ngFor="let stat of currentHero.stats">{{stat.key}}: <strong>{{stat.value}}</strong></li>
+  </ul>
+</div>
 <table class="heroes">
   <tr>
     <th>

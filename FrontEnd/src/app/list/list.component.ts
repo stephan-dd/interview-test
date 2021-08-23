@@ -9,7 +9,11 @@ import { Hero } from '../hero';
 })
 export class ListComponent implements OnInit {
   title = "List of Heroes";
+  showMessage = false;
   heroes;
+  currentHero;
+
+  
 
   constructor(public service: ApiService) {}
 
@@ -22,7 +26,10 @@ export class ListComponent implements OnInit {
     this.service.evolve(hero).subscribe(hero2 => {     
       var index = this.heroes.findIndex(item => item.name == hero2.name);
       hero2.multiplier = hero.multiplier;
+
+      this.currentHero = hero2;
       this.heroes[index] = hero2;
+      this.showMessage = true;
     }); 
   }
 

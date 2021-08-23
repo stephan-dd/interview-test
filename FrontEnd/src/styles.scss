@@ -9,6 +9,14 @@ body {
   color: deepskyblue;
 }
 
+.alert-success {
+  border: 1px solid lightgreen;
+  background-color: #90EE90;
+  color: white;
+  margin: 10px 0px;
+  padding: 10px;
+}
+
 .heroes {
   width: 100%;
   border-collapse: collapse;
