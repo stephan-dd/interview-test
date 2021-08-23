@@ -38,7 +38,7 @@ namespace InterviewTest.Controllers
                },
                new Hero()
                {
-                   Name= "Spiderman",
+                   Name= "Spider-man",
                    Power="Superhuman strength, speed, reflexes, agility, coordination and balance",
                    Stats=
                    new List<KeyValuePair<string, int>>()

@@ -6,7 +6,7 @@ body {
 
 .heading {
   text-align: center;
-  color: deepskyblue;
+  color: blue;
 }
 
 .alert-success {
@@ -23,8 +23,7 @@ body {
 }
 
 .heroes th {
-  background-color: deepskyblue;
-  color:white;
+ 
   font-weight:bold;
 
 }
@@ -36,15 +35,73 @@ body {
 }
 
 button {
-    background-color: deepskyblue;
+    
     border:none;
     font-size:16px;
     padding:5px;
     min-width:100px;
-    color:white;
+  
     cursor:pointer;
 }
 
 button:hover {
     opacity:0.6;
 }
+
+.blue {
+  font-weight: normal;
+  color: deepskyblue
+}
+.blue th {
+  background-color: deepskyblue;
+  color: white;
+}
+.blue button {
+  background-color: deepskyblue;
+  color: white;
+}
+
+.green {
+  font-weight: bold;
+  color: green;
+}
+
+.green th {
+  background-color: green;
+  color: white;
+}
+
+.green button {
+  background-color: green;
+  color: white;
+}
+
+.red {
+  font-weight: bolder;
+  color:red;
+}
+
+.red th {
+  background-color: red;
+  color: white;
+}
+
+.red button {
+  background-color: red;
+  color: white;
+}
+
+.black {
+  font-weight: lighter;
+}
+
+.black th {
+  background-color: black;
+  color: white;
+}
+
+.black button {
+  background-color: black;
+  color: white;
+}
+

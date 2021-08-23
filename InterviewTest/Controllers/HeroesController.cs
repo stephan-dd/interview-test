@@ -11,26 +11,27 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-      
+        private IHero[] heroes = Heroes.GetHeroes();
+
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<IHero> Get()
         {
-            return Heroes.GetHeroes();
+            return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public IHero Get(int id)
         {
-            return Heroes.GetHeroes().FirstOrDefault();
+            return this.heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost("{name}/{act=none}/{statIncrease:int=1}")]
         public IHero Post(string name, string act, int statIncrease)
         {
-            IHero hero = Heroes.GetHeroes().Where(h => h.Name == name).FirstOrDefault();
+            IHero hero = heroes.Where(h => h.Name == name).FirstOrDefault();
             if (hero != null)
             {
                 switch (act.ToLower())

@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 
   evolve(hero: Hero) {
     if (hero.multiplier == null) {
-      hero.multiplier = 1;
+      hero.multiplier = 0;
     }
     hero.multiplier++;
 
