@@ -12,7 +12,16 @@ namespace InterviewTest
         public List<KeyValuePair<string, int>> stats {get;set;}
         public void evolve(int statIncrease = 5)
         {
-            
+            var diction = new Dictionary<string, int>();
+            foreach(KeyValuePair<string,int> kvp in stats)
+            {
+                var newVal = kvp.Value + kvp.Value * 1 / 2;
+                var newEntry = new KeyValuePair<string, int>(kvp.Key, newVal);
+                var removeOldItem = stats.Where(x => x.Key == kvp.Key).SingleOrDefault();
+                stats.Remove(removeOldItem);
+                stats.Add(newEntry);
+            }
+
         }
     }
 }
