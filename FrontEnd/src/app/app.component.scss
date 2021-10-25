@@ -1,0 +1,33 @@
+.heading{
+  text-align: center;
+  color: blue;
+}
+
+.red{
+  color: white;
+  background-color: red;
+  font-weight: 100;
+}
+
+.green{
+  color: green;
+  background-color: orange;
+  font-weight: 200;
+}
+
+.yellow{
+  color: yellow;
+  background-color: blue;
+  font-weight: 300;
+}
+
+.purple{
+  color: black;
+  background-color: purple;
+  font-weight: 400;
+}
+
+.center-table{
+  display: flex;
+  justify-content: center;
+}

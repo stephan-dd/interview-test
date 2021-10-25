@@ -11,39 +11,56 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        private static Hero[] heroes = new Hero[] {
+            new Hero()
+            {
+                name= "Hulk",
+                power="Strength from gamma radiation",
+                stats=
+                new List<KeyValuePair<string, int>>()
+                {
+                    new KeyValuePair<string, int>( "strength", 5000 ),
+                    new KeyValuePair<string, int>( "intelligence", 50),
+                    new KeyValuePair<string, int>( "stamina", 2500 )
+                }
+            },
+
+            // Added data hero for display
+            new Hero()
+            {
+                name= "Captain America",
+                power="Strength from gamma radiation",
+                stats=
+                new List<KeyValuePair<string, int>>()
+                {
+                    new KeyValuePair<string, int>( "strength", 100 ),
+                    new KeyValuePair<string, int>( "intelligence", 100),
+                    new KeyValuePair<string, int>( "stamina", 100 )
+                }
+            }
+        };
 
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
-            return this.heroes;
+            return heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return heroes.FirstOrDefault();
         }
 
-        // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(string name, string action = null)
         {
+            if (action == "evolve")
+            {
+                Hero hero = heroes.Where(h => h.name == name).FirstOrDefault();
+                hero.evolve();
+            }
         }
 
         // PUT: api/Heroes/5
