@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InterviewTest.Controllers
+namespace InterviewTest
 {
-    public class Hero
+    public class Hero : IHero
     {
         public string name { get; set; }
         public string power { get; set; }
