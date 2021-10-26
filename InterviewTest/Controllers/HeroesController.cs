@@ -47,7 +47,7 @@ namespace InterviewTest.Controllers
             var hero = new Hero();
             if (action.Equals("evolve"))
             {
-                hero = heroes.Where(x => x.name == "Hulk").SingleOrDefault();
+                hero = heroes.Where(x => x.name == value).SingleOrDefault();
                 hero.evolve();
             }
 
