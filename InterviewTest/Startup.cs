@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using InterviewTest.Controllers;
 
 namespace InterviewTest
 {
@@ -37,6 +38,8 @@ namespace InterviewTest
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // DI
+            services.AddScoped<IHero, HeroService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

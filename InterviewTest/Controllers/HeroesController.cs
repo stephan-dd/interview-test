@@ -11,6 +11,12 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+
+        private readonly IHero hero;
+        public HeroesController( IHero _hero)
+        {
+            hero = _hero;
+        }
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -42,9 +48,11 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] string value)
         {
+            return hero.evolve(null);
         }
+
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]
