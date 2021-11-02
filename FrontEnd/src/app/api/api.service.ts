@@ -23,8 +23,8 @@ export class HeroService {
     return this._httpClient.get(this.appUrl);
   }
 
-  postHero(){
-
+  postHero(item){
+    return this._httpClient.post(this.appUrl, item);
   }
 
 }

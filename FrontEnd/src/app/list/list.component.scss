@@ -3,10 +3,37 @@
   color: blue;
 }
 
-table {
-  border-collapse: collapse;
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#table_div{
-  position: relative;
+th, td {
+  padding: 15px;
+  text-align: left;
 }
+
+.reb-color{
+  color: red;
+  font-weight: bold;
+  background-color: aliceblue;
+}
+
+.yellow-color{
+  color: yellow;
+  font-weight: bolder;
+  background-color:brown;
+}
+
+.green-color{
+  color: green;
+  font-weight:lighter ;
+  background-color:bisque;
+}
+
+.orange-color{
+  color: orange;
+  font-weight:normal ;
+  background-color:azure;
+}
+

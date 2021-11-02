@@ -7,6 +7,6 @@ namespace InterviewTest.Controllers
 {
      public interface IHero
      {
-        Hero evolve(Hero hero , int statIncrease = 5);
+        Hero[] evolve(Hero hero);
      }
 }

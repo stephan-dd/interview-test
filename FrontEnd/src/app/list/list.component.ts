@@ -12,6 +12,9 @@ import { HeroService } from "../api/api.service";
 export class ListComponent  implements OnInit{
 
   heroList:any;
+
+  listCSSClass = ['reb-color','green-color','yellow-color','orange-color']
+
   constructor(private _hero: HeroService){
   }
 
@@ -19,6 +22,9 @@ export class ListComponent  implements OnInit{
     this.getHero();
   }
 
+  /**
+   * Gets heroes list
+   */
   getHero(){
     this._hero.getHero().subscribe( hero =>{
 
@@ -27,7 +33,15 @@ export class ListComponent  implements OnInit{
     () => alert('Error Please check if the api is up!!'));
   }
 
-  postHero(){
-    this._hero.postHero()
+  /**
+   * This post the hero to the backend
+   * @param hero
+   *
+   */
+  evolveEvent(hero){
+    this._hero.postHero(hero).subscribe( results =>{
+      this.heroList = results;
+    },
+    (error) => alert(error));
   }
 }
