@@ -11,6 +11,12 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+
+        private readonly IHero hero;
+        public HeroesController( IHero _hero)
+        {
+            hero = _hero;
+        }
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -22,6 +28,43 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+                new Hero()
+               {
+                   name= "IronMan",
+                   power="Strength from Steal suit",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 300 ),
+                       new KeyValuePair<string, int>( "intelligence", 5000),
+                       new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+
+                  new Hero()
+               {
+                   name= "SuperMan",
+                   power="Strength born with it",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 100000 ),
+                       new KeyValuePair<string, int>( "intelligence", 100000),
+                       new KeyValuePair<string, int>( "stamina", 50000 )
+                   }
+               },
+                  new Hero()
+               {
+                   name= "Spider Man",
+                   power="Strength from spider",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 10000 ),
+                       new KeyValuePair<string, int>( "intelligence", 100000),
+                       new KeyValuePair<string, int>( "stamina", 2000 )
                    }
                }
             };
@@ -42,9 +85,11 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero[] Post([FromBody] Hero heroData = null)
         {
+            return hero.evolve(heroData);
         }
+
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]

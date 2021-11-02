@@ -1,0 +1,19 @@
+<h2 class="heading">Tour of Heroes</h2>
+  <table class="center">
+    <tr>
+      <th>name</th>
+      <th>power</th>
+      <th>stat(strength)</th>
+      <th>stat(intelligence)</th>
+      <th>stat(stamina)</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let item of heroList ; let i = index" [ngClass]="listCSSClass[i]">
+      <td>{{item.name}}</td>
+      <td>{{item.power}}</td>
+      <td>{{item.stats[0].value}}</td>
+      <td>{{item.stats[1].value}}</td>
+      <td>{{item.stats[2].value}}</td>
+      <td><button (click)="evolveEvent(item)">evolve</button></td>
+    </tr>
+  </table>
