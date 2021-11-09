@@ -5,14 +5,21 @@ using System.Threading.Tasks;
 
 namespace InterviewTest.Controllers
 {
-    public class Hero
+    public class Hero : IHero
     {
-        public string name { get; set; }
-        public string power { get; set; }
-        public List<KeyValuePair<string, int>> stats {get;set;}
-        public void evolve(int statIncrease = 5)
+        public string Name { get; set; }
+        public string Power { get; set; }
+        public string Action { get; set; }
+        public List<KeyValuePair<string, int>> Stats { get; set; }
+        public void Evolve(int statIncrease)
         {
-            
-        }
+            List<KeyValuePair<string, int>> copyStats = new List<KeyValuePair<string, int>>();
+            Stats.ForEach(x =>
+            {
+                copyStats.Add(new KeyValuePair<string, int>(x.Key, x.Value + (x.Value / statIncrease)));
+            });
+
+            Stats = copyStats;
+        } 
     }
 }

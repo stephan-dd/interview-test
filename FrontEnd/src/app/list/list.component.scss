@@ -1,0 +1,39 @@
+.heading {
+  text-align: center;
+  color: blue;
+}
+
+.primary {
+  color: rgba(173, 9, 146, 0.849);
+  background-color: #86cfda;
+  font-weight: 700;
+}
+
+.danger {
+  color: rgba(18, 18, 218, 0.863);
+  background-color: #ed969e;
+  font-weight: 500;
+}
+
+.success {
+  color: rgba(44, 7, 49, 0.671);
+  background-color: #8fd19e;
+  font-weight: 400;
+}
+
+.info {
+  color: rgba(219, 28, 28, 0.699);
+  background-color: #b8daff;
+  font-weight: 1100;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lbl-update {
+  color: green;
+  font-size: 15px;
+  font-weight: bold;
+}
