@@ -11,7 +11,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        private IHero[] heroes = new Hero[] {
                new Hero()
                {
                    name= "Hulk",
@@ -21,29 +21,54 @@ namespace InterviewTest.Controllers
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
+                       new KeyValuePair<string, int>( "stamina", 2500 ),
                    }
-               }
+
+               },
+                new Hero()
+               {
+                   name= "Superman",
+                   power="Strength from gamma radiation",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength1", 15000 ),
+                       new KeyValuePair<string, int>( "intelligence1", 20000),
+                       new KeyValuePair<string, int>( "stamina1", 17000 ),
+                   }
+
+               },
             };
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{act=none}")]
+        public IEnumerable<IHero> Post(string action, string name)
         {
+                switch (action?.ToLower())
+                {
+                    case "none":
+                    default:
+                        break;
+                    case "evolve":
+                        IHero hero = heroes.Where(h => h.name == name).FirstOrDefault();
+                        hero?.evolve();
+                        break;
+            }
+            return heroes;
         }
 
         // PUT: api/Heroes/5
