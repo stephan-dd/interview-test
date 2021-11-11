@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
         private IHero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
@@ -27,14 +27,14 @@ namespace InterviewTest.Controllers
                },
                 new Hero()
                {
-                   name= "Superman",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Superman",
+                   Power="Strength from sun exposure",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
-                       new KeyValuePair<string, int>( "strength1", 15000 ),
-                       new KeyValuePair<string, int>( "intelligence1", 20000),
-                       new KeyValuePair<string, int>( "stamina1", 17000 ),
+                       new KeyValuePair<string, int>( "strength", 15000 ),
+                       new KeyValuePair<string, int>( "intelligence", 20000),
+                       new KeyValuePair<string, int>( "stamina", 17000 ),
                    }
 
                },
@@ -64,8 +64,8 @@ namespace InterviewTest.Controllers
                     default:
                         break;
                     case "evolve":
-                        IHero hero = heroes.Where(h => h.name == name).FirstOrDefault();
-                        hero?.evolve();
+                        IHero SelectedHero = heroes.Where(hero => hero.Name == name).FirstOrDefault();
+                        SelectedHero?.Evolve();
                         break;
             }
             return heroes;
