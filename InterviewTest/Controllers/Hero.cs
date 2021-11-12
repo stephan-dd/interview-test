@@ -18,7 +18,7 @@ namespace InterviewTest.Controllers
                    
                     if (Stats.Any(h => h.Key == kvp.Key))
                     {
-                    var newKeyValue = kvp.Value + ((kvp.Value / 2));
+                    var newKeyValue = kvp.Value + (kvp.Value / 2);
                     Stats.Remove(kvp);
                     Stats.Add(new KeyValuePair<string, int>(kvp.Key, newKeyValue));
                     }
