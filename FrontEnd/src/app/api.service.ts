@@ -18,7 +18,7 @@ export class ApiService {
   }
   
   evolveHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.baseurl + '/heroes/?' +  'action=evolve' +'&name=' + hero.name  , null);
+    return this.http.post<Hero>(this.baseurl + '/heroes/?' +  'action=evolve' +'&hero=' + hero.name  , null);
   }
 
 }

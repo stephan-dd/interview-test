@@ -56,7 +56,7 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost("{act=none}")]
-        public IEnumerable<IHero> Post(string action, string name)
+        public IEnumerable<IHero> Post(string action, string hero)
         {
                 switch (action?.ToLower())
                 {
@@ -64,7 +64,7 @@ namespace InterviewTest.Controllers
                     default:
                         break;
                     case "evolve":
-                        IHero SelectedHero = heroes.Where(hero => hero.Name == name).FirstOrDefault();
+                        IHero SelectedHero = heroes.Where(k => k.Name == hero).FirstOrDefault();
                         SelectedHero?.Evolve();
                         break;
             }
