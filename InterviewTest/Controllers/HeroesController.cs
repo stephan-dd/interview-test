@@ -7,43 +7,68 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        private IHero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
+                       new KeyValuePair<string, int>( "stamina", 2500 ),
                    }
-               }
+
+               },
+                new Hero()
+               {
+                   Name= "Superman",
+                   Power="Strength from sun exposure",
+                   Stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 15000 ),
+                       new KeyValuePair<string, int>( "intelligence", 20000),
+                       new KeyValuePair<string, int>( "stamina", 17000 ),
+                   }
+
+               },
             };
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{act=none}")]
+        public IEnumerable<IHero> Post(string action, string hero)
         {
+                switch (action?.ToLower())
+                {
+                    case "none":
+                    default:
+                        break;
+                    case "evolve":
+                        IHero SelectedHero = heroes.Where(k => k.Name == hero).FirstOrDefault();
+                        SelectedHero?.Evolve();
+                        break;
+            }
+            return heroes;
         }
 
         // PUT: api/Heroes/5
