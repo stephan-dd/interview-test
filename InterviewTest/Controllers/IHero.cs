@@ -10,6 +10,6 @@ namespace InterviewTest.Controllers
         string Name { get; set; }
         string Power { get; set; }
         List<KeyValuePair<string,int>> Stats { get; set; }
-        void Evolve(int statIncrease = 5);
+        void Evolve();
     }
 }

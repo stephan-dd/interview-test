@@ -10,7 +10,7 @@ namespace InterviewTest.Controllers
         public string Name { get; set; }
         public string Power { get; set; }
         public List<KeyValuePair<string, int>> Stats {get;set;}
-        public void Evolve(int statIncrease = 5)
+        public void Evolve()
         {
                 for (int i = Stats.Count - 1; i >= 0; --i)
                 {
