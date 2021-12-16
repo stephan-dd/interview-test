@@ -2,7 +2,7 @@
 <div class="col-md-6 container">
   <div class="col-md-10"> 
     <div class="alert alert-success" role="alert" *ngIf="updateHero !== null">
-       Updated stats for {{updateHero.name}}
+       Updated stats for <strong>{{updateHero.name}}</strong>
        <ul >
         <li *ngFor="let stat of updateHero.stats">
           <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
