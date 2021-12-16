@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { Hero } from '../shared/hero.model';
 import { Observable } from 'rxjs/Observable';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +11,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ListComponent implements OnInit {
   heroes: Hero[] = [];
-  constructor(public service:ApiService) { }
+  isExpanded : boolean = false;
+  public isCollapsed = -1;
+  constructor(public service:ApiService,private elRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {
     
@@ -26,4 +29,22 @@ export class ListComponent implements OnInit {
           });
   }
 
+  evolve(objHero) {
+
+     console.log("hero evolved")
+
+  }
+
+  expand(event){
+
+    debugger;
+    this.isExpanded = !this.isExpanded;
+    const nextEl = this.renderer.nextSibling(event);
+   
+    if (!this.isExpanded) {
+      this.renderer.addClass(nextEl, 'show');
+    } else {
+      this.renderer.removeClass(nextEl, 'show');
+    }
+  }
 }

@@ -3,17 +3,55 @@
 </h3>
 
 
-<div>
-  <div *ngFor="let hero of heroes"
-          class="search-result">
-        {{hero.name}}
+<div class="col-md-4">
+  <div class="col-md-8 ms-md-auto"> 
+    <!-- <div class="accordion" id="accordionExample">
+      <div *ngFor="let hero of heroes;let i = index" class="accordion-item">
+        <h2 class="accordion-header" id="{{'heading' + i}}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" (click)="expand($event)" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            {{hero.name}}
+          </button>
+        </h2>
+        <div id="{{'collapse' + i}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>{{hero.power}}</strong> 
+          </div>
+        </div>
+      </div> -->
+      <table class="table table-hover">
+        <thead>
+          <th>#</th>
+          <th> Name </th>
+          <th> Power </th>
+          <th>Action</th>
+        </thead>
+      
+        <tbody>
+      
+      <ng-container *ngFor="let hero of heroes">
+        <tr (click)="hero.expanded = !hero.expanded">
+          <td> {{hero.expanded ? '&ndash;' : '+'}} </td>
+          <td> {{hero.name}} </td>
+          <td> {{hero.power}} </td>
+          <th>
+            <button (click)="evolve(hero)">evolve</button>
+          </th>
+        </tr>
+      
+        <ng-container *ngIf="hero.expanded">
+          <tr>
+            <td colspan="3">
+              <ul>
+                <li *ngFor="let stat of hero.stats">
+                  <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          
+        </ng-container>
+      </ng-container>
+        </tbody>
+      </table>
   </div>
-
-  <ul>
-    <li *ngFor='let movie of movies')>
-      {{ movie.title }}>
-    </li>
-  </ul>
-
-    
 </div>
