@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InterviewTest.Models;
+using InterviewTest.Interface;
+using InterviewTest.viewModels;
 
 namespace InterviewTest.Controllers
 {
@@ -42,8 +45,19 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] GetHeroViewModel model)
         {
+            if (!string.IsNullOrEmpty(model.HeroName))
+            {
+                var hero = heroes.FirstOrDefault(x => x.name == model.HeroName);
+                if (hero != null)
+                {
+                    hero.evolve();
+                    return Ok(hero);
+                }
+            }
+            
+            return NoContent();
         }
 
         // PUT: api/Heroes/5
