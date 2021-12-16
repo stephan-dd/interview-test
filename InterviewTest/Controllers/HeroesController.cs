@@ -26,6 +26,42 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+               },
+               new Hero()
+               {
+                   name= "Iron Man",
+                   power="Iron Mans's Armor",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 1000 ),
+                       new KeyValuePair<string, int>( "intelligence", 200),
+                       new KeyValuePair<string, int>( "stamina", 1500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Spider Man",
+                   power="spider powers",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 1000 ),
+                       new KeyValuePair<string, int>( "intelligence", 200),
+                       new KeyValuePair<string, int>( "stamina", 1500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Thor",
+                   power="God of Thunder & Lightning",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 900 ),
+                       new KeyValuePair<string, int>( "intelligence", 60),
+                       new KeyValuePair<string, int>( "stamina", 1000 )
+                   }
                }
             };
 
