@@ -1,24 +1,16 @@
-<h3>
-  list works!
-</h3>
 
+<div class="col-md-6 container">
+  <div class="col-md-10"> 
+    <div class="alert alert-success" role="alert" *ngIf="updateHero !== null">
+       Updated stats for {{updateHero.name}}
+       <ul >
+        <li *ngFor="let stat of updateHero.stats">
+          <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
+        </li>
+      </ul>
+    </div>
 
-<div class="col-md-4">
-  <div class="col-md-8 ms-md-auto"> 
-    <!-- <div class="accordion" id="accordionExample">
-      <div *ngFor="let hero of heroes;let i = index" class="accordion-item">
-        <h2 class="accordion-header" id="{{'heading' + i}}">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" (click)="expand($event)" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-            {{hero.name}}
-          </button>
-        </h2>
-        <div id="{{'collapse' + i}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>{{hero.power}}</strong> 
-          </div>
-        </div>
-      </div> -->
-      <table class="table table-hover">
+      <table class="table table-striped table-hover">
         <thead>
           <th>#</th>
           <th> Name </th>
@@ -29,18 +21,18 @@
         <tbody>
       
       <ng-container *ngFor="let hero of heroes">
-        <tr (click)="hero.expanded = !hero.expanded">
+        <tr (click)="hero.expanded = !hero.expanded" [ngClass]="getRandonColor()">
           <td> {{hero.expanded ? '&ndash;' : '+'}} </td>
           <td> {{hero.name}} </td>
           <td> {{hero.power}} </td>
           <th>
-            <button (click)="evolve(hero)">evolve</button>
+            <button class="btn btn-sm btn-primary" (click)="evolve(hero,$event)">evolve</button>
           </th>
         </tr>
       
         <ng-container *ngIf="hero.expanded">
           <tr>
-            <td colspan="3">
+            <td colspan="4">
               <ul>
                 <li *ngFor="let stat of hero.stats">
                   <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
@@ -53,5 +45,13 @@
       </ng-container>
         </tbody>
       </table>
+
+      <div class="alert alert-info" role="alert">
+        <i class="fas fa-info-circle"></i> Please note the following:
+        <ul>
+          <li>Expand the row to view hero stats</li>
+          <li>Refresh the page get random color for each hero</li>
+        </ul>
+      </div>
   </div>
 </div>
