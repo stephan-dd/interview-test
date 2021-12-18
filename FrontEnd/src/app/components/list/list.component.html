@@ -1,0 +1,41 @@
+<h2 class="heading">Tour of Heroes</h2>
+
+<div *ngIf="isVisible">
+    <p><span class="power">{{hero.Name}}</span> updated with stats:</p>
+    <p>Stregth: <span class="strength">{{hero.Stats[0].Value}}</span></p>
+    <p>Intelligence: <span class="intelligence">{{hero.Stats[1].Value}}</span></p>
+    <p>Stamina: <span class="stamina">{{hero.Stats[2].Value}}</span></p>
+</div>
+
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="listData" class="destroyer">
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Power">
+      <mat-header-cell *matHeaderCellDef>Power</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Power}}</mat-cell>
+    </ng-container>
+    <ng-container class="stat" matColumnDef="Strength">
+      <mat-header-cell class="stat" *matHeaderCellDef>Strength</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Stats[0].Value}}</mat-cell>
+    </ng-container>
+    <ng-container class="stat" matColumnDef="Intelligence">
+      <mat-header-cell class="stat" *matHeaderCellDef>Intelligence</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Stats[1].Value}}</mat-cell>
+    </ng-container>
+    <ng-container class="stat" matColumnDef="Stamina">
+      <mat-header-cell class="stat" *matHeaderCellDef>Stamina</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.Stats[2].Value}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button class="evolve" (click)="EvolveStats(row)">Evolve</button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+  </mat-table>
+</div>
