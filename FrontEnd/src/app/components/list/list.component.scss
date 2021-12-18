@@ -1,0 +1,44 @@
+.heading{
+    text-align: center;
+    color: blue;
+}
+
+.power{
+    color: red;
+    font-weight: 100;
+    background-color: #fff;
+}
+
+.strength{
+    color: #fff;
+    font-weight: 300;
+    background-color: brown;
+}
+
+.intelligence{
+    color: purple;
+    font-weight: 500;
+    background-color: silver;
+}
+
+.stamina{
+    color: yellow;
+    font-weight: 600;
+    background-color: green;
+}
+
+.destroyer{
+    color: maroon;
+}
+.stat{
+    font-weight: bold;
+}
+
+.evolve{
+    background-color: #ff6600;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
