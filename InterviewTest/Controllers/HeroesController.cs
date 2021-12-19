@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
@@ -11,7 +9,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        private IHero[] heroes = new Hero[] {
                new Hero()
                {
                    name= "Hulk",
@@ -26,24 +24,39 @@ namespace InterviewTest.Controllers
                }
             };
 
+
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
             return this.heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IHero Post([FromBody] Action action, [FromBody] IHero hero)
         {
+            switch(action)
+            {
+                case Action.evolve:
+                    {
+                        hero.evolve();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return hero;
         }
 
         // PUT: api/Heroes/5
