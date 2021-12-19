@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
@@ -11,7 +9,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        private IHero[] heroes = new Hero[] {
                new Hero()
                {
                    name= "Hulk",
@@ -23,27 +21,56 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+               },
+                new Hero()
+               {
+                   name= "Spiderman",
+                   power="Super Stringy Webs",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 200 ),
+                       new KeyValuePair<string, int>( "intelligence", 400),
+                       new KeyValuePair<string, int>( "stamina", 800 )
+                   }
                }
             };
 
+
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
             return this.heroes.FirstOrDefault();
         }
 
+
+        // Alternative is to send the action through as a header and use FromHeader
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IHero Post([FromBody] HeroPost heroPost)
         {
+            switch (heroPost.action)
+            {
+                case Action.evolve:
+                    {
+                        heroPost.hero?.evolve();
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return heroPost.hero;
         }
 
         // PUT: api/Heroes/5
