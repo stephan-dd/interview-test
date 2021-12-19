@@ -41,13 +41,13 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public IHero Post([FromBody] Action action, [FromBody] IHero hero)
+        public IHero Post([FromBody] IHeroPost heroPost)
         {
-            switch(action)
+            switch (heroPost.action)
             {
                 case Action.evolve:
                     {
-                        hero.evolve();
+                        heroPost.Hero?.evolve();
                         break;
                     }
                 default:
@@ -56,7 +56,7 @@ namespace InterviewTest.Controllers
                     }
             }
 
-            return hero;
+            return heroPost.Hero;
         }
 
         // PUT: api/Heroes/5

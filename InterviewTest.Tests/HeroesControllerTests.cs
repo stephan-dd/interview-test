@@ -10,7 +10,6 @@ namespace InterviewTest.Tests
     public class HeroesControllerTests
     {
         [TestMethod]
-        [TestCategory("List")]
         public void ListHeroes()
         {
             var contr = new HeroesController();
@@ -20,7 +19,6 @@ namespace InterviewTest.Tests
         }
 
         [TestMethod]
-        [TestCategory("Get")]
         public void GetHeroes()
         {
             var contr = new HeroesController();
@@ -28,51 +26,33 @@ namespace InterviewTest.Tests
             var res = contr.Get(0);
             Assert.IsTrue(!string.IsNullOrEmpty(res.name));
         }
-    }
 
-    [TestClass]
-    [TestCategory("Heroes")]
-    public class HeroModelTests
-    {
-        private IHero hero = new Hero()
+
+        [TestMethod]
+        public void Post()
         {
-            name = "Hulk",
-            power = "Strength from gamma radiation",
-            stats =
-                   new List<KeyValuePair<string, int>>()
-                   {
+            IHero hero = new Hero()
+            {
+                name = "Hulk",
+                power = "Strength from gamma radiation",
+                stats =
+                  new List<KeyValuePair<string, int>>()
+                  {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-        };
+                  }
+            };
 
-        [TestMethod]
-        [TestCategory("evolve")]
-        public void Evolve()
-        {
-            var initialStats = hero.stats;
+            var contr = new HeroesController();
 
-            var strengthStat = initialStats.FirstOrDefault(x => x.Key == "strength");
-            var intelligenceStat = initialStats.FirstOrDefault(x => x.Key == "intelligence");
-            var staminaStat = initialStats.FirstOrDefault(x => x.Key == "stamina");
+            // defaulted to 5
+            int factorInt = 5;
 
-            hero.evolve();
+            IHeroPost heroPost = new HeroPost();
+            heroPost.Hero = hero;
 
-            var evolvedStats = hero.stats;
-
-            var evolvedStrengthStat = evolvedStats.FirstOrDefault(x => x.Key == "strength");
-            var evolvedIntelligenceStat = evolvedStats.FirstOrDefault(x => x.Key == "intelligence");
-            var evolevedStaminaStat = evolvedStats.FirstOrDefault(x => x.Key == "stamina");
-
-            Assert.IsTrue( ((strengthStat.Value * 0.5 * 5) + strengthStat.Value) == evolvedStrengthStat.Value);
-        }
-
-        [TestMethod]
-        [TestCategory("evolveFactor")]
-        public void EvolveFactor()
-        {
-            int factorInt = 2;
+            heroPost.action = Action.evolve;
 
             var initialStats = hero.stats;
 
@@ -80,22 +60,39 @@ namespace InterviewTest.Tests
             var intelligenceStat = initialStats.FirstOrDefault(x => x.Key == "intelligence");
             var staminaStat = initialStats.FirstOrDefault(x => x.Key == "stamina");
 
-            hero.evolve(factorInt);
+            var heroRes = contr.Post(heroPost);
 
-            var evolvedStats = hero.stats;
+            var evolvedStats = heroRes.stats;
 
             var evolvedStrengthStat = evolvedStats.FirstOrDefault(x => x.Key == "strength");
             var evolvedIntelligenceStat = evolvedStats.FirstOrDefault(x => x.Key == "intelligence");
             var evolevedStaminaStat = evolvedStats.FirstOrDefault(x => x.Key == "stamina");
 
             Assert.IsTrue(((strengthStat.Value * 0.5 * factorInt) + strengthStat.Value) == evolvedStrengthStat.Value);
+            Assert.IsTrue(((intelligenceStat.Value * 0.5 * factorInt) + intelligenceStat.Value) == evolvedIntelligenceStat.Value);
+            Assert.IsTrue(((staminaStat.Value * 0.5 * factorInt) + staminaStat.Value) == evolevedStaminaStat.Value);
         }
 
         [TestMethod]
-        [TestCategory("evolveFactor0")]
-        public void EvolveFactor0()
+        public void PostNoAction()
         {
-            int factorInt = 0;
+            IHero hero = new Hero()
+            {
+                name = "Hulk",
+                power = "Strength from gamma radiation",
+                stats =
+                  new List<KeyValuePair<string, int>>()
+                  {
+                       new KeyValuePair<string, int>( "strength", 5000 ),
+                       new KeyValuePair<string, int>( "intelligence", 50),
+                       new KeyValuePair<string, int>( "stamina", 2500 )
+                  }
+            };
+
+            var contr = new HeroesController();
+
+            IHeroPost heroPost = new HeroPost();
+            heroPost.Hero = hero;
 
             var initialStats = hero.stats;
 
@@ -103,15 +100,29 @@ namespace InterviewTest.Tests
             var intelligenceStat = initialStats.FirstOrDefault(x => x.Key == "intelligence");
             var staminaStat = initialStats.FirstOrDefault(x => x.Key == "stamina");
 
-            hero.evolve(factorInt);
+            var heroRes = contr.Post(heroPost);
 
-            var evolvedStats = hero.stats;
+            var evolvedStats = heroRes.stats;
 
             var evolvedStrengthStat = evolvedStats.FirstOrDefault(x => x.Key == "strength");
             var evolvedIntelligenceStat = evolvedStats.FirstOrDefault(x => x.Key == "intelligence");
             var evolevedStaminaStat = evolvedStats.FirstOrDefault(x => x.Key == "stamina");
 
-            Assert.IsTrue(((strengthStat.Value * 0.5 * factorInt) + strengthStat.Value) == evolvedStrengthStat.Value);
+            Assert.IsTrue(strengthStat.Value == evolvedStrengthStat.Value);
+            Assert.IsTrue(intelligenceStat.Value == evolvedIntelligenceStat.Value);
+            Assert.IsTrue(staminaStat.Value == evolevedStaminaStat.Value);
+        }
+
+        [TestMethod]
+        public void PostNoHero()
+        {
+            var contr = new HeroesController();
+
+            IHeroPost heroPost = new HeroPost();
+
+            var heroRes = contr.Post(heroPost);
+
+            Assert.IsNull(heroRes);
         }
     }
 }

@@ -12,18 +12,19 @@ namespace InterviewTest.Controllers
         {
             List<KeyValuePair<string, int>> newStats = new List<KeyValuePair<string, int>>();
 
-            foreach (var stat in stats)
+            foreach (var stat in stats ?? new List<KeyValuePair<string, int>>())
             {
                 // update stat
+
+                // assumed statIncrease is for increase of factor of base (half of current)
                 var newValue = ((stat.Value * 0.5) * statIncrease) + stat.Value;
+
                 // add stat to new array
                 newStats.Add(new KeyValuePair<string, int>(stat.Key, (int)System.Math.Floor(newValue)));
             }
 
-            // assign new stat list to stats
+            // assign new stats list to stats
             stats = newStats;
         }
-
-
     }
 }
