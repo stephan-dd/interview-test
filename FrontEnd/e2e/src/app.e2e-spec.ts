@@ -4,6 +4,8 @@ import { browser, logging } from 'protractor';
 describe('workspace-project App', () => {
   let page: AppPage;
 
+  page = new AppPage();  
+
   beforeEach(() => {
     page = new AppPage();
   });
@@ -11,6 +13,14 @@ describe('workspace-project App', () => {
   it('should display welcome message', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('Welcome to frontend!');
+  });
+
+  it('should display Tour of Heroes', () => {
+    expect(page.getSubTitleText()).toEqual("Tour of Heroes");
+  });
+
+  it('should display hulk in list', () => {
+    expect(page.getHulkInTable()).toEqual("Hulk");
   });
 
   afterEach(async () => {

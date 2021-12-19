@@ -24,7 +24,7 @@
   <div class="flex-col">stat(stamina)</div>
   <div class="flex-col">Action</div>
 </div>
-<div *ngFor="let hero of heroes" class="flex-row" [ngClass]="getRandomClass()">
+<div *ngFor="let hero of heroes" class="flex-row heroes" [ngClass]="getRandomClass()">
   <div class="flex-col">{{hero.name}}</div>
   <div class="flex-col">{{hero.power}}</div>
   <div *ngFor="let stat of hero.stats" class="flex-col">
