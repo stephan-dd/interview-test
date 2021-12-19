@@ -39,15 +39,17 @@ namespace InterviewTest.Controllers
             return this.heroes.FirstOrDefault();
         }
 
+
+        // Alternative is to send the action through as a header and use FromHeader
         // POST: api/Heroes
         [HttpPost]
-        public IHero Post([FromBody] IHeroPost heroPost)
+        public IHero Post([FromBody] HeroPost heroPost)
         {
             switch (heroPost.action)
             {
                 case Action.evolve:
                     {
-                        heroPost.Hero?.evolve();
+                        heroPost.hero?.evolve();
                         break;
                     }
                 default:
@@ -56,7 +58,7 @@ namespace InterviewTest.Controllers
                     }
             }
 
-            return heroPost.Hero;
+            return heroPost.hero;
         }
 
         // PUT: api/Heroes/5

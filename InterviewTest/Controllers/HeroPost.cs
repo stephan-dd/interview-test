@@ -2,7 +2,7 @@
 {
     public class HeroPost : IHeroPost
     {
-        public IHero Hero { get; set; }
+        public IHero hero { get; set; } = new Hero();
         public Action action { get; set; }
     }
 }

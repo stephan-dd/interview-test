@@ -49,8 +49,9 @@ namespace InterviewTest.Tests
             // defaulted to 5
             int factorInt = 5;
 
-            IHeroPost heroPost = new HeroPost();
-            heroPost.Hero = hero;
+
+            HeroPost heroPost = new HeroPost();
+            heroPost.hero = hero;
 
             heroPost.action = Action.evolve;
 
@@ -91,8 +92,8 @@ namespace InterviewTest.Tests
 
             var contr = new HeroesController();
 
-            IHeroPost heroPost = new HeroPost();
-            heroPost.Hero = hero;
+            HeroPost heroPost = new HeroPost();
+            heroPost.hero = hero;
 
             var initialStats = hero.stats;
 
@@ -118,11 +119,12 @@ namespace InterviewTest.Tests
         {
             var contr = new HeroesController();
 
-            IHeroPost heroPost = new HeroPost();
+            HeroPost heroPost = new HeroPost();
 
             var heroRes = contr.Post(heroPost);
 
-            Assert.IsNull(heroRes);
+            Assert.IsNotNull(heroRes);
+            Assert.IsNull(heroRes.name);
         }
     }
 }

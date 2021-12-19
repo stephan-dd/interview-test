@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "dc04e73a-95ac-4647-95dc-58a348cc7baf",
+		"name": "interviewTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Heroes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// run test ins parrent folder 1st\r",
+							"\r",
+							"pm.test(\"Has Name\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0]).to.haveOwnProperty(\"name\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has First item with Name of Hulk\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0]).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(jsonData[0]).to.haveOwnProperty(\"name\", \"Hulk\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has item with Name of Hulk\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    var data = jsonData.find(x => x.name == \"Hulk\");\r",
+							"    pm.expect(data).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(data).to.haveOwnProperty(\"name\", \"Hulk\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4201/api/heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Heroes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// run test ins parrent folder 1st\r",
+							"\r",
+							"\r",
+							"pm.test(\"Has Name\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has First item with Name of Hulk\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\", \"Hulk\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4201/api/heroes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Hero No Action",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// run test ins parrent folder 1st\r",
+							"\r",
+							"\r",
+							"pm.test(\"Has Name\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has First item with Name of Hulk2\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\", \"Hulk2\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hero\": {\r\n        \"name\": \"Hulk2\",\r\n        \"power\": \"Strength from gamma radiation\",\r\n        \"stats\": [\r\n            {\r\n                \"key\": \"strength\",\r\n                \"value\": 5000\r\n            },\r\n            {\r\n                \"key\": \"intelligence\",\r\n                \"value\": 50\r\n            },\r\n            {\r\n                \"key\": \"stamina\",\r\n                \"value\": 2500\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4201/api/heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Hero Evolve as string Action",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// run test ins parrent folder 1st\r",
+							"\r",
+							"\r",
+							"pm.test(\"Has Name\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has First item with Name of Hulk2\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\", \"Hulk2\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"evolve\",\r\n    \"hero\": {\r\n        \"name\": \"Hulk2\",\r\n        \"power\": \"Strength from gamma radiation\",\r\n        \"stats\": [\r\n            {\r\n                \"key\": \"strength\",\r\n                \"value\": 5000\r\n            },\r\n            {\r\n                \"key\": \"intelligence\",\r\n                \"value\": 50\r\n            },\r\n            {\r\n                \"key\": \"stamina\",\r\n                \"value\": 2500\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4201/api/heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Hero Evolve as enum (int) Action",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// run test ins parrent folder 1st\r",
+							"\r",
+							"\r",
+							"pm.test(\"Has Name\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Has First item with Name of Hulk2\", function(){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\")\r",
+							"    pm.expect(jsonData).to.haveOwnProperty(\"name\", \"Hulk2\")\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": 1,\r\n    \"hero\": {\r\n        \"name\": \"Hulk2\",\r\n        \"power\": \"Strength from gamma radiation\",\r\n        \"stats\": [\r\n            {\r\n                \"key\": \"strength\",\r\n                \"value\": 5000\r\n            },\r\n            {\r\n                \"key\": \"intelligence\",\r\n                \"value\": 50\r\n            },\r\n            {\r\n                \"key\": \"stamina\",\r\n                \"value\": 2500\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4201/api/heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 200ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(200);",
+					"});",
+					"",
+					"pm.test(\"Successful Get request\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+					"});",
+					"",
+					"pm.test(\"Is Json\", function () {",
+					"    pm.response.to.be.json;",
+					"});"
+				]
+			}
+		}
+	]
+}

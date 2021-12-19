@@ -2,7 +2,7 @@
 {
     public interface IHeroPost 
     {
-        IHero Hero { get; set; }
+        IHero hero { get; set; }
         Action action { get; set; }
     }
 }
