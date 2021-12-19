@@ -4,8 +4,6 @@ import { browser, logging } from 'protractor';
 describe('workspace-project App', () => {
   let page: AppPage;
 
-  page = new AppPage();  
-
   beforeEach(() => {
     page = new AppPage();
   });
