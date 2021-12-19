@@ -10,7 +10,7 @@ export class ListComponent implements OnInit {
 
   heroes = [];
 
-  constructor( private apiService: ApiService ) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
 
@@ -18,7 +18,18 @@ export class ListComponent implements OnInit {
       console.log(data);
       this.heroes = data;
     });
-
   }
 
+  hero = null;
+
+  evolve(hero: any) {
+    this.apiService.sendPostHero(hero, true).subscribe((data: any) => {
+      console.log(data);
+
+      for (var index = 0; this.heroes.length > index; index++) {
+        if (this.heroes[index].name == data.name)
+          this.heroes[index] = data;
+      }
+    });
+  }
 }

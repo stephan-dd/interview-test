@@ -13,4 +13,15 @@ export class ApiService {
   public sendGetHeroes(){
     return this.httpClient.get(this.REST_API_SERVER + "/heroes");
   }
+
+  public sendPostHero(hero, evolve: boolean)
+  {
+    let myHero = {};
+    myHero = {
+      action: "evolve",
+      hero: hero
+    }
+
+    return this.httpClient.post(this.REST_API_SERVER + "/heroes", myHero )
+  }
 }
