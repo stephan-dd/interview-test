@@ -1,12 +1,20 @@
-<h2>Tour of Heroes</h2>
-
-<p>
-  list works!
-</p>
+<h2 class="heading">Tour of Heroes</h2>
 
 <div *ngIf="heroes.length === 0">
   Loading
 </div>
+
+<div *ngIf="hero != undefined">
+  <p>Hero : 
+    <label>{{hero.name}}</label>
+    updated with new Stats, 
+    <em *ngFor="let chg of hero.stats">
+      <strong>{{chg.key}}:</strong>
+      <label>{{chg.value}}</label>
+    </em>
+  </p>
+</div>
+
 
 <div class="flex-row">
   <div class="flex-col">Name</div>
@@ -16,7 +24,7 @@
   <div class="flex-col">stat(stamina)</div>
   <div class="flex-col">Action</div>
 </div>
-<div *ngFor="let hero of heroes" class="flex-row">
+<div *ngFor="let hero of heroes" class="flex-row" [ngClass]="getRandomClass()">
   <div class="flex-col">{{hero.name}}</div>
   <div class="flex-col">{{hero.power}}</div>
   <div *ngFor="let stat of hero.stats" class="flex-col">

@@ -18,7 +18,7 @@ export class ApiService {
   {
     let myHero = {};
     myHero = {
-      action: "evolve",
+      action: evolve ? "evolve" : "",
       hero: hero
     }
 

@@ -1,18 +1,48 @@
-div{
-    &.flex-row{ 
+div {
+    &.flex-row {
         display: flex;
         flex-wrap: wrap;
 
-        div{
-            &.flex-col{
+        div {
+            &.flex-col {
                 flex: 1;
             }
         }
-        label
-        {
-            &.flex-col{
-                flex:1
+        label {
+            &.flex-col {
+                flex: 1;
             }
         }
+    }
+
+    &.rcol-1 {
+        color: lightblue;
+        background-color: lightslategray;
+        font-weight: 100;
+    }
+
+    &.rcol-2 {
+        color: darkblue;
+        background-color: lightsteelblue;
+        font-weight: 300;
+    }
+
+    &.rcol-3 {
+        color: purple;
+        background-color: thistle;
+        font-weight: 600;
+    }
+
+    &.rcol-4 {
+        color: red;
+        background-color: bisque;
+        font-weight: 900;
+    }
+}
+
+h2 {
+    &.heading {
+        text-align: center;
+        color: blue;
     }
 }
