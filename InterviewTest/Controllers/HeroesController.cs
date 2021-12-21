@@ -17,9 +17,9 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
@@ -29,9 +29,9 @@ namespace InterviewTest.Controllers
                },
                new Hero()
                {
-                   name= "Iron Man",
-                   power="Iron Mans's Armor",
-                   stats=
+                   Name= "Iron Man",
+                   Power="Iron Mans's Armor",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 1000 ),
@@ -41,9 +41,9 @@ namespace InterviewTest.Controllers
                },
                new Hero()
                {
-                   name= "Spider Man",
-                   power="spider powers",
-                   stats=
+                   Name= "Spider Man",
+                   Power="spider powers",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 1000 ),
@@ -53,9 +53,9 @@ namespace InterviewTest.Controllers
                },
                new Hero()
                {
-                   name= "Thor",
-                   power="God of Thunder & Lightning",
-                   stats=
+                   Name= "Thor",
+                   Power="God of Thunder & Lightning",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 900 ),
@@ -85,10 +85,10 @@ namespace InterviewTest.Controllers
         {
             if (!string.IsNullOrEmpty(model.HeroName))
             {
-                var hero = heroes.FirstOrDefault(x => x.name == model.HeroName);
+                var hero = heroes.FirstOrDefault(x => x.Name == model.HeroName);
                 if (hero != null)
                 {
-                    hero.evolve();
+                    hero.Evolve();
                     return Ok(hero);
                 }
             }

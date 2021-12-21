@@ -8,17 +8,17 @@ namespace InterviewTest.Models
 {
     public class Hero : IHero
     {
-        public string name { get; set; }
-        public string power { get; set; }
-        public List<KeyValuePair<string, int>> stats {get;set;}
-        public void evolve(int statIncrease = 5)
+        public string Name { get; set; }
+        public string Power { get; set; }
+        public List<KeyValuePair<string, int>> Stats {get;set;}
+        public void Evolve(int statIncrease = 5)
         {
            
-            for (int i = 0; i < stats.Count; i++)
+            for (int i = 0; i < Stats.Count; i++)
             {
-                var evolvedStats = Convert.ToInt32(stats[i].Value * 0.5) + stats[i].Value;
+                var evolvedStats = Convert.ToInt32(Stats[i].Value * 0.5) + Stats[i].Value;
 
-                stats[i] = new KeyValuePair<string, int>(stats[i].Key, evolvedStats );
+                Stats[i] = new KeyValuePair<string, int>(Stats[i].Key, evolvedStats );
             }
                
         }

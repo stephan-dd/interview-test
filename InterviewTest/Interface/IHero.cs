@@ -7,6 +7,6 @@ namespace InterviewTest.Interface
 {
     public interface IHero
     {
-        void evolve(int statIncrease = 5);
+        void Evolve(int statIncrease = 5);
     }
 }
