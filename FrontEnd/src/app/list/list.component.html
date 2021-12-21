@@ -1,0 +1,58 @@
+
+<div class="col-md-6 container">
+  <div class="col-md-10"> 
+    <div class="alert alert-success" role="alert" *ngIf="updateHero !== null">
+       Updated stats for <strong>{{updateHero.name}}</strong>
+       <ul >
+        <li *ngFor="let stat of updateHero.stats">
+          <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
+        </li>
+      </ul>
+    </div>
+
+      <table class="table table-hover">
+        <thead>
+          <th>#</th>
+          <th> Name </th>
+          <th> Power </th>
+          <th>Action</th>
+        </thead>
+      
+        <tbody>
+      
+      <ng-container *ngFor="let hero of heroes">
+        <tr (click)="hero.expanded = !hero.expanded" [ngClass]="getRandonColor()">
+          <td> {{hero.expanded ? '&ndash;' : '+'}} </td>
+          <td> {{hero.name}} </td>
+          <td> {{hero.power}} </td>
+          <th>
+            <button class="btn btn-sm btn-primary" (click)="evolve(hero,$event)">evolve</button>
+          </th>
+        </tr>
+      
+        <ng-container *ngIf="hero.expanded">
+          <tr class="container-stats">
+            <td colspan="4">
+              <h5 class="heading">Hero Stats</h5>
+              <ul>
+                <li *ngFor="let stat of hero.stats">
+                  <span style="padding-left: 12px"> {{stat.key}} : {{stat.value}} </span>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          
+        </ng-container>
+      </ng-container>
+        </tbody>
+      </table>
+
+      <div class="alert alert-info" role="alert">
+        <i class="fas fa-info-circle"></i> Please note the following:
+        <ul>
+          <li>Expand the row to view hero stats</li>
+          <li>Refresh the page get random color for each hero</li>
+        </ul>
+      </div>
+  </div>
+</div>
