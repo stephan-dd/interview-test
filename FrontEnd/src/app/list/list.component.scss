@@ -29,3 +29,8 @@
   font-weight: 900; 
   color: #fff;
 }
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+  color: #fff !important
+}
