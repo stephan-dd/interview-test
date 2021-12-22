@@ -1,0 +1,33 @@
+header {
+  position: relative;
+  height: 6vh;
+  background: #383B47;
+  color: #c2c8c5;
+
+  ul {
+    list-style-type: none;
+  }
+
+  a {
+    color: #c2c8c5;
+    text-decoration: none;
+  }
+
+  li {
+    float: left;
+    padding: 15px 10px;
+    font-size: 18px;
+  }
+}
+
+main {
+  position: relative;
+  height: 85vh;
+
+  & .center {
+    display: flex;
+    height: 90vh;
+    place-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,21 @@
+<ng-container>
+  <router-outlet>
+    <h2 class="heading">Tour of Heroes</h2>
+
+    <div *ngIf="updatedHero" class="update-container">
+      {{updatedHero.name}} updated with <span *ngFor="let stat of updatedHero.stats">{{ stat.key }}: {{ stat.value }},</span>
+    </div>
+
+    <table>
+      <tr>
+        <th *ngFor="let column of columns">{{ column }}</th>
+      </tr>
+      <tr *ngFor="let hero of heroes" [class]="rndColour">
+        <td>{{ hero.name }}</td>
+        <td>{{ hero.power }}</td>
+        <td *ngFor="let stat of hero.stats">{{ stat.value }}</td>
+        <button (click)="postHero(hero)">Evolve</button>
+      </tr>
+    </table>
+  </router-outlet>
+</ng-container>

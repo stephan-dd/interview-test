@@ -1,0 +1,202 @@
+USE [master]
+GO
+
+/****** Object:  Database [HeroesDB]    Script Date: 2021/12/22 12:17:24 ******/
+CREATE DATABASE [HeroesDB]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'HeroesDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\HeroesDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'HeroesDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\HeroesDB_log.ldf0' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [HeroesDB].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [HeroesDB] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [HeroesDB] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [HeroesDB] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [HeroesDB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [HeroesDB] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET RECOVERY SIMPLE 
+GO
+
+ALTER DATABASE [HeroesDB] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [HeroesDB] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [HeroesDB] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [HeroesDB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [HeroesDB] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+
+ALTER DATABASE [HeroesDB] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [HeroesDB] SET QUERY_STORE = OFF
+GO
+
+ALTER DATABASE [HeroesDB] SET  READ_WRITE 
+GO
+
+USE [HeroesDB]
+
+CREATE LOGIN TestUser WITH PASSWORD='P@ssw0rd'
+CREATE USER TestUser FOR LOGIN TestUser
+ALTER ROLE [db_owner] ADD MEMBER TestUser
+GRANT EXECUTE TO TestUser
+
+CREATE TABLE [dbo].[Heroes](
+	[HeroID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[Power] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_Heroes] PRIMARY KEY CLUSTERED 
+(
+	[HeroID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[Statistics](
+	[StatiticsID] [int] IDENTITY(1,1) NOT NULL,
+	[Strength] [int] NOT NULL,
+	[Intelligence] [int] NOT NULL,
+	[Stamina] [int] NOT NULL,
+	[HeroID] [int] NOT NULL,
+ CONSTRAINT [PK_Statistics] PRIMARY KEY CLUSTERED 
+(
+	[StatiticsID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Statistics]  WITH CHECK ADD  CONSTRAINT [FK_Statistics_Heroes] FOREIGN KEY([HeroID])
+REFERENCES [dbo].[Heroes] ([HeroID])
+GO
+
+ALTER TABLE [dbo].[Statistics] CHECK CONSTRAINT [FK_Statistics_Heroes]
+GO
+
+INSERT INTO [dbo].[Heroes] ([Name], [Power])
+VALUES ('Hulk', 'Strength from gamma radiation')
+GO
+
+INSERT INTO [dbo].[Heroes] ([Name], [Power])
+VALUES ('Loku', 'Sorcerer aka God of Mischief')
+GO
+
+INSERT INTO [dbo].[Heroes] ([Name], [Power])
+VALUES('Dr. Strange' , 'Master of the Mystic Arts, Sorcerer')
+GO
+
+INSERT INTO [dbo].[Statistics] ([Strength], [Intelligence], [Stamina], [HeroID])
+VALUES (5000 ,50, 2500, 1)
+GO
+
+INSERT INTO [dbo].[Statistics] ([Strength], [Intelligence], [Stamina], [HeroID])
+VALUES (500 ,5000, 4000, 2)
+GO
+
+INSERT INTO [dbo].[Statistics] ([Strength], [Intelligence], [Stamina], [HeroID])
+VALUES (500 ,4000, 1000, 3)
+GO
+
+CREATE PROCEDURE dbo.GetHeroList
+(
+	@HeroID int = NULL
+)
+AS
+SELECT h.HeroID, [Name], [Power], s.Strength, s.Intelligence, s.Stamina
+FROM Heroes h
+INNER JOIN [Statistics] s ON s.HeroID = h.HeroID
+WHERE h.HeroID = @HeroID
+	OR @HeroID IS NULL
+
+GO
+
+CREATE PROCEDURE dbo.UpdateStatistics
+(
+	@HeroID int,
+	@Strength int,
+	@Intelligence int,
+	@Stamina int
+)
+AS 
+UPDATE [Statistics]
+SET
+	Strength = @Strength, 
+	Intelligence = @Intelligence, 
+	Stamina = @Stamina
+WHERE HeroID = @HeroID
+
+GO

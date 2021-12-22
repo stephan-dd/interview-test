@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+  links = [
+    // { 'path': '/', 'name': 'Home' },
+    { 'path': '/heroes', 'name': 'Heroes' },
+    { 'path': '/guide', 'name': 'Guide' }
+  ]
 }
