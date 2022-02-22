@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/src/styles.scss">
+<h2 class="heading">Tour Of Heroes</h2>
+
+<div class="container mt-5">
+
+  <table class="table table-striped" id="heroTable">
+    <thead>
+        <tr>
+          <th>Name</th>
+          <th>Power</th>
+          <th>Stats (Strength)</th>
+          <th>Stats (Intelligence)</th>
+          <th>Stats (Stamina)</th>
+          <th>Evolve</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts">
+        <td>{{ contact?.name }}</td>                        <!-- NAME COL -->
+        <td>{{ contact?.power }}</td>                       <!-- POWER COL -->
+        <td>{{ contact.stats[0].value }}</td> <!-- STRENGTH COL -->
+        <td>{{ contact.stats[1].value }}</td>            <!-- INTELLIGENCE COL -->
+        <td>{{ contact.stats[2].value }}</td>                        <!-- STAMINA COL -->
+        <td><button class="editbtn" (click)="Evolve();">Evolve</button></td> 
+      </tr>
+    </tbody>
+  </table>
+</div>

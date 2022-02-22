@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+// create 4 color related classes with different font weights and colors and backgrounds.
+
+.heading{
+    color: blue;
+    text-align: center;
+}
+
+.strength{
+    font-weight: 100;
+    color: yellow;
+    background-color: black;
+}
+
+.intelligence{
+    font-weight: 100;
+    color: blue;
+    background-color: gray;
+}
+
+.stamina{
+    font-weight: 100;
+    color: red;
+    background-color: slategray;
+}
+table{
+    text-align: center;
+    width: 100%;
+}
