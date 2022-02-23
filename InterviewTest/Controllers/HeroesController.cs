@@ -19,9 +19,9 @@ namespace InterviewTest.Controllers
                    stats=
                    new List<KeyValuePair<string, int>>()
                    {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
+                       new KeyValuePair<string, int>( "Strength", 5000 ),
+                       new KeyValuePair<string, int>( "Intelligence", 50),
+                       new KeyValuePair<string, int>( "Stamina", 2500 )
                    }
                },
                new Hero() //Just added another 'Hero'
@@ -31,9 +31,9 @@ namespace InterviewTest.Controllers
                    stats=
                        new List<KeyValuePair<string, int>>()
                        {
-                           new KeyValuePair<string, int>( "strength", 2000 ),
-                           new KeyValuePair<string, int>( "intelligence", 1000),
-                           new KeyValuePair<string, int>( "stamina", 2500 )
+                           new KeyValuePair<string, int>( "Strength", 2000 ),
+                           new KeyValuePair<string, int>( "Intelligence", 1000),
+                           new KeyValuePair<string, int>( "Stamina", 2500 )
                        }
                }
 
@@ -55,23 +55,22 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public Hero Post(string value)
+        public Hero Post(Hero hero, string value = "none")
         {
             //Added Post Logic To Evolve a 'Hero'
-            Hero Nhero = new Hero();
-            var statList = new List<KeyValuePair<string, int>>();
-
-
-            foreach (var hero in heroes)
-            { 
-                hero.evolve(5);
-                Nhero.name = hero.name;
-                Nhero.power = hero.power;
-                statList = (hero.statsNew);
-                Nhero.stats = statList;
+            if (hero.action.ToLower() == "action")
+            {
+                value = "action";
             }
 
-            return Nhero;
+
+            if (value == "action")
+            {
+                hero.evolve(0.5);
+            }
+              
+
+            return hero;
 
         }
 

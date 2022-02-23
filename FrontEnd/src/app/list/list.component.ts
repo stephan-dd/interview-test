@@ -3,6 +3,7 @@ import {ApiService} from 'src/services/api.service';
 import { Contactmodel } from '../model/contactmodel';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-list',
@@ -12,44 +13,47 @@ import { Observable } from 'rxjs/internal/Observable';
 
 // export class ListComponent implements OnInit {
   export class ListComponent {
-    contacts : Contactmodel[];  
-    constructor(private apiserv : ApiService, private http: HttpClient)
-    {   
-      //Get API data and assign it to local variable 'contacts'
-        this.apiserv.GetAllContacts().subscribe((contacts:Contactmodel[]) => {   
-          this.contacts = contacts;  
-        }); 
-    }
-    //#region Experimental Code (For reviewers curiosity)   
-   
-  // ngOnInit()
-  // {
+    heroes: Hero[] = []; 
+    evolveHero: Hero;
+    constructor(private apiserv : ApiService, private http: HttpClient){}
 
-  //   // document.getElementsByClassName('namerow')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // document.getElementsByClassName('powerrow')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // document.getElementsByClassName('strengthrow')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // document.getElementsByClassName('intelligencerow')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // document.getElementsByClassName('staminarow')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // document.getElementsByClassName('editbtn')[0].classList.add('color'+ getRndInteger(1,3));
-  //   // let eggcount = 20;
-  //   // var html = 
-  //   // '<table class="table table-striped" id="heroTable"><thead><tr><th>${eggCount}</th><th>Power</th><th>Stats (Strength)</th><th>Stats (Intelligence)</th><th>Stats (Stamina)</th><th>Evolve</th></tr></thead><tbody><tr *ngFor="let contact of contacts"><td class="color"${getRndInteger(1,4)} >{{ contact?.name }}</td><td class="color">{{ contact?.power }}</td> <td class="color">{{ contact.stats[0].value }}</td> <td class="color">{{ contact.stats[1].value }}</td> <td class="color">{{ contact.stats[2].value }}</td>  <td><button class="editbtn" (click)="Evolve();">Evolve</button></td> </tr></tbody></table></div>';
 
-  //   // //
-  //   // //document.getElementById('hello').innerHTML = html;
-  //   // console.log("color" + getRndInteger(1,4));
- 
-  // }
-    ngAfterViewInit(){
-      console.log("Loaded");
-      //randomizeTable();
+    ngOnInit() {
+      this.getHeroes();
     }
-     //#endregion
 
-    //Sends Post to evolve to API, does not refresh table data
-    Evolve(){ 
-      this.apiserv.evolve(this.contacts);
+    getHeroes(): void {
+      this.apiserv
+        .GetAllHeroes()
+        .subscribe(heroes => (this.heroes = heroes));
     }
+
+    EvolveHero(hero: Hero) {
+      this.evolveHero = hero;
+  
+      this.evolveHero.action = "action";
+  
+      if (this.evolveHero) {
+        this.apiserv
+          .evolve(this.evolveHero)
+          .subscribe(hero => {
+              //Get the selected hero and then update the values, after that update evolveHero to reflect the changes
+              const heroSelectedIndex = this.heroes.findIndex(h => h.name === hero.name);
+              this.heroes[heroSelectedIndex] = hero;
+              this.UpdateHeroEvolved(hero); // Show which hero evolved on top of the table.
+            });
+      }
+    }
+      //When a Hero has evolved it displays it at the top of the Table, generating 'innerHTML' values.
+    UpdateHeroEvolved(hero: Hero): void{
+      this.evolveHero = hero;
+      document.getElementById("evolvedHeroInfo")
+        .innerHTML = `${this.evolveHero.name} updated to = 
+                      ${this.evolveHero.stats[0].key} : ${this.evolveHero.stats[0].value}, 
+                      ${this.evolveHero.stats[1].key} : ${this.evolveHero.stats[1].value}, 
+                      ${this.evolveHero.stats[2].key} : ${this.evolveHero.stats[2].value}`;
+    }
+
 
     //Change HTML foreground color with switch statement
     getRandomColor(min, max) {

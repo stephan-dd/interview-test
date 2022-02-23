@@ -8,23 +8,32 @@
 }
 
 .color1{
+    background-color: Red;
     font-weight: 100;
-    color: yellow;
-    background-color: black;
+    color: gold;
 }
 
 .color2{
+    background-color: Black;
     font-weight: 150;
-    color: blue;
-    background-color: gray;
+    color: White;
 }
 
 .color3{
+    background-color: dimgray;
     font-weight: 200;
-    color: red;
-    background-color: slategray;
+    color: Red;
+}
+
+.color4{
+    background-color: Pink;
+    font-weight: 250;
+    color: White;
 }
 table{
+    border: 1px solid black;
+    border-bottom: 4px solid black;
+    border-collapse: collapse;
     text-align: center;
     width: 100%;
 }

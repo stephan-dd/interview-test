@@ -5,7 +5,7 @@ import { Component, OnInit  } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Tour Of Heroes';
 
   constructor(){  
   }  

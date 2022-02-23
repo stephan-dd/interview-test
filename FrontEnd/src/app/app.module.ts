@@ -19,7 +19,6 @@ import { ListComponent } from './list/list.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule
-
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

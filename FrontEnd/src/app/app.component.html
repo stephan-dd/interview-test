@@ -12,19 +12,25 @@ Lack of using angular, resulted in:
 <ol>
   <li> 
     <p>
-      when the button is clicked, it should post the hero name and action to the relevant endpoint -
-      Could not figure out in time how to post the 'evolve' command to reflect the new data in the table.
+     Font-weight does not want to change, did not continue with this, for the sake if time.
    </p>
   </li>
   <li> 
     <p>
-     Font-weight does not want to change, did not continue with this, for the sake if time.
+     Googled how to : 'display the updated stats above the table "Hero updated with Stats",
+     replacing the name and the stats',
+     cause I have not worked with ASP.NET raw.
    </p>
   </li>
 </ol>
 
 End result:
 <ol>
+  <li> 
+    <p>
+      Posts Hero to relevant endpoint.
+   </p>
+  </li>
   <li> 
     <p>
         FrontEnd can receive and display data from the C# API.
@@ -40,8 +46,12 @@ End result:
         Background and foreground color can randomize on each row, did not create a randomizer for each CSS class (Time constraint).
    </p>
   </li>
+  <li> 
+    <p>
+        Changed C# code to increment with double value for more precise increments
+   </p>
+  </li>
 </ol>
 
-<router-outlet></router-outlet>
-
 <app-list></app-list> <!-- List Component Load -->
+<router-outlet></router-outlet>
