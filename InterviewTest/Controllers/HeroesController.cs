@@ -24,7 +24,7 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
                },
-               new Hero()
+               new Hero() //Just added another 'Hero'
                {
                    name= "Iron Man",
                    power="Genius, Billionaire, Playboy philanthropist",
@@ -57,6 +57,7 @@ namespace InterviewTest.Controllers
         [HttpPost]
         public Hero Post(string value)
         {
+            //Added Post Logic To Evolve a 'Hero'
             Hero Nhero = new Hero();
             var statList = new List<KeyValuePair<string, int>>();
 

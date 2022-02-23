@@ -10,11 +10,14 @@ export class ApiService
 {
   constructor(private http: HttpClient) {  
   }
-  baseURL: string = "http://localhost:4201/api/heroes";
+  baseURL: string = "http://localhost:4201/api/heroes"; //Internal variable for API address
+
+  //Get all contacts from API list and create an Observable Collection
   GetAllContacts(): Observable<Contactmodel[]> {  
     return this.http.get<Contactmodel[]>('http://localhost:4201/api/heroes').pipe(map(((res =>res))));  
   }  
 
+  //POST method to 'evolve' on the API side (This works in POSTMAN, but not in code).
   evolve(contact:Contactmodel[]): Observable<any> {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(contact);

@@ -1,20 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
 import {ApiService} from 'src/services/api.service'; 
-//import { Contactmodel } from '../model/contactmodel';
+import { Contactmodel } from '../model/contactmodel';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-
-
-interface  Contactmodel {
-  name : string;  
-  power : string;  
-  stats :
-  {
-      strength: number;
-      intelligence: number;
-      stamina: number;
-  }
-}
 
 @Component({
   selector: 'app-list',
@@ -22,43 +10,109 @@ interface  Contactmodel {
   styleUrls: ['./list.component.scss']
 })
 
-export class ListComponent implements OnInit {
-  contacts : Contactmodel[];  
-  stringifiedData: any;  
-  parsedJson: any;    
-  objectKeys : Object;
-  data = [{"status":57}];
-  constructor(private apiserv : ApiService, private http: HttpClient)
-  {  
-      console.log(this.contacts);  
-      this.apiserv.GetAllContacts().subscribe((contacts:Contactmodel[]) => {   
-        this.contacts = contacts;  
-        this.objectKeys = Object.keys(contacts);
-      }); 
-  }
+// export class ListComponent implements OnInit {
+  export class ListComponent {
+    contacts : Contactmodel[];  
+    constructor(private apiserv : ApiService, private http: HttpClient)
+    {   
+      //Get API data and assign it to local variable 'contacts'
+        this.apiserv.GetAllContacts().subscribe((contacts:Contactmodel[]) => {   
+          this.contacts = contacts;  
+        }); 
+    }
+    //#region Experimental Code (For reviewers curiosity)   
+   
+  // ngOnInit()
+  // {
 
-  public contacts2: any = this.apiserv.GetAllContacts();
-  ngOnInit(): void
-  {
-  }
+  //   // document.getElementsByClassName('namerow')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // document.getElementsByClassName('powerrow')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // document.getElementsByClassName('strengthrow')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // document.getElementsByClassName('intelligencerow')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // document.getElementsByClassName('staminarow')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // document.getElementsByClassName('editbtn')[0].classList.add('color'+ getRndInteger(1,3));
+  //   // let eggcount = 20;
+  //   // var html = 
+  //   // '<table class="table table-striped" id="heroTable"><thead><tr><th>${eggCount}</th><th>Power</th><th>Stats (Strength)</th><th>Stats (Intelligence)</th><th>Stats (Stamina)</th><th>Evolve</th></tr></thead><tbody><tr *ngFor="let contact of contacts"><td class="color"${getRndInteger(1,4)} >{{ contact?.name }}</td><td class="color">{{ contact?.power }}</td> <td class="color">{{ contact.stats[0].value }}</td> <td class="color">{{ contact.stats[1].value }}</td> <td class="color">{{ contact.stats[2].value }}</td>  <td><button class="editbtn" (click)="Evolve();">Evolve</button></td> </tr></tbody></table></div>';
 
-  typeToString(value: any[]){
-    console.log("Original : " + value);
-    this.stringifiedData = JSON.stringify(value);
-    this.parsedJson = JSON.parse(this.stringifiedData);  
-    console.log("Parsed : " + this.parsedJson);
-    return this.parsedJson;
-  }
+  //   // //
+  //   // //document.getElementById('hello').innerHTML = html;
+  //   // console.log("color" + getRndInteger(1,4));
+ 
+  // }
+    ngAfterViewInit(){
+      console.log("Loaded");
+      //randomizeTable();
+    }
+     //#endregion
 
-  Evolve(){ 
-    this.apiserv.evolve(this.contacts);
-  }
+    //Sends Post to evolve to API, does not refresh table data
+    Evolve(){ 
+      this.apiserv.evolve(this.contacts);
+    }
 
-  // this.http.post<any>('http://localhost:4201/api/heroes/post', { title: 'Angular POST Request Example' }).subscribe(data => {
-  // })
+    //Change HTML foreground color with switch statement
+    getRandomColor(min, max) {
+      var randomint = Math.floor(Math.random() * (max - min)) + min;
+      var randomVal = "color"+ randomint;
+      console.log("Random Color # : " + randomVal);
+      switch(randomVal){
+        case "color1":
+          return "White";
+        break;
+
+        case "color2":
+          return "LightGreen";
+        break;
+
+        case "color3":
+          return "Orange";
+        break;
+      }
+    }
+    //Change HTML background color with switch statement
+    getBackgroundRandomColor(min, max) {
+      var randomint = Math.floor(Math.random() * (max - min)) + min;
+      var randomVal = "color"+ randomint;
+      console.log("Random Color # : " + randomVal);
+      switch(randomVal){
+        case "color1":
+          return "Grey";
+        break;
+
+        case "color2":
+          return "Black";
+        break;
+
+        case "color3":
+          return "Purple";
+        break;
+      }
+    }
+    //Change HTML font-weight with switch statement
+    getRandomFont(min, max) 
+    {
+      var randomint = Math.floor(Math.random() * (max - min)) + min;
+      var randomVal = "font"+ randomint;
+      console.log("Random Font # : " + randomVal);
+      switch(randomVal)
+      {
+        case "font1":
+          return '100';
+        break;
+
+        case "font2":
+          return '150';
+        break;
+
+        case "font3":
+          return '200';
+        break;
+      }
+    }
+  }
  
 
-}
 
 
 

@@ -1,28 +1,33 @@
-<link rel="stylesheet" href="/src/styles.scss">
-<h2 class="heading">Tour Of Heroes</h2>
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="/src/styles.scss">
+  <h2 class="heading">Tour Of Heroes</h2>
+  <body>
+    <div class="container mt-5">
 
-<div class="container mt-5">
-
-  <table class="table table-striped" id="heroTable">
-    <thead>
-        <tr>
-          <th>Name</th>
-          <th>Power</th>
-          <th>Stats (Strength)</th>
-          <th>Stats (Intelligence)</th>
-          <th>Stats (Stamina)</th>
-          <th>Evolve</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let contact of contacts">
-        <td>{{ contact?.name }}</td>                        <!-- NAME COL -->
-        <td>{{ contact?.power }}</td>                       <!-- POWER COL -->
-        <td>{{ contact.stats[0].value }}</td> <!-- STRENGTH COL -->
-        <td>{{ contact.stats[1].value }}</td>            <!-- INTELLIGENCE COL -->
-        <td>{{ contact.stats[2].value }}</td>                        <!-- STAMINA COL -->
-        <td><button class="editbtn" (click)="Evolve();">Evolve</button></td> 
-      </tr>
-    </tbody>
-  </table>
-</div>
+      <table class="table table-striped" id="heroTable">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Power</th>
+              <th>Stats (Strength)</th>
+              <th>Stats (Intelligence)</th>
+              <th>Stats (Stamina)</th>
+              <th>Evolve</th>
+            </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through contacts in 'list.components.ts' -->
+          <tr *ngFor="let contact of contacts" [style.background-color] = "getBackgroundRandomColor(1,4)" [style.color] = "getRandomColor(1,4)" [style.font-weight]=100>
+            <td class="herodetail" id="namerow" >{{ contact?.name }}</td>  
+            <td class="herodetail" id="powerrow">{{ contact?.power }}</td>                                         
+            <td class="herodetail" id="strengthrow">{{ contact.stats[0].value }}</td>                                
+            <td class="herodetail" id="intelligencerow">{{ contact.stats[1].value }}</td>                                
+            <td class="herodetail" id="staminarow">{{ contact.stats[2].value }}</td>                                
+            <td><button class="editbtn" (click)="Evolve();">Evolve</button></td>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body> 
+</html>
