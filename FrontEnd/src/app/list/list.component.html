@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="/src/styles.scss">
+  <h2 class="heading">Tour Of Heroes</h2>
+  <body>
+    <div class="container mt-5">
+      <table class="center">
+        <tr>
+          <td><label id="evolvedHeroInfo" ></label></td>
+        </tr>
+      </table>
+      <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Power</th>
+              <th>Stats (Strength)</th>
+              <th>Stats (Intelligence)</th>
+              <th>Stats (Stamina)</th>
+              <th>Evolve</th>
+            </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through contacts in 'list.components.ts' -->
+          <tr *ngFor="let hero of heroes" [style.background-color] = "getBackgroundRandomColor(1,4)" [style.color] = "getRandomColor(1,4)" [style.font-weight]=100>
+            <td class="herodetail" id="namerow" >{{ hero?.name }}</td>  
+            <td class="herodetail" id="powerrow">{{ hero?.power }}</td>                                         
+            <td *ngFor="let stat of hero.stats">  <!--Did not want to put a for loop inside another, but did it for now  -->
+              {{stat.value}}
+            </td>                    
+            <td><button class="editbtn" (click)=EvolveHero(hero)>Evolve</button></td>  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body> 
+</html>

@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+// create 4 color related classes with different font weights and colors and backgrounds.
+
+.heading{
+    color: blue;
+    text-align: center;
+}
+
+.color1{
+    background-color: Red;
+    font-weight: 100;
+    color: gold;
+}
+
+.color2{
+    background-color: Black;
+    font-weight: 150;
+    color: White;
+}
+
+.color3{
+    background-color: dimgray;
+    font-weight: 200;
+    color: Red;
+}
+
+.color4{
+    background-color: Pink;
+    font-weight: 250;
+    color: White;
+}
+table{
+    border: 1px solid black;
+    border-bottom: 4px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}

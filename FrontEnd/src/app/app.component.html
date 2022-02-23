@@ -1,10 +1,57 @@
 frontend:
 <ol>
-  <li>create new service called 'api'</li>
-  <li>add 1 method to service to get the contacts from the api located at 'http://localhost:4201/heroes'</li>
-  <li>create new component named 'list'</li>
-  <li>in the component, add the api service and get the list of contacts.</li>
-  <li>display the list on the frontend.</li>
-  <li>There should be a heading (h2) with the title 'Tour of Heroes'.</li>
+  <li style="text-decoration: line-through;">create new service called 'api'</li>
+  <li style="text-decoration: line-through;">add 1 method to service to get the contacts from the api located at 'http://localhost:4201/heroes'</li>
+  <li style="text-decoration: line-through;">create new component named 'list'</li>
+  <li style="text-decoration: line-through;">in the component, add the api service and get the list of contacts.</li>
+  <li style="text-decoration: line-through;">display the list on the frontend.</li>
+  <li style="text-decoration: line-through;">There should be a heading (h2) with the title 'Tour of Heroes'.</li>
 </ol>
+
+Lack of using angular, resulted in:
+<ol>
+  <li> 
+    <p>
+     Font-weight does not want to change, did not continue with this, for the sake if time.
+   </p>
+  </li>
+  <li> 
+    <p>
+     Googled how to : 'display the updated stats above the table "Hero updated with Stats",
+     replacing the name and the stats',
+     cause I have not worked with ASP.NET raw.
+   </p>
+  </li>
+</ol>
+
+End result:
+<ol>
+  <li> 
+    <p>
+      Posts Hero to relevant endpoint.
+   </p>
+  </li>
+  <li> 
+    <p>
+        FrontEnd can receive and display data from the C# API.
+   </p>
+  </li>
+  <li> 
+    <p>
+        Implemented api service, and list component.
+   </p>
+  </li>
+  <li> 
+    <p>
+        Background and foreground color can randomize on each row, did not create a randomizer for each CSS class (Time constraint).
+   </p>
+  </li>
+  <li> 
+    <p>
+        Changed C# code to increment with double value for more precise increments
+   </p>
+  </li>
+</ol>
+
+<app-list></app-list> <!-- List Component Load -->
 <router-outlet></router-outlet>

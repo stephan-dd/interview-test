@@ -19,11 +19,24 @@ namespace InterviewTest.Controllers
                    stats=
                    new List<KeyValuePair<string, int>>()
                    {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
+                       new KeyValuePair<string, int>( "Strength", 5000 ),
+                       new KeyValuePair<string, int>( "Intelligence", 50),
+                       new KeyValuePair<string, int>( "Stamina", 2500 )
                    }
+               },
+               new Hero() //Just added another 'Hero'
+               {
+                   name= "Iron Man",
+                   power="Genius, Billionaire, Playboy philanthropist",
+                   stats=
+                       new List<KeyValuePair<string, int>>()
+                       {
+                           new KeyValuePair<string, int>( "Strength", 2000 ),
+                           new KeyValuePair<string, int>( "Intelligence", 1000),
+                           new KeyValuePair<string, int>( "Stamina", 2500 )
+                       }
                }
+
             };
 
         // GET: api/Heroes
@@ -42,8 +55,23 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post(Hero hero, string value = "none")
         {
+            //Added Post Logic To Evolve a 'Hero'
+            if (hero.action.ToLower() == "action")
+            {
+                value = "action";
+            }
+
+
+            if (value == "action")
+            {
+                hero.evolve(0.5);
+            }
+              
+
+            return hero;
+
         }
 
         // PUT: api/Heroes/5
