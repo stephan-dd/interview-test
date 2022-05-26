@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h2 class="heading">Tour Of Heroes</h2>
+  <table class="table table-striped" id="heroTable">
+    <thead>
+        <tr>
+          <th>Name</th>
+          <th>Power</th>
+          <th>Stats (Strength)</th>
+          <th>Stats (Intelligence)</th>
+          <th>Stats (Stamina)</th>
+          <th>Evolve</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hero of heroes">
+        <td>{{ hero?.name }}</td>
+        <td>{{ hero?.power }}</td>
+        <td>{{ hero.stats[0].value }}</td>
+        <td>{{ hero.stats[1].value }}</td>
+        <td>{{ hero.stats[2].value }}</td>
+        <td><button class="btn btn-secondary" (click)="Evolve(hero?.name)">Evolve</button></td> 
+      </tr>
+    </tbody>
+  </table>
+</div>

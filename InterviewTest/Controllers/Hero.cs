@@ -5,14 +5,32 @@ using System.Threading.Tasks;
 
 namespace InterviewTest.Controllers
 {
-    public class Hero
+    public interface IHero
+    {
+        string name { get; set; }
+        string power { get; set; }
+        List<KeyValuePair<string, int>> stats { get; set; }
+        void evolve(int statIncrease = 5);
+    }
+
+    public class Hero : IHero
     {
         public string name { get; set; }
         public string power { get; set; }
-        public List<KeyValuePair<string, int>> stats {get;set;}
+        public string action { get; set; }
+        public List<KeyValuePair<string, int>> stats { get; set; }
         public void evolve(int statIncrease = 5)
         {
-            
+            var diction = new List<KeyValuePair<string, int>>();
+            foreach (KeyValuePair<string, int> kvp in stats)
+            {
+                var newVal = kvp.Value + kvp.Value * 1 / 2;
+                var newEntry = new KeyValuePair<string, int>(kvp.Key, newVal);
+                var removeOldItem = stats.Where(x => x.Key == kvp.Key).SingleOrDefault();
+                diction.Add(newEntry);
+            }
+
+            stats = diction;
         }
     }
 }
