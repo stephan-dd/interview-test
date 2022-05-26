@@ -42,7 +42,6 @@ namespace InterviewTest.Controllers
         }
 
         // POST: api/Heroes
-        [Route("Post")]
         [HttpPost]
         public IActionResult Post(string name, string action)
         {
