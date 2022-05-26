@@ -15,9 +15,9 @@ export class ListComponent implements OnInit {
   }
 
   Evolve(name) {
-    this.apiService.evolve('evolve', name).subscribe(
-      response => {      
-        console.log(response);
+    this.apiService.evolve(name, 'evolve').subscribe(
+      response => {  
+        this.heroes = response;
       },
       err => {
         console.log(err);

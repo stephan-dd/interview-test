@@ -16,7 +16,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   evolve(name, action): Observable<any> {
-    return this.http.post(this.baseUrl + '?name=' + `${name}&action=${action}`, httpOptions);
+    return this.http.post(this.baseUrl + '/post?name=' + `${name}&action=${action}`, httpOptions);
   }
 
   getHeroes(): Observable<any> {
