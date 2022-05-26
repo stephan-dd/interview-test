@@ -43,7 +43,7 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public IActionResult Post(string name, string action)
+        public IActionResult Post(string name, string action = "none")
         {
             var hero = new Hero();
 
