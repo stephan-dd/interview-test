@@ -11,8 +11,9 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
+        private readonly List<Hero> heroes = new List<Hero>
+        {
+            new Hero()
                {
                    name= "Hulk",
                    power="Strength from gamma radiation",
@@ -24,7 +25,7 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
                }
-            };
+        };
 
         // GET: api/Heroes
         [HttpGet]
@@ -42,8 +43,22 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(string name, string action = "none")
         {
+            var hero = new Hero();
+
+            if (action.Equals("evolve"))
+            {
+                hero = heroes.Where(x => x.name == name).FirstOrDefault();
+
+                if (hero != null)
+                {
+                    hero.evolve();
+                    return Ok(heroes.Where(x => x.name == name).ToList());
+                }
+            }
+
+            return NoContent();
         }
 
         // PUT: api/Heroes/5
