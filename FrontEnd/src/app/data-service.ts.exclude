@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class InMemoryDataService implements InMemoryDbService {
+  createDb() {
+    const contacts = [
+      { id: 1, name: 'Contact 1', power: 3, statStrength: 4, statIntelligence: 7, statStamina: 6 },
+      { id: 2, name: 'Contact 2', power: 5, statStrength: 2, statIntelligence: 5, statStamina: 6  },
+      { id: 3, name: 'Contact 3', power: 5, statStrength: 6, statIntelligence: 7, statStamina: 9  }
+    ];
+    return { contacts };
+  }
+}

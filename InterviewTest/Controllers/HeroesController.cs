@@ -44,6 +44,8 @@ namespace InterviewTest.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            Hero hero = new Hero();
+            hero.evolve();
         }
 
         // PUT: api/Heroes/5
