@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +15,9 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
@@ -42,8 +43,43 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] Hero hero, string value = "none")
         {
+            try
+            {
+                if (hero is null)
+                {
+                    //Do nothing
+                    return new Hero();
+                }
+                else
+                {
+                    if (value == "evolve")
+                    {
+                        return new Hero
+                        {
+                            Name = hero.Name,
+                            Power = hero.Power,
+                            Stats = hero.evolve(hero.Stats)
+                        };
+                    }
+                    else
+                    {
+                        return new Hero
+                        {
+                            Name = hero.Name,
+                            Power = hero.Power,
+                            Stats = hero.Stats
+                        };
+                    }
+                }
+
+            }
+            catch
+            {
+                //Do nothing
+                return new Hero();
+            }
         }
 
         // PUT: api/Heroes/5
