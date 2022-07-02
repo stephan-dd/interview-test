@@ -1,0 +1,27 @@
+<div>
+    <h2 class="heading">Tour of Heroes</h2>
+    <table class="colorRed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Power</th>
+                <th>Stats_Strength</th>
+                <th>Stats_Intelligence</th>
+                <th>Stats_Stamina</th>
+                <th>Evolve</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hero of heroContacts">
+                <th class="colorGray">{{ hero.name }}</th>
+                <td>{{ hero.power }}</td>
+                <td>{{ hero.stats.strength }}</td>
+                <td>{{ hero.stats.intelligence }}</td>
+                <td>{{ hero.stats.stamina }}</td>
+                <td>
+                    <button type="button" click="evolveHero(5)">Evolve</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

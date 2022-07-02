@@ -1,4 +1,8 @@
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+
+#babel and webpacks for new version
+/.angular/cache/14.0.4
 
 # compiled output
 /dist
