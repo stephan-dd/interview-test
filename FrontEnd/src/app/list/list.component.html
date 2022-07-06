@@ -12,7 +12,7 @@
       <td>{{hero.power}}</td>      
       <td><table><tr *ngFor="let stat of hero.stats"><td>{{hero.key}} : {{hero.value}}</td></tr></table></td>
       <td>
-        <button type="button" class="" title="Evolve" value="Evolve">
+        <button type="button" class="btn" (onclick)="add()" title="Evolve" value="Evolve">
           Evolve
         </button>
       </td>

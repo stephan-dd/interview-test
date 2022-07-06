@@ -10,29 +10,11 @@ table{
     width:100%;
 }
 thead{
-    background-color:silver;
+    background-color:rgb(255, 255, 255);
 }
 
-.colorOne {
-  font-weight: 400;
-  color: red;
-  background-color: lightblue;
-}
-
-.colorTwo {
-  font-weight: 200;
-  color: white;
-  background-color: maroon;
-}
-
-.colorThree {
-  font-weight: 600;
-  color: green;
-  background-color: lightyellow;
-}
-
-.colorFour {
-  font-weight: 500;
-  color: white;
-  background-color: black;
+.btn
+{
+    color: white;
+    background-color: black;
 }

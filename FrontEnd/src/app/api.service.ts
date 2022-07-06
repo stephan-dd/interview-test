@@ -26,7 +26,7 @@ export class ApiService {
       );
   }
 
-  addContact(hero: Hero): Observable<Hero> {
+  addHero(hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.webApi, hero, this.httpOptions).pipe(
       tap((newHero: Hero) => console.log(`hero added`)),
       catchError(this.onError<Hero>('addHero'))
