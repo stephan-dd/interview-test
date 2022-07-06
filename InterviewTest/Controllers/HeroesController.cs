@@ -28,11 +28,12 @@ namespace InterviewTest.Controllers
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
+    
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)

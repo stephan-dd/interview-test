@@ -1,3 +1,21 @@
-<p>
-  list works!
-</p>
+
+<h2 class="heading">Tour of Heroes</h2>
+
+<table>
+  <thead>
+    <tr><td>Name</td><td>Power</td><td>Stats</td></tr>
+  </thead>
+  <tbody>
+    <tr></tr>
+    <tr *ngFor="let contact of contacts">
+      <td>{{hero.name}}</td>
+      <td>{{hero.power}}</td>      
+      <td><table><tr *ngFor="let stat of hero.stats"><td>{{hero.key}} : {{hero.value}}</td></tr></table></td>
+      <td>
+        <button type="button" class="" title="Evolve" value="Evolve">
+          Evolve
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
