@@ -1,0 +1,30 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">power</th>
+      <th scope="col">stat (strength)</th>
+      <th scope="col">stat (intelligence)</th>
+      <th scope="col">stat (stamina)</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contactsList">
+      <td>{{contact.name}}</td>
+      <td>{{contact.power}}</td>
+      <td>{{contact.stats[0]?.Value}}</td>
+      <td>{{contact.stats[1]?.Value}}</td>
+      <td>{{contact.stats[2]?.Value}}</td>
+      <td>
+        <button 
+          (click)="evolve()" 
+          class="btn btn-primary">
+          evolve
+        </button>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
