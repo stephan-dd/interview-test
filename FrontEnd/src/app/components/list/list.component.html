@@ -1,0 +1,43 @@
+<div class="container custom-container-2">
+  <div *ngIf="Hero.length !== 0">
+    <h2 class="heading">Tour of Heroes</h2>
+    <div *ngIf="showHeroUpdate" class="col-md-12">
+      <p class="red-color name">Name: {{hero.name}}</p>
+      <p class="red-color power">Power: {{hero.power}}</p>
+      <h6 class="red-color stats">Stats</h6>
+      <p class="red-color stats-value">Strength: {{hero.stats[0].value}}</p>
+      <p class="red-color stats-value">Intelligence: {{hero.stats[1].value}}</p>
+      <p class="red-color stats-value">stamina: {{hero.stats[2].value}}</p>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Power</th>
+            <th>stat(strength)</th>
+            <th>stat(intelligence)</th>
+            <th>stat(stamina)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of Hero" [ngStyle]="{'color': getRandomColor()}">
+            <td>{{hero.id}}</td>
+            <td>{{hero.name}}</td>
+            <td>{{hero.power}}</td>
+            <td>{{hero.stats[0].value}}</td>
+            <td>{{hero.stats[1].value}}</td>
+            <td>{{hero.stats[2].value}}</td>
+            <td>
+              <button class="evolve-btn" (click)="evolve(hero.id)">Evolve</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
