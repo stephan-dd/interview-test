@@ -29,8 +29,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
+            
           },
           "configurations": {
             "production": {
@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "frontend"
+  "defaultProject": "frontend",
+  "cli": {
+    "analytics": "a41399ea-5a49-47c7-90d5-b12b0e11f51d"
+  }
 }

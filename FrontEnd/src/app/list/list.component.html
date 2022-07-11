@@ -1,0 +1,37 @@
+
+<h2 class="Heading">Tour of Heroes</h2>
+
+<table mdbTable bordered="true" style="border: 1px;" >
+    <thead>
+       <tr>
+            <th>Name</th>
+            <th>Power</th>
+            <th>Stat(Strength)</th>
+            <th>Stat(Intelligence)</th>
+            <th>Stat(Stamina)</th>
+            <th></th>
+       </tr> 
+    </thead>
+    <tbody>
+        <tr *ngFor="let heroe of Heroes">
+            <td>
+                <span>{{heroe.name}}</span>
+            </td>
+            <td>
+                <span>{{heroe.power}}</span>
+            </td>
+            <td>
+                <span>{{heroe.stats[0].value}}</span>
+            </td>
+            <td>
+                <span>{{heroe.stats[1].value}}</span>
+            </td>
+            <td>
+                <span>{{heroe.stats[2].value}}</span>
+            </td>
+            <td>
+                <span><button type="button"(click)="onEvolve(heroe.name)" mat-button  color="primary" clickable>Evolve</button></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
