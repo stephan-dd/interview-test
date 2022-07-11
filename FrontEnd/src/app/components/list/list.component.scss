@@ -16,7 +16,6 @@ h2.heading {
 }
 
 
-
 table { 
 	width: 750px; 
 	border-collapse: collapse; 
@@ -30,18 +29,47 @@ tr:nth-of-type(odd) {
 
 th { 
 	background: #3498db; 
+  border: 1px solid rgb(49, 41, 95); 
 	color: white; 
-	font-weight: bold; 
+	font-weight: 2900 bold;
+  font-size: 22px; 
 	}
 
-td, th { 
+td { 
 	padding: 10px; 
 	border: 1px solid rgb(49, 41, 95); 
 	text-align: left; 
 	font-size: 18px;
 	}
   
-
+  .name {  
+    background: #f1a9a9; 
+    border: 1px solid rgb(49, 41, 95); 
+    font-weight: 900;
+    color:rgb(42, 165, 147);
+    font-size: 18px; 
+    }
+  .power { 
+    background: #a9c7f1; 
+    border: 1px solid rgb(49, 41, 95); 
+    color: rgb(157, 46, 46); 
+    font-weight: bold;
+    font-size: 16px; 
+    }
+  .stats {  
+    background: #a9f1cb; 
+    border: 1px solid rgb(49, 41, 95); 
+    font-weight: normal;
+    color:rgb(93, 22, 144);
+    font-size: 14px; 
+    }
+  .stats-value {  
+    background: #577e69; 
+    border: 1px solid rgb(49, 41, 95); 
+    font-weight: normal;
+    color:rgb(251, 251, 251);
+    font-size: 12px; 
+    }
 
 /* 
 This query will take effect for any screen smaller than 760px
