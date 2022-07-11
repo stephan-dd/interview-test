@@ -49,17 +49,23 @@ namespace InterviewTest.Controllers
             // which defaults to none if the action is evolve
             // it should evolve the hero and return the hero with its new stats.
 
-            Hero obj = new Hero();
-            obj.evolve();
+            Hero superHero = new Hero();
+            superHero.evolve();
 
-            hero.stats = obj.stats;
+            hero.stats = superHero.stats;
             return hero;
         }
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IHero Put(int id, [FromBody] Hero hero)
         {
+            Hero superHero = new Hero();
+            superHero.stats = hero.stats;
+            superHero.evolve();
+
+            hero.stats = superHero.stats;
+            return hero;
         }
 
         // DELETE: api/ApiWithActions/5
