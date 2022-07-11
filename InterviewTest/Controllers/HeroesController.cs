@@ -60,6 +60,8 @@ namespace InterviewTest.Controllers
         [HttpPut("{id}")]
         public IHero Put(int id, [FromBody] Hero hero)
         {
+            // Evolve the hero and return the hero with its new stats.
+
             Hero superHero = new Hero();
             superHero.stats = hero.stats;
             superHero.evolve();
