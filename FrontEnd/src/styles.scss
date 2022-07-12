@@ -1,1 +1,116 @@
 /* You can add global styles to this file, and also import other style files */
+.heading {
+    text-align: center;
+    color: blue;
+}
+
+.center {
+    text-align: center;
+}
+
+.bold {
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgba(255, 145, 0, 0.459);
+}
+
+  p {
+    text-align: center;
+    font-style: italic;
+    font-weight: 800;
+    color: rgb(255, 0, 106);
+  }
+
+.style-0 {
+    color: purple;
+    font-weight: 100;
+    font-size: 20px;
+    background-color: rgb(255, 240, 248);
+}
+
+.style-1 {
+    color: red;
+    font-weight: 200;
+    font-size: 30px;
+    background-color: aliceblue;
+}
+
+.style-2 {
+    color: rgb(68, 0, 255);
+    font-weight: 300;
+    font-size: 35px;
+    background-color: #ecd6d6;
+}
+
+.style-3 {
+    color: green;
+    font-weight: 400;
+    font-size: 40px;
+    background-color: rgb(255, 253, 240);
+}
+
+/*  TABLE */
+
+#heros {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #heros td, #heros th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #heros tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #heros tr:hover {background-color: #ddd;}
+  
+  #heros th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+/* BUTTONS */
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  }
+
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+
