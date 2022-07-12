@@ -11,6 +11,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+        private readonly IHero _hero;
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -25,7 +26,10 @@ namespace InterviewTest.Controllers
                    }
                }
             };
-
+        public HeroesController(IHero hero)
+        {
+            _hero = hero;
+        }
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<Hero> Get()
@@ -42,9 +46,29 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post(HeroAction action)
         {
+            var hero = heroes.Where(x => x.name == action.name).FirstOrDefault();
+            var heroStats = new List<KeyValuePair<string, int>>();
+            if (action.action == "evolve")
+            {
+                foreach (var item in hero.stats)
+                {
+                    int newStatValue = _hero.evolve(item.Value);
+                    var newStat = new KeyValuePair<string, int>(item.Key, newStatValue);
+                    heroStats.Add(newStat);
+                }
+                hero.stats = heroStats;
+            }
+           
+            return hero;
         }
+
+        // POST: api/Heroes
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]
