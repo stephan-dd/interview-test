@@ -1,0 +1,26 @@
+<h2 class="heading">
+  Tour of Heroes
+</h2>
+
+<p *ngIf="name != ''">Hero <span class="{{myclass}}">{{name}}</span> has been pumped with extra power!</p>
+
+<table class="center">
+  <tr>
+    <th>Name</th>
+    <th>Power</th>
+    <th>Stats</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let hero of heroesList; let i = index" class="style-{{i}}">
+    <td>{{hero.name}}</td>
+    <td>{{hero.power}}</td>
+    <td>
+      <span *ngFor="let stat of hero.stats">
+        {{stat.key}} - {{stat.value}} <br>
+      </span>
+    </td>
+    <td>
+      <button class="btn success" (click)="evolve(hero.name, i)">Evolve</button>
+    </td>
+  </tr>
+</table>

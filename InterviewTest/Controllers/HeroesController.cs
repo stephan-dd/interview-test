@@ -15,14 +15,50 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
+                   name= "Hulk0",
+                   power="Strength from stars",
                    stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Hulk1",
+                   power="Strength from snow",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 3000 ),
+                       new KeyValuePair<string, int>( "intelligence", 40),
+                       new KeyValuePair<string, int>( "stamina", 3500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Hulk2",
+                   power="Strength from hot water",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 4000 ),
+                       new KeyValuePair<string, int>( "intelligence", 70),
+                       new KeyValuePair<string, int>( "stamina", 3500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Hulk3",
+                   power="Strength from gamma radiation",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 10000 ),
+                       new KeyValuePair<string, int>( "intelligence", 150),
+                       new KeyValuePair<string, int>( "stamina", 4300 )
                    }
                }
             };
@@ -50,7 +86,7 @@ namespace InterviewTest.Controllers
         {
             var hero = heroes.Where(x => x.name == action.name).FirstOrDefault();
             var heroStats = new List<KeyValuePair<string, int>>();
-            if (action.action == "evolve")
+            if (action.action == "evolve" && hero != null)
             {
                 foreach (var item in hero.stats)
                 {
