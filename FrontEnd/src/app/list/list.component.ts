@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getHeroes().subscribe((data)=>{
+    this.apiService.getHeroes().subscribe((data) => {
       console.log(data);
       this.heroesList = data;
       this.name = '';
@@ -21,23 +21,27 @@ export class ListComponent implements OnInit {
     });
   }
 
-  evolve(name, index){
+  evolve(name, index) {
     console.log(name);
-    this.apiService.evolve(name).subscribe((data)=>{
+    this.apiService.evolve(name).subscribe((data) => {
       console.log(data);
       this.removeAndAddItem(data, index);
     });
   }
 
   removeAndAddItem(hero: any, i: number) {
-    this.heroesList.forEach((value,index)=>{
-        if(value.name==hero.name){
-          this.heroesList.splice(index,1); //remove
-          //this.heroesList.push(hero); // add
-          this.heroesList.splice(i, 0, hero); // add
-          this.name = hero.name;
-          this.myclass = 'style-' + index;
-        } 
+    this.heroesList.forEach((value, index) => {
+      if (value.name == hero.name) {
+        this.heroesList.splice(index, 1); //remove
+        //this.heroesList.push(hero); // add
+        this.heroesList.splice(i, 0, hero); // add
+        this.name = hero.name;
+        this.myclass = 'style-' + index;
+      }
     });
-} 
+  }
+
+  reset(){
+    this.ngOnInit();
+  }
 }

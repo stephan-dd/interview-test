@@ -4,11 +4,15 @@
 
 <p *ngIf="name != ''">Hero <span class="{{myclass}}">{{name}}</span> has been pumped with extra power!</p>
 
-<table class="center">
+<div class="center">
+  <button *ngIf="name != ''" class="button button1" (click)="reset()">Reset Stats</button>
+</div>
+
+<table class="center" id="heros">
   <tr>
     <th>Name</th>
     <th>Power</th>
-    <th>Stats</th>
+    <th>Statistics</th>
     <th></th>
   </tr>
   <tr *ngFor="let hero of heroesList; let i = index" class="style-{{i}}">
@@ -20,7 +24,7 @@
       </span>
     </td>
     <td>
-      <button class="btn success" (click)="evolve(hero.name, i)">Evolve</button>
+      <button class="button button2" (click)="evolve(hero.name, i)">Evolve</button>
     </td>
   </tr>
 </table>
