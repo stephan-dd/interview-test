@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService, IHero } from '../api.service';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +7,8 @@ import { ApiService } from '../api.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+
+  private heroes: IHero[];
 
   constructor(private apiService: ApiService) {}
 
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
 
   getHeroes() {
     this.apiService.getAllHeroes().subscribe(data => {
-      console.log(JSON.stringify(data));
+      this.heroes = data;
+      console.log(JSON.stringify(this.heroes, null, 1))
     });
   }
 

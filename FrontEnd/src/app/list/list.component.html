@@ -1,3 +1,18 @@
-<p>
-    list works!
-</p>
+<table class="list" cellspacing=0>
+    <tr class="header-row">
+        <th>name</th>
+        <th>power</th>
+        <th>stat (strength)</th>
+        <th>stat (intelligence)</th>
+        <th>stat (stamina)</th>
+        <th>Evolution</th>
+    </tr>
+    <tr *ngFor="let hero of heroes">
+        <td>{{ hero.name }}</td>
+        <td>{{ hero.power }}</td>
+        <td>{{ hero.stats[0].value }}</td>
+        <td>{{ hero.stats[1].value }}</td>
+        <td>{{ hero.stats[2].value }}</td>
+        <td>BUTTON</td>
+    </tr>
+</table>
