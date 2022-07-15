@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,8 @@ namespace InterviewTest.Controllers
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
+            Trace.WriteLine("WOHOO GET");
+
             return this.heroes;
         }
 
@@ -37,13 +40,26 @@ namespace InterviewTest.Controllers
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)
         {
+
             return this.heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<Hero> Post([FromBody] string value)
         {
+            switch (value)
+            {
+                case "evolve":
+                    foreach (Hero hero in this.heroes){
+                        hero.evolve();
+                    }
+                    return this.heroes;
+                    break;
+                default:
+                    return null;
+                    break;
+            }
         }
 
         // PUT: api/Heroes/5
