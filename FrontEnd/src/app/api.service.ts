@@ -9,12 +9,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>("http://localhost:4201/api/heroes");
+  getAllHeroes(): Observable<IHero[]> {
+    return this.http.get<IHero[]>("http://localhost:4201/api/heroes");
   }
 
 }
-interface Hero { 
+export interface IHero { 
   name: string, 
   power: string, 
   stats: [
