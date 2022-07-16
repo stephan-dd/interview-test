@@ -1,3 +1,8 @@
+<div class="update-info">
+    <span *ngIf="updatedHero != undefined">
+        <b>{{ updatedHero.name }} </b> updated with <b>Srength:</b> {{ updatedHero.stats[0].value }}, <b>Intelligence:</b> {{ updatedHero.stats[1].value }}, <b>Stamina:</b> {{ updatedHero.stats[2].value }} 
+    </span>
+</div>
 <table class="list" cellspacing=0>
     <tr class="header-row">
         <th>name</th>
