@@ -31,8 +31,6 @@ namespace InterviewTest.Controllers
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
-            Trace.WriteLine("WOHOO GET");
-
             return this.heroes;
         }
 
@@ -40,7 +38,6 @@ namespace InterviewTest.Controllers
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)
         {
-
             return this.heroes.FirstOrDefault();
         }
 
