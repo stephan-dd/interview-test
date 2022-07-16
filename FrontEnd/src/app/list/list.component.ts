@@ -28,8 +28,6 @@ export class ListComponent implements OnInit {
       if(data != undefined){
         this.updatedHero = data;
         this.heroes.forEach((hero)=>{
-          console.log(data)
-          console.log(hero)
           if(hero.name === name)
             hero.stats = this.updatedHero.stats;
         })
