@@ -13,6 +13,11 @@ export class ApiService {
     return this.http.get<IHero[]>("http://localhost:4201/api/heroes");
   }
 
+  evolveHero(): Observable<IHero[]> {
+    const headers = { 'content-type': 'application/json'};
+    return this.http.post<IHero[]>("http://localhost:4201/api/heroes", '"evolve"', {"headers":headers});
+  }
+
 }
 export interface IHero { 
   name: string, 

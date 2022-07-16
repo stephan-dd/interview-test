@@ -23,4 +23,11 @@ export class ListComponent implements OnInit {
     });
   }
 
+  evolveHero(){
+    this.apiService.evolveHero().subscribe(data => {
+      this.heroes = data;
+      console.log(JSON.stringify(this.heroes, null, 1))
+    });
+  }
+
 }
