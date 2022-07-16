@@ -1,0 +1,152 @@
+// @font-face {
+//     font-family: 'Open Sans';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+// }
+// @font-face {
+//     font-family: 'Open Sans';
+//     font-style: normal;
+//     font-weight: bold;
+//     src: url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
+// }
+// @font-face {
+//     font-family: 'Open Sans';
+//     font-style: normal;
+//     font-weight: lighter;
+//     src: url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhs.ttf) format('truetype');
+// }
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900');
+.update-info {
+    height: 40px;
+    text-align: center;
+}
+
+.list {
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.09);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.09);
+    .header-row {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    tr {
+        th {
+            text-transform: uppercase;
+            padding: 10px 20px;
+            text-align: center;
+            border: none;
+            // font-weight: bold;
+        }
+        td {
+            padding: 10px 20px;
+            text-align: center;
+            button {
+                background: transparent;
+                color: white;
+                border: 1px solid white;
+                padding: 5px 10px;
+                border-radius: 10px;
+                transition: 0.4s;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            button:hover {
+                background: rgba(255, 255, 255, 0.9);
+                transition: 0.4s;
+                color: black
+            }
+        }
+        th,
+        td {
+            font-family: 'Open Sans';
+        }
+    }
+}
+
+// Our 4 random Color CLasses
+.oceanic-teal {
+    background: #2dbecf;
+    th,
+    td {
+        color: white;
+    }
+    th {
+        font-weight: 900;
+    }
+    td {
+        font-weight: 100;
+    }
+}
+
+.ember-red {
+    background: #cf4e2d;
+    th,
+    td {
+        color: white;
+    }
+    th {
+        font-weight: 500;
+    }
+    td {
+        font-weight: 100;
+    }
+}
+
+.emerald-green {
+    background: #68c944;
+    th,
+    td {
+        color: white;
+    }
+    th {
+        font-weight: 100;
+    }
+    td {
+        font-weight: 500;
+    }
+}
+
+.galactic-purple {
+    background: #732dcf;
+    th,
+    td {
+        color: white;
+    }
+    th {
+        font-weight: 900;
+    }
+    td {
+        font-weight: 900;
+    }
+}
+
+// 4 Color related classes 
+// Extra Additions - Fade Animation
+.fade-in {
+    animation: fade 0.5s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in;
+    opacity: 0;
+    ;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0
+    }
+    0% {
+        opacity: 1
+    }
+}

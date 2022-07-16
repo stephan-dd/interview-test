@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -42,8 +43,27 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] string value)
         {
+            string heroName = value.Split(',').First().Trim();
+            string action = value.Split(',').Last().Trim();
+
+            switch (action)
+            {
+                case "evolve":
+                    foreach (Hero hero in this.heroes){
+                        if (hero.name == heroName)
+                        {
+                            hero.evolve();
+                            return hero;
+                        }
+                    }
+                    return null;
+                    break;
+                default:
+                    return null;
+                    break;
+            }
         }
 
         // PUT: api/Heroes/5
