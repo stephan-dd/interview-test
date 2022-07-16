@@ -7,16 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  private baseUrl = "http://localhost:4201/api";
+
   constructor(private http: HttpClient) { }
 
   getAllHeroes(): Observable<IHero[]> {
-    return this.http.get<IHero[]>("http://localhost:4201/api/heroes");
+    return this.http.get<IHero[]>(`${this.baseUrl}/heroes`);
   }
 
   evolveHero(name: string): Observable<IHero[]> {
     const headers = { 'content-type': 'application/json'};
     let payload = `"${name}, evolve"`
-    return this.http.post<IHero[]>("http://localhost:4201/api/heroes", payload, {"headers":headers});
+    return this.http.post<IHero[]>(`${this.baseUrl}/heroes`, payload, {"headers":headers});
   }
 
 }
