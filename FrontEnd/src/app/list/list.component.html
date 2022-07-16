@@ -13,6 +13,6 @@
         <td>{{ hero.stats[0].value }}</td>
         <td>{{ hero.stats[1].value }}</td>
         <td>{{ hero.stats[2].value }}</td>
-        <td><button (click)="evolveHero()">Evolve</button></td>
+        <td><button (click)="evolveHero(hero.name)">Evolve</button></td>
     </tr>
 </table>

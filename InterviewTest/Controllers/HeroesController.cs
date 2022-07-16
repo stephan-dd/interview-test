@@ -48,11 +48,15 @@ namespace InterviewTest.Controllers
         [HttpPost]
         public IEnumerable<Hero> Post([FromBody] string value)
         {
-            switch (value)
+            string heroName = value.Split(',').First().Trim();
+            string action = value.Split(',').Last().Trim();
+
+            switch (action)
             {
                 case "evolve":
                     foreach (Hero hero in this.heroes){
-                        hero.evolve();
+                        if(hero.name == heroName)
+                            hero.evolve();
                     }
                     return this.heroes;
                     break;

@@ -19,14 +19,12 @@ export class ListComponent implements OnInit {
   getHeroes() {
     this.apiService.getAllHeroes().subscribe(data => {
       this.heroes = data;
-      console.log(JSON.stringify(this.heroes, null, 1))
     });
   }
 
-  evolveHero(){
-    this.apiService.evolveHero().subscribe(data => {
+  evolveHero(name: string){
+    this.apiService.evolveHero(name).subscribe(data => {
       this.heroes = data;
-      console.log(JSON.stringify(this.heroes, null, 1))
     });
   }
 
