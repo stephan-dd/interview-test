@@ -9,9 +9,11 @@ import { ApiService, IHero } from '../api.service';
 export class ListComponent implements OnInit {
 
   private heroes: IHero[];
-  private updatedHero: IHero;
+  public updatedHero: IHero;
+  public showStatsUpdate: boolean = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit() {
     this.getHeroes();
@@ -30,6 +32,8 @@ export class ListComponent implements OnInit {
         this.heroes.forEach((hero)=>{
           if(hero.name === name)
             hero.stats = this.updatedHero.stats;
+            this.showStatsUpdate = true;
+            setTimeout(() => {this.showStatsUpdate = false}, 9000)
         })
       }
 
