@@ -9,6 +9,7 @@ import { ApiService, IHero } from '../api.service';
 export class ListComponent implements OnInit {
 
   private heroes: IHero[];
+  private updatedHero: IHero;
 
   constructor(private apiService: ApiService) {}
 
@@ -24,7 +25,16 @@ export class ListComponent implements OnInit {
 
   evolveHero(name: string){
     this.apiService.evolveHero(name).subscribe(data => {
-      this.heroes = data;
+      if(data != undefined){
+        this.updatedHero = data;
+        this.heroes.forEach((hero)=>{
+          console.log(data)
+          console.log(hero)
+          if(hero.name === name)
+            hero.stats = this.updatedHero.stats;
+        })
+      }
+
     });
   }
 
