@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  title = 'frontend';
+  public appPages = [    
+    { title: 'Heros List', url: '/hero-list', icon: 'people' },
+  ];
+    constructor() {}
 }

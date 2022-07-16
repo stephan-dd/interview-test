@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using InterviewTest.Data;
+using InterviewTest.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
@@ -11,51 +10,53 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        // Inject IHero Service to The Controller
+        private readonly IHeroService _heroService;
+
+        public HeroesController(IHeroService heroService)
+        {
+            _heroService = heroService;
+        }        
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public ActionResult<IEnumerable<Hero>> Get()
         {
-            return this.heroes;
+            return Ok(_heroService.GetHeroList());
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        // GET: api/Heroes/hulk
+        [HttpGet("{name}")]
+        public ActionResult<Hero> GetByName(string name)
         {
-            return this.heroes.FirstOrDefault();
+            var hero = _heroService.GetHeroByName(name);
+            if (hero == null)
+            {
+                return NotFound();
+            }
+            return Ok(hero);
         }
 
-        // POST: api/Heroes
+        // POST: api/Heroes/hulk/evolve
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Hero> Post([FromBody] EvolveRequest request)
         {
+            if(request.UserAction.Equals("evolve", System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                var heroes = _heroService.Evolve(request.HeroName);
+                if (heroes == null)
+                {
+                    return BadRequest("Failed to evolve");
+                }
+                return Ok(heroes);
+            }
+            return BadRequest("Only for evolve action");
         }
+    }
+    public class EvolveRequest
+    {
+        public string HeroName { get; set; }
+        public string UserAction { get; set; } = "none";
 
-        // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

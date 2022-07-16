@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header-bar class="bar-stable">
+    <h2 class="heading">{{ title }}</h2>
+</ion-header-bar>
+
+
+
+  <div id="container">
+  <div class="ion-padding">    
+    <ion-row class="header-row" style="color: blue">
+      <ion-col size="6" size-md="4" size-lg="2" tappable (click)="sortBy('ItemName')">
+        Hero Name
+      </ion-col>
+      <ion-col size="2" class="ion-hide-md-down">
+        Power
+      </ion-col>
+      <ion-col size="2">
+        Stat
+      </ion-col>
+    </ion-row>
+
+  <ion-row *ngFor="let hero of heroList;" class="data-row">
+    <ion-col size="3" size-md="4" size-lg="2">
+      {{hero.name}}
+    </ion-col>
+    <ion-col size="6" size-lg="6" size-lg="2">
+      {{hero.power}}
+    </ion-col>
+    <ion-col size="6" size-lg="6" size-lg="2">
+      <ion-row *ngFor="let s of hero.stats;">
+        {{s.key}} {{s.value}}
+      </ion-row>
+    </ion-col>
+    <ion-col size="3" size-md="4" size-lg="2">
+      <ion-button size="small" (click)="evolve(hero.name)">
+        Evolve
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</div>  
+  </div>
+</ion-content>
