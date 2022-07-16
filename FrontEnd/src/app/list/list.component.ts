@@ -11,11 +11,13 @@ export class ListComponent implements OnInit {
   private heroes: IHero[];
   public updatedHero: IHero;
   public showStatsUpdate: boolean = false;
+  public currentColorClass: string = "";
 
   constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
+    this.setRandomColorClass();
     this.getHeroes();
   }
 
@@ -38,6 +40,24 @@ export class ListComponent implements OnInit {
       }
 
     });
+  }
+
+  setRandomColorClass(){
+    let randIndex = Math.floor(Math.random() * 4);
+    switch(randIndex){
+      case 0 :
+        this.currentColorClass =  "oceanic-teal"
+        break;
+      case 1 :
+        this.currentColorClass = "ember-red"
+        break;
+      case 2 :
+        this.currentColorClass = "emerald-green"
+        break;
+      default :
+        this.currentColorClass = "galactic-purple"
+        break;
+    }
   }
 
 }
