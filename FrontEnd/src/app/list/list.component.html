@@ -3,7 +3,7 @@
         <b>{{ updatedHero.name }} </b> updated with <b>Srength:</b> {{ updatedHero.stats[0].value }}, <b>Intelligence:</b> {{ updatedHero.stats[1].value }}, <b>Stamina:</b> {{ updatedHero.stats[2].value }} 
     </span>
 </div>
-<table cellspacing=0 [ngClass]="'list '+currentColorClass">
+<table cellspacing=0 [ngClass]="'list '+currentColorClass" *ngIf="heroes !== undefined && heroes.length>0;  else loggedOut">
     <tr class="header-row">
         <th>name</th>
         <th>power</th>
@@ -21,3 +21,4 @@
         <td><button (click)="evolveHero(hero.name)">Evolve</button></td>
     </tr>
 </table>
+<ng-template #loggedOut> Oh No! The data could not be retrieved </ng-template>

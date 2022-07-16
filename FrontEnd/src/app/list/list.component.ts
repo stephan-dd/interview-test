@@ -24,7 +24,6 @@ export class ListComponent implements OnInit {
   getHeroes() {
     this.apiService.getAllHeroes().subscribe(data => {
       this.heroes = data;
-      console.log(JSON.stringify(this.heroes, null, 1))
     });
   }
 
