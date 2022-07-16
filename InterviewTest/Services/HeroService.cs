@@ -15,7 +15,7 @@ namespace InterviewTest.Services
             _data = data;
         }
 
-        public Hero Evolve(string heroName)
+        public Hero[] Evolve(string heroName)
         {
             //
             var heroToEvolve = GetHeroByName(heroName);
@@ -35,8 +35,8 @@ namespace InterviewTest.Services
                 }
                 // Update Hero Stats
                 heroToEvolve.Stats = newStats;
-
-                return heroToEvolve;
+                _data.heroes[0] = heroToEvolve;
+                return _data.heroes;
             }
             return null;
         }

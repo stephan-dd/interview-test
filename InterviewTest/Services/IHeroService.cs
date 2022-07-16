@@ -5,7 +5,7 @@ namespace InterviewTest.Services
 {
     public interface IHeroService
     {
-        Hero Evolve(string heroName);
+        Hero[] Evolve(string heroName);
         //void AddHero(string name, string power);
         //void RemoveHero(string name);
         Hero GetHeroByName(string name);

@@ -38,19 +38,25 @@ namespace InterviewTest.Controllers
         }
 
         // POST: api/Heroes/hulk/evolve
-        [HttpPost("{heroName}/{userAction}")]
-        public ActionResult<Hero> Post(string heroName, string userAction = "none")
+        [HttpPost]
+        public ActionResult<Hero> Post([FromBody] EvolveRequest request)
         {
-            if(userAction.Equals("evolve", System.StringComparison.CurrentCultureIgnoreCase))
+            if(request.UserAction.Equals("evolve", System.StringComparison.CurrentCultureIgnoreCase))
             {
-                var hero = _heroService.Evolve(heroName);
-                if (hero == null)
+                var heroes = _heroService.Evolve(request.HeroName);
+                if (heroes == null)
                 {
                     return BadRequest("Failed to evolve");
                 }
-                return Ok(hero);
+                return Ok(heroes);
             }
             return BadRequest("Only for evolve action");
         }
+    }
+    public class EvolveRequest
+    {
+        public string HeroName { get; set; }
+        public string UserAction { get; set; } = "none";
+
     }
 }
