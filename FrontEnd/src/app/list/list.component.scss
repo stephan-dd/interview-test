@@ -1,0 +1,48 @@
+table {
+  min-width: 50%;
+  text-align: center;
+
+  th,
+  td {
+    padding: 8px 30px 8px 30px;
+  }
+
+  button {
+    background-color: #008cba;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.heading {
+  text-align: center;
+  color: blue;
+}
+
+.cc1 {
+  color: yellow;
+  background: red;
+  font-weight: 100;
+}
+
+.cc2 {
+  color: red;
+  background: green;
+  font-weight: 200;
+}
+
+.cc3 {
+  color: green;
+  background: yellow;
+  font-weight: 300;
+}
+
+.cc4 {
+  color: rgb(255, 0, 234);
+  background: blue;
+  font-weight: 400;
+}

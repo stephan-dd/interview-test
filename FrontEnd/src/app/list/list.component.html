@@ -1,0 +1,33 @@
+<div>
+  <h2 class="heading">Tour of Heroes</h2>
+  <div>
+    <div [innerHtml]="htmlToAdd"></div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Power</th>
+            <th>Stat</th>
+            <th>Stat</th>
+            <th>Stat</th>
+            <th>Evolve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let contact of contacts; let i = index"
+            [class]="myRandomClass"
+          >
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.power }}</td>
+            <td>{{ contact.stats[0].value }}</td>
+            <td>{{ contact.stats[1].value }}</td>
+            <td>{{ contact.stats[2].value }}</td>
+            <td><button (click)="onEvolve(contact.name)">Evolve</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
