@@ -1,0 +1,47 @@
+<div *ngIf="updateHero">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Stats(strength)</th>
+        <th>Stats(intelligence)</th>
+        <th>Stats(stamina)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ updateHero.name }}</td>
+        <td *ngFor="let stat of updateHero.stats">
+          <b>{{stat.value}}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <h2 class="heading">Tour of Heroes</h2>
+  <table class="gammaraygreen">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Power</th>
+        <th>Stats(strength)</th>
+        <th>Stats(intelligence)</th>
+        <th>Stats(stamina)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let superhero of heroes">
+        <td>{{ superhero.name }}</td>
+        <td>{{ superhero.power }}</td>
+        <td *ngFor="let stat of superhero.stats">
+          <b>{{stat.value}}</b>
+        </td>
+        <td>
+          <button type="button" (click)="evolve(superhero)">evolve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

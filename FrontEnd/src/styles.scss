@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+/*========  Variables  ========*/
+$DarkBlue: #004494;
+$DarkGrey: #212529;
+$OpenSans: "Open Sans";
+$TableGrey: #313541;
+/*====  Tables  ====*/
+
+table,
+table.HEROTable {
+    width: 100%;
+    margin-bottom: 20px;
+
+    thead {
+        tr {
+
+            th,
+            td,
+            >div {
+                font-weight: bold;
+                font-size: 12px;
+                padding: 7px 5px;
+                color: $TableGrey !important;
+                border-bottom: 0 !important;
+                border-top: 0px !important;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border: 1px solid #b0bac5 !important;
+
+            td,
+            >div {
+                font-size: 12px;
+                padding: 5px;
+                border-right: 1px solid #b0bac5 !important;
+                border-bottom: 0 !important;
+                border-top: 0px !important;
+            }
+
+            &:nth-child(odd) {
+                background-color: #f4f7fa;
+            }
+
+            td {
+                .btn-link {
+                    font-size: 12px !important;
+                    width: 85px;
+                    white-space: normal;
+                    text-align: left;
+                    line-height: 14px;
+                    padding: 0 5px;
+                }
+            }
+        }
+    }
+}
+
+.heading {
+    font-family: $OpenSans;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0;
+    text-align: center;
+    color: DarkBlue;
+}
+
+.blackpanther {
+    background-color: orange;
+    font-weight: bold;
+    color: black;
+}
+
+.hydrared {
+    background-color: blue;
+    font-weight: bolder;
+    color: red;
+}
+
+.eternalblue {
+    background-color: yellowgreen;
+    font-weight: lighter;
+    color:blue;
+}
+
+.gammaraygreen {
+    background-color: gold;
+    font-weight: normal;
+    color: green;
+}
