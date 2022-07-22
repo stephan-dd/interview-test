@@ -1,0 +1,34 @@
+<h2 class="heading">{{title}}</h2>
+
+<table class="table">
+  <thead class="th">
+    <tr>
+      <th>Name</th>
+      <th>Power</th>
+      <ng-container *ngFor="let myhero of hero">
+        <th *ngFor="let stats of myhero.stats" ngDefaultControl [(ngModel)]="stats.key">stat({{stats.key}})</th>
+      </ng-container>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody [ngClass]="random()">
+    <tr *ngFor="let myHero of hero" >
+      <td ngDefaultControl [(ngModel)]="myHero.name">{{myHero.name}}</td>
+      <td ngDefaultControl [(ngModel)]="myHero.power">{{myHero.power}}</td>
+      <ng-container *ngFor="let stats of myHero.stats">
+        <td  ngDefaultControl [(ngModel)]="myHero.stats">
+          {{stats.value}}
+        </td>
+      </ng-container>
+    
+       <td>
+        <button class="button" type="submit" (click)="evolve()">Evolve</button>        
+      </td> 
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+<br>
+
