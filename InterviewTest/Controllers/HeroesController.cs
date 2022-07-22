@@ -23,6 +23,18 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+               },
+               new Hero()
+               {
+                   name= "Black Widow",
+                   power="Strength from martial arts",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 2000 ),
+                       new KeyValuePair<string, int>( "intelligence", 90),
+                       new KeyValuePair<string, int>( "stamina", 1500 )
+                   }
                }
             };
 
@@ -42,8 +54,17 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] Hero superhero, string action = "none")
         {
+            if (action == "evolve")
+            {
+                superhero.evolve();
+                return superhero;
+            }
+            else
+            {
+                return superhero;
+            }
         }
 
         // PUT: api/Heroes/5
