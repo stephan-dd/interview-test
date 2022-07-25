@@ -14,8 +14,10 @@ export class ListComponent implements OnInit {
   constructor(public dc: DataService) { }
 
   ngOnInit() {
-    this.getHero();
-
+    if(!this.model){
+      this.getHero();
+    }
+   
   }
 
   getHero(){
@@ -30,10 +32,10 @@ export class ListComponent implements OnInit {
    
    this.dc.post('api/heroes?action=evolve',name).subscribe((response) => {
      console.log(response);
-    this.hero = response;
-    for(var i  = 0; i < this.hero.stats.length; i++){
-
-    }
+     if(response){
+      this.hero = response;
+     }
+    
     this.heroUpdated = true;
    })
   }

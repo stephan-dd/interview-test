@@ -11,6 +11,11 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+        private readonly IHero _hero;
+        public HeroesController(IHero hero)
+        {
+            _hero = hero;
+        }
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -25,6 +30,7 @@ namespace InterviewTest.Controllers
                    }
                }
             };
+
 
         // GET: api/Heroes
         [HttpGet]
