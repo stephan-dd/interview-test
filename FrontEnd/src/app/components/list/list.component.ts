@@ -8,9 +8,25 @@ import { ApiService } from 'src/app/api.service';
 })
 export class ListComponent implements OnInit {
 
+  myDataList;
+
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+
+    this.getList();
+
   }
+
+getList(){
+  this.api.getContacts().subscribe( 
+    (res) =>{
+
+      this.myDataList = res["data"];
+
+    }
+
+  )
+}
 
 }

@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   getContacts(){
-    return this.httpClient.get(`${this.apiURL}/heroes`).toPromise;
+    return this.httpClient.get(`${this.apiURL}/heroes`);
   }
 
 }
