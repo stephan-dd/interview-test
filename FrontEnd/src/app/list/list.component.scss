@@ -1,0 +1,40 @@
+.heading{
+    text-align: center;
+    color: blue;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 20%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .first-color{
+      font-weight: 300;
+      color: gray;
+      background: fixed;
+  }
+
+  .second-color{
+    font-weight: 10;
+    color: rgb(51, 8, 8);
+    background: rosybrown;
+}
+
+.third-color{
+    font-weight: 50;
+    color: rgb(156, 145, 202);
+    background: repeat-y;
+}
+
+.last-color{
+    font-weight: 500;
+    color: #fff;
+    background: black;
+}

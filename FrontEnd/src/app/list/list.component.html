@@ -1,0 +1,31 @@
+
+<h2 class="heading">Tour of Heroes</h2>
+<div [hidden]="!heroUpdated" class="card">
+    <li *ngFor="let x of hero?.stats">
+        {{hero.name}} updated with {{x.Key}} = ({{x.Value}})
+    </li>
+</div>
+<table class="table">
+     <thead>
+        <th>Name</th>
+        <th>Power</th>
+        <th>Stats(strength)</th>
+        <th>Stats(intelligence)</th>
+        <th>Stats(stamina)</th>
+        <th></th>
+    </thead>
+    <tr *ngFor="let hero of model">
+        <td>
+            {{hero.name}}
+        </td>
+        <td>
+            {{hero.power}}
+        </td>
+        <td *ngFor="let stat of hero.stats">
+            {{stat.key}} ({{stat.Value}})
+        </td>
+        <td>
+            <button (click)="evolveHero(hero.name)" >Evolve</button>
+        </td>
+    </tr>
+</table>

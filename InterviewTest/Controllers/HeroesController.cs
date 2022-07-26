@@ -11,6 +11,11 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+        private readonly IHero _hero;
+        public HeroesController(IHero hero)
+        {
+            _hero = hero;
+        }
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -25,6 +30,7 @@ namespace InterviewTest.Controllers
                    }
                }
             };
+
 
         // GET: api/Heroes
         [HttpGet]
@@ -42,8 +48,15 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] string value, string action = "none")
         {
+            var hero = this.heroes.Where(x => x.name == value).SingleOrDefault();
+            if (action.Equals("evolve"))
+            {
+                hero.evolve();
+            }
+
+            return hero;
         }
 
         // PUT: api/Heroes/5
