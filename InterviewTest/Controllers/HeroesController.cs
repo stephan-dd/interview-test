@@ -50,10 +50,9 @@ namespace InterviewTest.Controllers
         [HttpPost]
         public Hero Post([FromBody] string value, string action = "none")
         {
-            var hero = new Hero();
+            var hero = this.heroes.Where(x => x.name == value).SingleOrDefault();
             if (action.Equals("evolve"))
             {
-                hero = heroes.Where(x => x.name == value).SingleOrDefault();
                 hero.evolve();
             }
 

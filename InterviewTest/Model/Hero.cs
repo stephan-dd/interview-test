@@ -18,7 +18,6 @@ namespace InterviewTest
                 var newVal = kvp.Value + kvp.Value * 1 / 2;
                 var newEntry = new KeyValuePair<string, int>(kvp.Key, newVal);
                 var removeOldItem = stats.Where(x => x.Key == kvp.Key).SingleOrDefault();
-                //stats.Remove(removeOldItem);
                 diction.Add(newEntry);
             }
 

@@ -14,28 +14,35 @@ export class ListComponent implements OnInit {
   constructor(public dc: DataService) { }
 
   ngOnInit() {
-    if(!this.model){
+    
       this.getHero();
-    }
-   
   }
 
   getHero(){
     this.dc.get('api/heroes/').subscribe((response)=>{
-      console.log(response);
       this.model = response;
     });
   }
 
   evolveHero(name){
-   console.log(name); 
    
    this.dc.post('api/heroes?action=evolve',name).subscribe((response) => {
-     console.log(response);
      if(response){
       this.hero = response;
+      for(var i = 0; i < this.model.length; i++)
+      {
+        if(this.model[i].name == this.hero.name)
+        {
+          for(var j = 0; j < this.model[i].stats.length; j++ )
+          {
+            if(this.model[i].stats[j].Key === this.hero.stats[j].Key)
+            {
+              this.model[i].stats[j].Value = this.hero.stats[j].Value
+            }
+          }
+        }
+      }
      }
-    
     this.heroUpdated = true;
    })
   }
