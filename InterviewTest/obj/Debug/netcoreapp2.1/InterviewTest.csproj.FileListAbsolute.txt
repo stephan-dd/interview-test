@@ -1,0 +1,54 @@
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.deps.json
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.json
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.dev.json
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfoInputs.cache
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfo.cs
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.CoreCompileInputs.cache
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cache
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cs
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorTargetAssemblyInfo.cache
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.genruntimeconfig.cache
+C:\Users\makokot\Downloads\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.AssemblyReference.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.deps.json
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.json
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.dev.json
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.AssemblyReference.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfoInputs.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfo.cs
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.CoreCompileInputs.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cs
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorTargetAssemblyInfo.cache
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.genruntimeconfig.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.deps.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.dev.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.AssemblyReference.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfoInputs.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfo.cs
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.CoreCompileInputs.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cs
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorTargetAssemblyInfo.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.genruntimeconfig.cache
