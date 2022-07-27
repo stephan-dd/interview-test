@@ -34,3 +34,21 @@ C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\D
 C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.dll
 C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.pdb
 C:\Source Code\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.genruntimeconfig.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.deps.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.runtimeconfig.dev.json
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\bin\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.AssemblyReference.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfoInputs.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.AssemblyInfo.cs
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.csproj.CoreCompileInputs.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorAssemblyInfo.cs
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.RazorTargetAssemblyInfo.cache
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.dll
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.pdb
+C:\Tutorials\interview-test-develop\interview-test-develop\InterviewTest\obj\Debug\netcoreapp2.1\InterviewTest.genruntimeconfig.cache

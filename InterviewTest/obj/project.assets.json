@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Source Code\\interview-test-develop\\interview-test-develop\\InterviewTest\\InterviewTest.csproj",
+      "projectUniqueName": "C:\\Tutorials\\interview-test-develop\\interview-test-develop\\InterviewTest\\InterviewTest.csproj",
       "projectName": "InterviewTest",
-      "projectPath": "C:\\Source Code\\interview-test-develop\\interview-test-develop\\InterviewTest\\InterviewTest.csproj",
+      "projectPath": "C:\\Tutorials\\interview-test-develop\\interview-test-develop\\InterviewTest\\InterviewTest.csproj",
       "packagesPath": "C:\\Users\\motshoenem.VF-ROOT\\.nuget\\packages\\",
-      "outputPath": "C:\\Source Code\\interview-test-develop\\interview-test-develop\\InterviewTest\\obj\\",
+      "outputPath": "C:\\Tutorials\\interview-test-develop\\interview-test-develop\\InterviewTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\motshoenem.VF-ROOT\\AppData\\Roaming\\NuGet\\NuGet.Config",
