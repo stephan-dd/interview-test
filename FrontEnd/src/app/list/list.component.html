@@ -1,0 +1,22 @@
+<div>
+    <h2 class="heading">Tour of Heroes</h2>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Power</th>
+            <th>Strength</th>
+            <th>Intelligence</th>
+            <th>Stamina</th>
+        </thead>
+        <tbody>
+            <tr *ngfor="let h of heroes">
+                <td>{{h.Name}}</td>
+                <td>{{h.Power}}</td>
+                <td>{{h.Strength}}</td>
+                <td>{{h.Intelligence}}</td>
+                <td>{{h.Stamina}}</td>
+                <td><button click='evolveHero()'>Evolve</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
