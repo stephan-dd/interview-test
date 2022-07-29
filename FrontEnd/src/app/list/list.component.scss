@@ -1,0 +1,44 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #d6eeee;
+}
+
+.heading {
+  text-align: center;
+  color: blue;
+}
+
+.blue {
+  font-weight: bold;
+  color: aqua;
+  background-color: blueviolet;
+}
+
+.green {
+  font-weight: bolder;
+  color: green;
+  background-color: darkred;
+}
+
+.orange {
+  font-weight: lighter;
+  color: orange;
+  background-color: darkblue;
+}
+
+.pink {
+  font-weight: normal;
+  color: purple;
+  background-color: lightgrey;
+}

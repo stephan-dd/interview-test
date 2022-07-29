@@ -1,0 +1,33 @@
+<div>
+  <h2 class="heading">Tour of Heroes</h2>
+  <table class="table table-hover">
+    <thead>
+      
+        <th>Name</th>
+        <th>Power</th>
+        <th>Stats(Strength)</th>
+        <th>Stats(Intelligence)</th>
+        <th>Stats(Stamina)</th>
+        <th></th>
+      
+    </thead>
+    <tbody [ngClass]="getRandomClass()">
+      <tr *ngFor="let hero of heroes">
+        <td>{{ hero.name }}</td>
+        <td>{{ hero.power }}</td>
+        <td *ngFor="let stat of hero.stats">
+          <b>{{stat.value}}</b>
+        </td>
+        <td>
+          <button type="button" (click)="evolveHero()">evolve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
