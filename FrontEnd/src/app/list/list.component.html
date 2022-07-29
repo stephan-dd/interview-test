@@ -1,0 +1,29 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Power</th>
+                <th colspan="3">Statistics</th>
+            </tr>
+            <tr>
+                <th>Strength</th>
+                <th>Intelligence</th>
+                <th>Stamina</th>
+                <th>
+                </th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let list of myDataList; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{list.Name}}</td>
+                <td>{{list.Power}}</td>
+                <td>{{list.Strength}}</td>
+                <td>{{list.Intelligence}}</td>
+                <td>{{list.Stamina}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
