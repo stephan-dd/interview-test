@@ -13,6 +13,6 @@ namespace InterviewTest.Interfaces
 
         List<KeyValuePair<string, int>> Stats { get; set; }
 
-        void Evolve(int statIncrease);
+        void evolve(int statIncrease);
     }
 }

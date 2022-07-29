@@ -1,26 +1,17 @@
-import {Injectable} from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { HeroModel} from 'src/HeroModel';
-import { Options } from 'selenium-webdriver/chrome';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
-
-const baseAddress = 'http://localhost:4201/heroes';
-
-@Injectable ()
+@Injectable({
+    providedIn: 'root'
+})
 export class ApiService {
-    constructor(private http: HttpClient){
 
-    }
-    public heroes: Observable<HeroModel[]> = of([]);
+    apiURL = 'http://localhost:4201/api';
 
-    public getContacts() : Observable<HeroModel[]> {
-        
-        return this.http.get<HeroModel[]>(baseAddress);
+    constructor(private httpClient: HttpClient) { }
+
+    getContacts(){
+        return this.httpClient.get(`${this.apiURL}/heroes`);
     }
 
-    public evolveHero(heroId: number) : Observable<HeroModel[]>{
-        this.heroes = this.http.get<HeroModel[]>(baseAddress + '/evolve/' + heroId);
-        return this.heroes;
-    }
 }

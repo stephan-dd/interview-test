@@ -1,28 +1,25 @@
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/services/api';
-import { Component } from '@angular/core';
-import { Observable, forkJoin } from 'rxjs';
-import { HeroModel } from 'src/HeroModel';
 
 @Component({
-    selector: './app-root',
+    selector: 'list-components',
     templateUrl: './list.component.html',
-    styleUrls: ['./list.component.css']
+    styleUrls: ['./list.component.scss']
 })
-export class listComponent {
-    heroes: Observable<HeroModel[]>;
-    constructor (private apiService: ApiService){
+export class ListComponent implements OnInit {
+    myDataList;
 
+    constructor(private api: ApiService) { }
+    ngOnInit(): void {
+        this.getList();
     }
 
-    public AppInit(){
-        this.getContact();
+    getList() {
+        this.api.getContacts().subscribe(
+            (res) => {
+                this.myDataList = res;
+            }
+        )
     }
 
-    public getContact() : any{
-        this.heroes = this.apiService.getContacts();
-    }
-
-    public evolveHero(){
-        this.apiService
-    }
 }
