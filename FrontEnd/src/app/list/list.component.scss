@@ -1,0 +1,57 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+th{
+    padding: 1rem
+}
+td {
+    padding: 3rem;
+}
+
+.heading{
+    color: blue;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.stat-container {
+    margin: 1rem auto;
+}
+
+.stat-heading {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.theme1 {
+    font-weight: 200;
+    color: olivedrab;
+}
+.theme2 {
+    font-weight: 400;
+    color: yellowgreen;
+}
+.theme3 {
+    font-weight: 600;
+    color: teal;
+}
+.theme4 {
+    font-weight: 800;
+    color: wheat;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

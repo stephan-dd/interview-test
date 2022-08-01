@@ -1,0 +1,30 @@
+<div *ngIf="evolvedHero != null">
+  <h3>{{ evolvedHero.name }} updated with state</h3>
+  <div *ngFor="let stat of evolvedHero.stats">
+    {{ stat.key }} : {{ stat.value }}
+  </div>
+</div>
+
+<h2 class="heading">Tour of Heroes</h2>
+<div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Power</th>
+      <th colspan="3">Stats</th>
+    </tr>
+
+    <tr *ngFor="let hero of heroes; let i = index" [class]="getTheme(i)">
+      <td>{{ hero.name }}</td>
+      <td>{{ hero.power }}</td>
+      <td *ngFor="let stat of hero.stats">
+        <div class="stat-container stat-heading">{{ stat.key }}</div>
+        <div class="stat-container">{{ stat.value }}</div>
+      </td>
+      <td>
+        <button (click)="EvolveHero(hero.name)">Evolve</button>
+      </td>
+    </tr>
+    <tr></tr>
+  </table>
+</div>

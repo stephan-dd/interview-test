@@ -14,14 +14,26 @@ namespace InterviewTest.Controllers
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   Name= "Super Ant",
+                   Power="Strength from muscle",
+                   Stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 50000 ),
+                       new KeyValuePair<string, int>( "intelligence", 150),
+                       new KeyValuePair<string, int>( "stamina", 3500 )
                    }
                }
             };
@@ -40,10 +52,17 @@ namespace InterviewTest.Controllers
             return this.heroes.FirstOrDefault();
         }
 
-        // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST: api/Heroes/heroName
+        [HttpPost("{heroName}")]
+        public Hero Post(string heroName, [FromQuery] string actions = "none")
         {
+            if (actions == "evolve" && heroName != null)
+            {
+                Hero hero = this.heroes.FirstOrDefault(x=>x.Name.ToLower() == heroName.ToLower());
+                hero.evolve();
+                return hero;
+            }
+            return this.heroes.FirstOrDefault();
         }
 
         // PUT: api/Heroes/5
