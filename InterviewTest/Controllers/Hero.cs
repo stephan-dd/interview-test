@@ -22,7 +22,7 @@ namespace InterviewTest.Controllers
             List<KeyValuePair<string, int>> newStats = new List<KeyValuePair<string, int>>();
 
             this.Stats.ForEach(stat => {
-                newStats.Add(new KeyValuePair<string, int>(stat.Key, stat.Value * 5));
+                newStats.Add(new KeyValuePair<string, int>(stat.Key, stat.Value * statIncrease));
             });
 
             this.Stats = newStats;
