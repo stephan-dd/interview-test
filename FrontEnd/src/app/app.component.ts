@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeroService } from 'src/services/api.service';
 
 @Component({
   selector: 'app-root',
