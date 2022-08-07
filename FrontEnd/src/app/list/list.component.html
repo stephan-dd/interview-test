@@ -1,0 +1,25 @@
+<div class="normal_body">
+  <h2 class="heading">Tour of Heroes</h2>
+
+  <table class="centered_table">
+      <thead>
+          <th >Name</th>
+          <th>Power</th>
+          <th class="red">Strength</th>
+          <th class="blue">Intelligence</th>
+          <th class="green">Stamina</th>
+          <th>Actions</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let h of heroes | async;" class="random_colour">
+              <td>{{h.name}}</td>
+              <td>{{h.power}}</td>
+              <td>{{h.stats.strength}}</td>
+              <td>{{h.stats.stamina}}</td>
+              <td>{{h.stats.intelligence}}</td>
+              <td><button (click)='evolveHero()'>Evolve</button></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
