@@ -10,14 +10,25 @@
 }
 .red{
     color: $red;
+    font-weight: 200;
+    background-color: darkslategray;
 }
 .blue{
     color: $blue;
+    font-weight: 400;
+    background-color: azure;
 }
 .green{
     color: $green;
+    font-weight: 600;
+    background-color: black;
 }
 .normal_body{
     font-family: Arial, Helvetica, sans-serif;
     color: $primary;
+    background-color: #CCC;
+    font-weight: normal;
+}
+.random_colour{
+    color: rgb(random(255), random(255), random(255));
 }

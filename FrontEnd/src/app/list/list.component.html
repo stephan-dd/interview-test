@@ -11,7 +11,7 @@
           <th>Actions</th>
       </thead>
       <tbody>
-          <tr *ngFor="let h of heroes | async;">
+          <tr *ngFor="let h of heroes | async;" class="random_colour">
               <td>{{h.name}}</td>
               <td>{{h.power}}</td>
               <td>{{h.stats.strength}}</td>
