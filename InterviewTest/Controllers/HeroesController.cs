@@ -11,12 +11,12 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
+        private IHero[] heroes = new IHero[] {
                new Hero()
                {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
+                   Name= "Hulk",
+                   Power="Strength from gamma radiation",
+                   Stats=
                    new List<KeyValuePair<string, int>>()
                    {
                        new KeyValuePair<string, int>( "strength", 5000 ),
@@ -28,22 +28,29 @@ namespace InterviewTest.Controllers
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public IEnumerable<IHero> Get()
         {
             return this.heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
             return this.heroes.FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<IHero> Post([FromBody] PostAction postAction)
         {
+            
+            var hero = this.heroes.FirstOrDefault();
+            if (postAction.action == "evolve")
+            { 
+                hero.Evolve(0);
+            }
+            return new IHero[] { hero };
         }
 
         // PUT: api/Heroes/5
