@@ -10,19 +10,16 @@ import { map, filter } from 'rxjs/operators';
 })
 export class HeroApiService extends ApiService {
 
-  path = "/heroes";
+  path = '/heroes';
   constructor(client: HttpClient) {
     super(client);
   }
 
   public getHeroes(): Observable<HeroModel[]> {
-    return this.get(this.getHeroUrl()).pipe(map((obj)=> {
-      // console.log(obj);
+    return this.get(this.getHeroUrl()).pipe(map((obj) => {
       let array = new Array();
-      if(Array.isArray(obj))
-      {
-        obj.forEach((x) => 
-        {
+      if (Array.isArray(obj)) {
+        obj.forEach((x) => {
           array.push(new HeroModel().deserialize(x));
         });
       }
@@ -33,15 +30,16 @@ export class HeroApiService extends ApiService {
   public getHeroUrl(): string {
     return this.addPath(this.path);
   }
-  public evolveHero(heroName: string): Observable<HeroModel> {
-    let response = this.post(this.getHeroUrl(),{action: 'evolve', name: heroName});
-    //response.subscribe(res =-> console.log(res));
-    // response.subscribe((x) => {
-    //   console.log(x);
-      
-    //   return new HeroModel().deserialize(x);
-    // });
-    return response;
+  public evolveHero(heroName: string): Observable<HeroModel[]> {
+    return this.post(this.getHeroUrl(), {action: 'evolve', name: heroName}).pipe(map((obj) => {
+      const array = new Array();
+      if (Array.isArray(obj)) {
+        obj.forEach((x) => {
+          array.push(new HeroModel().deserialize(x));
+        });
+      }
+      return array;
+    }));
   }
 
 }

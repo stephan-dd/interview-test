@@ -42,7 +42,7 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public IHero Post([FromBody] PostAction postAction)
+        public IEnumerable<IHero> Post([FromBody] PostAction postAction)
         {
             
             var hero = this.heroes.FirstOrDefault();
@@ -50,7 +50,7 @@ namespace InterviewTest.Controllers
             { 
                 hero.Evolve(0);
             }
-            return hero;
+            return new IHero[] { hero };
         }
 
         // PUT: api/Heroes/5

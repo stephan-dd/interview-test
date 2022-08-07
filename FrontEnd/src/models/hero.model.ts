@@ -1,4 +1,4 @@
-import { HeroStats } from "./hero-stats.model";
+import { HeroStats } from './hero-stats.model';
 
 export class HeroModel {
     Name: string;
@@ -10,10 +10,8 @@ export class HeroModel {
         let obj = {};
         if(Array.isArray(input.stats))
         {
-            input.stats.forEach((x)=>{
-                let key = x.key;
-                let value = x.value;
-                 obj[key] = value;
+            input.stats.forEach((x) => {
+                obj[x.key] = x.value;
             });
             this.stats = new HeroStats().deserialize(obj);
         }
