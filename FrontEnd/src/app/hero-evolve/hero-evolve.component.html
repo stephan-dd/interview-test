@@ -1,0 +1,30 @@
+<div class="container custom-container">
+  <div class="col-md-12">
+    
+    <h3 class="mb-3 text-center">Evolve Hero</h3>
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="heroData.name" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="heroData.power" class="form-control" placeholder="Power">
+    </div>
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="heroData.strength" class="form-control" placeholder="Stat(strength)">
+    </div>
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="heroData.intelligence" class="form-control" placeholder="Stat(intelligence)">
+    </div>
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="heroData.stamina" class="form-control" placeholder="Stat(stamina)">
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" (click)="evolveHero()">Evolve</button>
+    </div>
+    
+  </div>
