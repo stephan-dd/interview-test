@@ -1,0 +1,20 @@
+[
+   {
+      "name":"Hulk",
+      "power":"Strength from gamma radiation",
+      "stats":[
+         {
+            "key":"strength",
+            "value":5000
+         },
+         {
+            "key":"intelligence",
+            "value":50
+         },
+         {
+            "key":"stamina",
+            "value":2500
+         }
+      ]
+   }
+]
