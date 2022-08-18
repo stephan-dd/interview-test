@@ -1,0 +1,141 @@
+.color-scheme-red {
+  color: red;
+  font-weight: bold;
+  background-image: linear-gradient(163deg,rgb(206, 0, 0) 0%, rgb(248, 163, 163) 100%);
+  font-variant: small-caps;
+}
+
+.color-scheme-blue {
+  color: blue;
+  font-weight: lighter;
+  background-image: linear-gradient(163deg,rgb(0, 21, 206) 0%, rgb(163, 228, 248) 100%)
+}
+
+
+.color-scheme-green {
+  color: green;
+  font-weight: 800;
+  background-image: linear-gradient(163deg,rgb(182, 182, 182) 0%, rgb(204, 248, 163) 100%)
+}
+
+.color-scheme-gray {
+  color:darkgray;
+  font-weight: 500;
+  background-image: linear-gradient(163deg,rgb(200, 200, 200) 0%, rgb(63, 63, 63) 100%)
+}
+
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  min-width: 650pt;
+  width: 50%;
+  padding: 10px;
+}
+
+.heroes li {
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 2em;
+  border-radius: 4px;
+}
+
+.heroes .li-header {
+  background-color: #EEE;
+  height: 1.6em;
+}
+
+.heroes .col-header {
+  display: inline-block;
+  font-size: small;
+  text-align: center;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em !important;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  border-radius: 4px 0 0 4px;
+  width:100pt;
+}
+
+.heroes .col-header-alt {
+  display: inline-block;
+  font-size: small;
+  text-align: center;
+  color: #607D8B;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: white;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  border-radius: 4px 0 0 4px;
+  width:100pt;
+}
+
+
+.heroes .col {
+  display: inline-block;
+  font-size: small;
+  padding-left: 15px;
+  line-height: 1.5em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 2em;
+  border-radius: 4px 0 0 4px;
+  width:100pt;
+}
+
+.heroes .col-alt {
+  display: inline-block;
+  font-size: small;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 2em;
+  border-radius: 4px 0 0 4px;
+  width:100pt;
+}
+
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+button.evolve {
+  float: right;
+  margin-top: 5px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color: white;
+}
+
+.stats {
+  min-height: 30px;
+  color: green;
+  background-color: rgba(0, 128, 0, 0.247);
+  width: 500px;
+  text-align: center;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
