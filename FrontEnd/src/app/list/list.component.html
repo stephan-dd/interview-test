@@ -1,0 +1,25 @@
+
+<div [hidden]="updateStats" class="stats">{{updatedHero.name}} updated with
+
+  <span *ngFor="let stat of updatedHero.stats">{{stat.key}}:{{stat.value}} </span>
+
+</div>
+
+<ul [className]="'heroes ' + colorRandom">
+  <li class="li-header">
+    <span class="col-header">Name</span>
+    <span class="col-header-alt">Power</span>
+    <span class="col-header">Strength</span>
+    <span class="col-header-alt">Intelligence</span>
+    <span class="col-header">Stamina</span>
+  </li>
+  <li *ngFor="let hero of heroes">
+      <span class="col">{{hero.name}}</span>
+      <span class="col-alt">{{hero.power}}</span>
+      <span *ngFor="let stat of hero.stats" class="col">{{stat.value}}</span>
+      <button class="evolve"
+              (click)="evolve(hero.name);">evolve
+      </button>
+  </li>
+</ul>
+

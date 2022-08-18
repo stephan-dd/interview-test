@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Models;
+using InterviewTest.Repository;
+using InterviewTest.Repository.Interface;
+using InterviewTest.Services;
+using InterviewTest.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,6 +30,9 @@ namespace InterviewTest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFrameworkInMemoryDatabase()
+                .AddDbContext<HeroContext>(opt => opt.UseInMemoryDatabase("Heroes"));
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("default",
@@ -36,6 +45,9 @@ namespace InterviewTest
                 });
             });
 
+            services.AddScoped<IHeroRepository, HeroRepository>();
+            services.AddScoped<IHeroService, HeroService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -46,8 +58,7 @@ namespace InterviewTest
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors("default");
-
+            app.UseCors("default");         
             app.UseMvc();
         }
     }

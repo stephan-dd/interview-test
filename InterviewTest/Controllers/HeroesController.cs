@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Models;
+using InterviewTest.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,39 +13,83 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        private readonly IHeroService _service;
+
+        public HeroesController(IHeroService service)
+        {
+            _service = service;
+        }
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> Get()
+        public List<Hero> Get()
         {
-            return this.heroes;
+            return _service.GetHeroes();
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        public IHero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return _service.GetHeroes().FirstOrDefault();
         }
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<List<KeyValuePair<string, int>>> Post([FromQuery] string action = "none")
         {
+            // MJK: API part of test just using action on the first hero
+            try
+            {
+                if (action.Equals("evolve", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var hero = _service.GetHeroes().FirstOrDefault();
+                    hero.evolve();
+                    _service.Update(hero);
+                    return Ok(hero);
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid action." });
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+       
+        }
+
+        [HttpPost("{heroname}")]
+        public ActionResult<List<KeyValuePair<string, int>>> Post([FromRoute] string heroname = "", [FromQuery] string action = "none")
+        {
+            // MJK: For the frontend part where the Hero name is also needed
+            try
+            {
+                if (action.Equals("evolve", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var hero = _service.GetHeroes().FirstOrDefault(_=>_.name.Equals(heroname,StringComparison.CurrentCultureIgnoreCase));
+                    if (hero != null)
+                    {
+                        hero.evolve();
+                        _service.Update(hero);
+                        return Ok(hero);
+                    }
+                    else
+                    {
+                        return BadRequest(new { message = "Unknown hero." });
+                    }
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid action." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            
         }
 
         // PUT: api/Heroes/5
