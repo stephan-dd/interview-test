@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InterviewTest.Controllers
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
@@ -42,8 +43,12 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post([FromBody] Hero typeHero , string value ="none")
         {
+          var hero = heroes.Where(x => x.name == typeHero.name).FirstOrDefault();
+          if (value == "action" && hero != null)
+            typeHero.evolve();
+          return typeHero;  
         }
 
         // PUT: api/Heroes/5
@@ -58,4 +63,4 @@ namespace InterviewTest.Controllers
         {
         }
     }
-}
+} 
