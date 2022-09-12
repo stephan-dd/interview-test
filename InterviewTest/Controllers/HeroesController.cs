@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,8 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+        private readonly IHero _hero;
+
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -23,8 +26,24 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "intelligence", 50),
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
+               },
+               new Hero()
+               {
+                   name= "Captain America",
+                   power="Strength from super soldier syrup",
+                   stats=
+                   new List<KeyValuePair<string, int>>()
+                   {
+                       new KeyValuePair<string, int>( "strength", 200 ),
+                       new KeyValuePair<string, int>( "intelligence", 2),
+                       new KeyValuePair<string, int>( "stamina", 25 )
+                   }
                }
             };
+        public HeroesController(IHero hero)
+        {
+            _hero = hero;
+        }
 
         // GET: api/Heroes
         [HttpGet]
@@ -42,8 +61,24 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        //Updated this method to take parameter  action
+        public IActionResult Post([FromBody] string value, [System.Web.Http.FromUri] string action= "none")
         {
+            MapHero(value);
+            //if the action is evolve it should evolve the hero and return the hero with its new stats.
+            if (action == "evolve")
+            {
+               _hero.evolve();
+                return Ok(_hero);
+            }
+            return Ok();
+        }
+        void MapHero(string value)
+        {
+            var hero = heroes.Where(x => x.name == value).FirstOrDefault();
+            _hero.name = hero.name;
+            _hero.power = hero.power;
+            _hero.stats = hero.stats;
         }
 
         // PUT: api/Heroes/5
