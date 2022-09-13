@@ -1,0 +1,83 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+.heading{
+    align-content:center;
+    text-align:center;
+    color:blue;
+}
+.btn-cap {
+    color: darkslateblue;
+    font-weight: 600;
+    background-color: mediumslateblue;
+    border-color: mediumslateblue;
+}
+.btn-ironman {
+    color: red;
+    font-weight: 100;
+    background-color: darkred;
+    border-color: darkred;
+}
+.btn-hulk {
+    color: green;
+    font-weight: 900;
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+.btn-thor {
+    color: dimgray;
+    font-weight: bolder;
+    background-color: lightgray;
+    border-color: lightgray;
+}
+.bg-aqua{
+    background-color: aqua;
+}
+.bg-cadetblue {
+    background-color: cadetblue;
+}
+.bg-burlywood {
+    background-color: burlywood;
+}
+.bg-darkgoldenrod {
+    background-color: darkgoldenrod;
+}
+.bg-lightslategray {
+    background-color: lightslategray;
+}

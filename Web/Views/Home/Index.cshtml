@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Web.list.Contacts>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+<div class="p-2">
+    <section>
+        <h2 class="heading">Tour of Heroes</h2>
+    </section>
+</div>
+@if (Model != null)
+{
+    <div>
+        <button type="button" class="btn-hulk">Hulk</button>
+        <button type="button" class="btn-ironman">Ironman</button>
+        <button type="button" class="btn-cap">Captain</button>
+        <button type="button" class="btn-thor">Thor</button>
+    </div>
+    <div id="update-alert">@ViewData["Message"]</div>
+    <p class="text-danger">@ViewData["ErrorMessage"]</p>
+    <table class="table bg-@ViewData["Random"]">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.power)
+                </th>
+                @foreach (var item in Model.Take(1))
+                {
+                    if (item != null && item.stats != null)
+                    {
+                        foreach (var stat in item.stats)
+                        {
+                            <th>@stat.key</th>
+                        }
+                    }
+                }
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.power)
+                        </td>
+                        @if (item.stats != null)
+                        {
+
+                            @foreach (var stat in item.stats)
+                            {
+                                <th>@stat.value</th>
+                            }
+                        }
+                        <td>
+
+                            @Html.ActionLink("Evolve", "Evolve", new { actionVal = "evolve", value = item.name }, new { @class = "btn btn-sm btn-primary" })
+
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    @*<script type="text/javascript">
+            function evolve(content, action) {
+                var settings = {
+                    "url": "http://localhost:4201/api/heroes?action="+action,
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify(content),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    var obj = response;
+                    updateAlert(obj.name, obj.stats);
+                    //console.log(obj.stats[0].value);
+                });
+            }
+            function updateAlert(name, stats) {
+                var statsMsg = "";
+                for (var i = 0; i < 3; i++) {
+                    statsMsg = statsMsg + "" + stats[i].key + " : " + stats[i].value+", ";
+                }
+                var div = "<div>" +
+                    "`" + name + "` updated with `" +statsMsg+"`" +
+                    "</div>";
+                document.getElementById("update-alert").innerHTML = div;
+            }
+        </script>*@
+}
