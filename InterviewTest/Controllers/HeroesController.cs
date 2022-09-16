@@ -11,6 +11,7 @@ namespace InterviewTest.Controllers
     [ApiController]
     public class HeroesController : ControllerBase
     {
+  
         private Hero[] heroes = new Hero[] {
                new Hero()
                {
@@ -42,8 +43,24 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<Hero> Post()
         {
+            var _hero = new List<Hero>();
+
+            foreach (var item in heroes)
+            {
+                var hero = new Hero();
+
+                hero.name = item.name;
+                hero.power = item.power;
+                hero.stats = item.stats;
+
+                hero.evolve();
+                _hero.Add(hero);
+            }
+
+            return _hero;
+          
         }
 
         // PUT: api/Heroes/5

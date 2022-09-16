@@ -1,0 +1,31 @@
+<div class="container">
+<h2 class="heading">Tour of Heroes</h2>
+<div class="divClass">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Power</th>
+        <th scope="col">Stats (Strength)</th>
+        <th scope="col">Stats (Strength)</th>
+        <th scope="col">Stats (Strength)</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts;">
+      <td>{{contact.name}}</td>
+      <td>{{contact.power}}</td>
+      <td>{{contact.stats[0].value}}</td>
+      <td>{{contact.stats[1].value}}</td>
+      <td>{{contact.stats[2].value}}</td>
+      <td>
+        <button (click)="updateTable()">evolve</button>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
