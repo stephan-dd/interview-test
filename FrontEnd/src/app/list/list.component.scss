@@ -1,0 +1,43 @@
+.heading{
+    text-align: center;
+    color: blue;  
+}
+.grey{
+    color: grey;
+    font-weight: 100;
+    background: white
+}
+
+.red{
+    color: red;
+    font-weight: 200;
+    background: grey
+}
+
+.brown{
+    color: brown;
+    font-weight: 300;
+    background: wheat
+}
+
+.green{
+    color: green;
+    font-weight: 400;
+    background: black
+}
+.table {
+    width: 100%;
+ }
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.divclass{
+    margin: auto;
+    width: 60%;
+    padding: auto;
+}
