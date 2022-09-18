@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterviewTest.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,15 +18,60 @@ namespace InterviewTest.Controllers
                    name= "Hulk",
                    power="Strength from gamma radiation",
                    stats=
-                   new List<KeyValuePair<string, int>>()
+                   new List<KeyValuePair<string, double>>()
                    {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
+                       new KeyValuePair<string, double>( "strength", 5000 ),
+                       new KeyValuePair<string, double>( "intelligence", 50),
+                       new KeyValuePair<string, double>( "stamina", 2500 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Spiderman",
+                   power="Strength from spider bite",
+                   stats=
+                   new List<KeyValuePair<string, double>>()
+                   {
+                       new KeyValuePair<string, double>( "strength", 2000 ),
+                       new KeyValuePair<string, double>( "intelligence", 70),
+                       new KeyValuePair<string, double>( "stamina", 2300 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Superman",
+                   power="Strength from Krypton",
+                   stats=
+                   new List<KeyValuePair<string, double>>()
+                   {
+                       new KeyValuePair<string, double>( "strength", 5000 ),
+                       new KeyValuePair<string, double>( "intelligence", 70),
+                       new KeyValuePair<string, double>( "stamina", 2800 )
+                   }
+               },
+               new Hero()
+               {
+                   name= "Wonderwoman",
+                   power="Strength from Amazon",
+                   stats=
+                   new List<KeyValuePair<string, double>>()
+                   {
+                       new KeyValuePair<string, double>( "strength", 3500 ),
+                       new KeyValuePair<string, double>( "intelligence", 80),
+                       new KeyValuePair<string, double>( "stamina", 2500 )
                    }
                }
             };
+        static Hero[] ogStats;
 
+        public HeroesController()
+        {
+            if (ogStats == null)
+            {
+                ogStats = new Hero[heroes.Length];
+                Array.Copy(heroes, ogStats, heroes.Length);
+            }
+        }
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<Hero> Get()
@@ -33,29 +79,19 @@ namespace InterviewTest.Controllers
             return this.heroes;
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
-        {
-            return this.heroes.FirstOrDefault();
-        }
-
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Hero Post(HeroPayload heroPayload)
         {
-        }
-
-        // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            Hero hero = this.heroes.FirstOrDefault(h => h.name.ToLower() == heroPayload.name.ToLower());
+            if (hero == null)
+                return null;
+            if (heroPayload.action == "evolve")
+            {
+                hero.ogStats = ogStats.FirstOrDefault(h => h.name.ToLower() == heroPayload.name.ToLower()).stats;
+                hero.evolve();                
+            }
+            return hero;
         }
     }
 }
