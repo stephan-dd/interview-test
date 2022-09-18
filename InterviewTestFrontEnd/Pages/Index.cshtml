@@ -1,0 +1,12 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Heroes!";
+}
+@Html.AntiForgeryToken()
+<h2 class="heading">Tour of Heroes</h2>
+<div id="heroStatsDiv"></div>
+<p></p>
+<div id="heroesDiv" style="width:100%"></div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/heroes.js"></script>
