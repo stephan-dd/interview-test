@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 const routes: Routes = [
-  { path: 'contacts', component: ListComponent }
+  { path: 'heroes', component: ListComponent }
 ];
 
 @NgModule({
