@@ -1,25 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
-namespace InterviewTest
+﻿namespace InterviewTest
 {
+    using InterviewTest.Data;
+    #region Using Directives
+
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+
+    #endregion //Using Directives
+
     public class Startup
     {
+        #region Constructors
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        #endregion //Constructors
+
+        #region Properties
+
         public IConfiguration Configuration { get; }
+
+        #endregion //Properties
+
+        #region Methods
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,8 +44,8 @@ namespace InterviewTest
                         .AllowCredentials();
                 });
             });
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<HeroCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +56,9 @@ namespace InterviewTest
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("default");
-
             app.UseMvc();
         }
+
+        #endregion //Methods
     }
 }

@@ -17,20 +17,35 @@
     [ApiController]
     public class HeroesController : ControllerBase
     {
+        #region Constructors
+
+        public HeroesController(HeroCache cache)
+        {
+            _cache = cache;
+        }
+
+        #endregion //Constructors
+
+        #region Fields
+
+        private HeroCache _cache;
+
+        #endregion //Fields
+
         #region Action Methods
 
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
-            return HeroCache.Instance.GetAll();
+            return _cache.GetAll();
         }
 
         //GET: api/Heroes/5
         [HttpGet("{name}", Name = "Get")]
         public Hero Get(string name)
         {
-            return HeroCache.Instance.Get(name, throwExceptionOnNotFound: false);
+            return _cache.Get(name, throwExceptionOnNotFound: false);
         }
 
         [HttpPost("{actionToPerform?}")]
@@ -38,25 +53,25 @@
         {
             if (hero == null)
             {
-                throw new Exception($"No hero provided to be updated.");
+                throw new Exception($"No {nameof(Hero)} provided to be updated.");
             }
             if (actionToPerform.Trim().ToLower().Equals("evolve"))
             {
                 hero.evolve();
             }
-            HeroCache.Instance.Add(hero);
+            _cache.Add(hero);
             return hero;
         }
 
         // PUT: api/Heroes/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Hero hero)
         {
             if ((hero == null))
             {
                 throw new Exception($"No hero provided to be updated.");
             }
-            Hero originalHero = HeroCache.Instance.Get(hero.name, throwExceptionOnNotFound: true);
+            Hero originalHero = _cache.Get(hero.name, throwExceptionOnNotFound: true);
             originalHero.CopyFrom(hero);
         }
 
@@ -64,7 +79,7 @@
         [HttpDelete("{name}")]
         public bool Delete(string name)
         {
-            return HeroCache.Instance.Delete(name, throwExceptionOnNotFound: true);
+            return _cache.Delete(name, throwExceptionOnNotFound: true);
         }
 
         #endregion //Action Methods

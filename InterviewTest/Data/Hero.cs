@@ -58,7 +58,7 @@
         {
             this.name = copy.name;
             this.power = copy.power;
-            this.stats = stats;
+            this.stats = copy.stats;
         }
 
         #endregion //Methods

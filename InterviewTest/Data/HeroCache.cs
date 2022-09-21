@@ -1,6 +1,5 @@
 ﻿namespace InterviewTest.Data
 {
-    using InterviewTest.Controllers;
     #region Using Directives
 
     using InterviewTest.Controllers.Data;
@@ -9,37 +8,47 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Policy;
+    using InterviewTest.Controllers;
 
     #endregion //Using Directives
 
     public class HeroCache
     {
-        #region Singleton Setup
+        #region Constructors
 
-        private static HeroCache _instance = null;
-        private static object _lock = new object();
-
-        private HeroCache()
+        public HeroCache()
         {
             ResetHeroes();
         }
 
-        public static HeroCache Instance
-        {
-            get
-            {
-                lock (_lock)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new HeroCache();
-                    }
-                    return _instance;
-                }
-            }
-        }
+        #endregion //Constructors
 
-        #endregion //Singleton Setup
+        //#region Singleton Setup
+
+        //private static HeroCache _instance = null;
+        //private static object _lock = new object();
+
+        //private HeroCache()
+        //{
+        //    ResetHeroes();
+        //}
+
+        //public static HeroCache Instance
+        //{
+        //    get
+        //    {
+        //        lock (_lock)
+        //        {
+        //            if (_instance == null)
+        //            {
+        //                _instance = new HeroCache();
+        //            }
+        //            return _instance;
+        //        }
+        //    }
+        //}
+
+        //#endregion //Singleton Setup
 
         #region Fields
 
