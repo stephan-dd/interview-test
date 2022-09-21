@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.WebRequestMethods;
 
 namespace InterviewTest.Controllers
 {
@@ -12,7 +13,8 @@ namespace InterviewTest.Controllers
     public class HeroesController : ControllerBase
     {
         private Hero[] heroes = new Hero[] {
-               new Hero()
+              
+                              new Hero()
                {
                    name= "Hulk",
                    power="Strength from gamma radiation",
@@ -24,6 +26,7 @@ namespace InterviewTest.Controllers
                        new KeyValuePair<string, int>( "stamina", 2500 )
                    }
                }
+
             };
 
         // GET: api/Heroes
@@ -42,8 +45,24 @@ namespace InterviewTest.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IEnumerable<Hero> Post()
         {
+            var hero= new List<Hero>();
+
+            foreach(var item in this.heroes)
+            {
+                var _hero=new Hero();
+                _hero.name=item.name;
+                _hero.power=item.power;
+                _hero.stats=item.stats;
+
+                _hero.evolve();
+                hero.Add(_hero);
+
+            }
+
+            return hero;
+
         }
 
         // PUT: api/Heroes/5
