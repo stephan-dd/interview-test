@@ -1,61 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace InterviewTest.Controllers
+﻿namespace InterviewTest.Controllers
 {
+    #region Using Directives
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using InterviewTest.Controllers.Data;
+    using InterviewTest.Data;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
+    #endregion //Using Directives
+
     [Route("api/[controller]")]
     [ApiController]
     public class HeroesController : ControllerBase
     {
-        private Hero[] heroes = new Hero[] {
-               new Hero()
-               {
-                   name= "Hulk",
-                   power="Strength from gamma radiation",
-                   stats=
-                   new List<KeyValuePair<string, int>>()
-                   {
-                       new KeyValuePair<string, int>( "strength", 5000 ),
-                       new KeyValuePair<string, int>( "intelligence", 50),
-                       new KeyValuePair<string, int>( "stamina", 2500 )
-                   }
-               }
-            };
+        #region Constructors
+
+        public HeroesController(HeroCache cache)
+        {
+            _cache = cache;
+        }
+
+        #endregion //Constructors
+
+        #region Fields
+
+        private HeroCache _cache;
+
+        #endregion //Fields
+
+        #region Action Methods
 
         // GET: api/Heroes
         [HttpGet]
         public IEnumerable<Hero> Get()
         {
-            return this.heroes;
+            return _cache.GetAll();
         }
 
-        // GET: api/Heroes/5
-        [HttpGet("{id}", Name = "Get")]
-        public Hero Get(int id)
+        //GET: api/Heroes/5
+        [HttpGet("{name}", Name = "Get")]
+        public Hero Get(string name)
         {
-            return this.heroes.FirstOrDefault();
+            return _cache.Get(name, throwExceptionOnNotFound: false);
         }
 
-        // POST: api/Heroes
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("{actionToPerform?}")]
+        public Hero Post([FromBody] Hero hero, string actionToPerform = "none")
         {
+            if (hero == null)
+            {
+                throw new Exception($"No {nameof(Hero)} provided to be updated.");
+            }
+            if (actionToPerform.Trim().ToLower().Equals("evolve"))
+            {
+                hero.evolve();
+            }
+            _cache.Add(hero);
+            return hero;
         }
 
         // PUT: api/Heroes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{actionToPerform?}")]
+        public Hero Put([FromBody] Hero hero, string actionToPerform = "none")
         {
+            if (hero == null)
+            {
+                throw new Exception($"No hero provided to be updated.");
+            }
+            Hero originalHero = _cache.Get(hero.name, throwExceptionOnNotFound: true);
+            bool evolve = actionToPerform.Trim().ToLower().Equals("evolve");
+            if (evolve)
+            {
+                originalHero.evolve();
+            }
+            originalHero.CopyFrom(hero, copyStats: !evolve);
+            return originalHero;
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{name}")]
+        public bool Delete(string name)
         {
+            return _cache.Delete(name, throwExceptionOnNotFound: true);
         }
+
+        #endregion //Action Methods
     }
 }

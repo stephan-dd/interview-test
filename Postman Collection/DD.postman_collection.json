@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "f6708fd6-85ff-4fe1-99e2-4e53e69e2cf0",
+		"name": "DD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8008521"
+	},
+	"item": [
+		{
+			"name": "Get Heroes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4201/api/heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evolve Hero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John\",\r\n    \"power\": \"Strength from gamma radiation\",\r\n    \"stats\": [\r\n        {\r\n            \"key\": \"strength\",\r\n            \"value\": 5000\r\n        },\r\n        {\r\n            \"key\": \"intelligence\",\r\n            \"value\": 50\r\n        },\r\n        {\r\n            \"key\": \"stamina\",\r\n            \"value\": 2500\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4201/api/Heroes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"Heroes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4201/api/heroes/Paul",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes",
+						"Paul"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Hero",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4201/api/heroes/Hulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes",
+						"Hulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Hero",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hulk\",\r\n    \"power\": \"Strength from gamma radiation\",\r\n    \"stats\": [\r\n        {\r\n            \"key\": \"strength\",\r\n            \"value\": 1\r\n        },\r\n        {\r\n            \"key\": \"intelligence\",\r\n            \"value\": 2\r\n        },\r\n        {\r\n            \"key\": \"stamina\",\r\n            \"value\": 3\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4201/api/heroes/evolve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4201",
+					"path": [
+						"api",
+						"heroes",
+						"evolve"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
