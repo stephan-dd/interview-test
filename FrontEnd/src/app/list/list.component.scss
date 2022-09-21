@@ -1,38 +1,40 @@
-.heading{
-    text-align: center;
-    color: blue;  
+.heading {
+  text-align: center;
+  color: blue;
 }
 
-:root{
+.class1{
+  color:pink;
+  font-weight: 200;
+  background: blue;
+}
+ .class2{
+    color: red;
+  font-weight: 300;
+  background: yellow;
+}
 
-color: black;
-font-size: 100;
-background: blue;
+.class3{
+      color: green;
+  font-weight: 400;
+  background: purple;
 
-color: red;
-font-size: 350;
-background: yellow;
-
-color: green;
-font-size: 450;
-background: purple;
-
-color: white;
-font-size: 150;
-background: black;
-
+}
+.class4{
+    color: white;
+  font-weight: 500;
+  background: black;
 }
 
 .table th {
-    margin:auto ;
-    text-align: center;
-    background-color: grey;
-    color: white;
+  margin: auto;
+  text-align: center;
+  background-color: grey;
+  color: white;
 }
 
-.table{
-      margin: auto;
-    width: 60%;
-    padding: auto;
+.table {
+  margin: auto;
+  width: 60%;
+  padding: auto;
 }
-
