@@ -64,15 +64,21 @@
         }
 
         // PUT: api/Heroes/5
-        [HttpPut]
-        public void Put([FromBody] Hero hero)
+        [HttpPut("{actionToPerform?}")]
+        public Hero Put([FromBody] Hero hero, string actionToPerform = "none")
         {
-            if ((hero == null))
+            if (hero == null)
             {
                 throw new Exception($"No hero provided to be updated.");
             }
             Hero originalHero = _cache.Get(hero.name, throwExceptionOnNotFound: true);
-            originalHero.CopyFrom(hero);
+            bool evolve = actionToPerform.Trim().ToLower().Equals("evolve");
+            if (evolve)
+            {
+                originalHero.evolve();
+            }
+            originalHero.CopyFrom(hero, copyStats: !evolve);
+            return originalHero;
         }
 
         // DELETE: api/ApiWithActions/5

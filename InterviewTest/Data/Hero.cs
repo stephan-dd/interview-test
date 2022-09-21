@@ -1,6 +1,5 @@
 ﻿namespace InterviewTest.Controllers.Data
 {
-    using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite;
     #region Using Directives
 
     using System;
@@ -8,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite;
 
     #endregion //Using Directives
 
@@ -23,7 +23,7 @@
 
         #region Methods
 
-        public void evolve(int statIncrease = 5)
+        public void evolve()
         {
             List<KeyValuePair<string, int>> result = new List<KeyValuePair<string, int>>();
             foreach (KeyValuePair<string, int> s in stats)
@@ -54,11 +54,14 @@
             return true;
         }
 
-        public void CopyFrom(Hero copy)
+        public void CopyFrom(Hero copy, bool copyStats)
         {
             this.name = copy.name;
             this.power = copy.power;
-            this.stats = copy.stats;
+            if (copyStats)
+            {
+                this.stats = copy.stats;
+            }
         }
 
         #endregion //Methods

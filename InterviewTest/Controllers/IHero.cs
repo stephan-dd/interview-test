@@ -12,7 +12,7 @@ namespace InterviewTest.Controllers
 
         #region Methods
 
-        void evolve(int statIncrease = 5);
+        void evolve();
 
         string power { get; set; }
 
